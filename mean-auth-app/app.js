@@ -3,6 +3,7 @@ const path = require('path');
 const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const session = require('express-session');
 const config = require('./config/database');
 const users = require('./routes/users');
 
@@ -22,6 +23,16 @@ const port = process.env.PORT | 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(session({ 
+	secret: config.secret,
+  	resave: false,
+  	saveUninitialized: true,
+  	cookie: { secure: true } 
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

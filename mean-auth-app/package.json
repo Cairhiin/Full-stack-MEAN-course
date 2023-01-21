@@ -8,11 +8,12 @@
     "start": "nodemon app"
   },
   "dependencies": {
-    "express": "*",
-    "mongoose": "*",
     "bcryptjs": "*",
     "cors": "*",
+    "express": "*",
+    "express-session": "^1.17.3",
     "jsonwebtoken": "*",
+    "mongoose": "*",
     "passport": "*",
     "passport-jwt": "*"
   },
