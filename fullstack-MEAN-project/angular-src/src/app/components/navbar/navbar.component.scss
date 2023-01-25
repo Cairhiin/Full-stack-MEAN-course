@@ -1,0 +1,36 @@
+@import '../../app.component.scss';
+
+nav {
+	background: $primary-color;
+	color: $on-primary-color;
+	text-transform: uppercase;
+	height: 65px;
+	line-height: 65px;
+
+	.container {
+		display: flex;
+		justify-content: flex-start;
+		padding: 0 1rem;
+		
+		.navbar-title {
+			color: $on-primary-color-highlight;
+		}
+
+		#navbar {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+
+			ul {
+				list-style: none;
+				display: inline;
+
+				li {
+					display: inline;
+					padding: 0 1rem;
+				}
+			}	
+		}		
+	}
+	
+}
