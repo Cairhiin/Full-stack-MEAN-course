@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+$primary-color: #073642;
+$secondary-color: #002B36;
+$tertiary-color: #FDF6E3;
+$on-primary-color: white;
+$on-tertiary-color: black;
+
+@mixin mediaSm {
+	@media screen and (max-width: 500px) {
+		@content;
+	}
+}
+
+@mixin mediaMd {
+	@media screen and (max-width: 768px) {
+		@content;
+	}
+}
+
+@mixin mediaLg {
+	@media screen and (min-width: 769px) and (max-width: 1170px) {
+		@content;
+	}
+}
+
+@mixin mediaXL {
+	@media screen and (min-width: 1171px) {
+		@content;
+	}
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  font-family: 'Merriweather', serif;
+}
+
+p {
+  overflow-wrap: break-word;
+  font-family: 'Roboto Condensed', sans-serif;
+}

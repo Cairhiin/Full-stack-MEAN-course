@@ -1,0 +1,51 @@
+@import '../../../styles.scss';
+
+nav {
+	background: $primary-color;
+	color: $on-primary-color;
+	text-transform: uppercase;
+	height: 65px;
+	line-height: 65px;
+
+	.container {
+		display: flex;
+		justify-content: flex-start;
+		padding: 0 1rem;
+		
+		.navbar-title {
+			color: $on-primary-color;
+			font-weight: 700;
+			font-size: 2rem;
+		}
+
+		#navbar {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+
+			ul {
+				list-style: none;
+				display: inline;
+
+				li {
+					display: inline;
+					padding: 0 1rem;
+					color: rgba($on-primary-color, 0.55);
+					
+					a {
+						text-decoration: none;
+						color: rgba($on-primary-color, 0.55);
+
+						&:hover {
+							color: $on-primary-color;
+						}
+
+						&.active {
+							color: $on-primary-color;
+						}
+					}				
+				}
+			}	
+		}		
+	}	
+}
