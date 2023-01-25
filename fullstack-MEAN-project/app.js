@@ -6,7 +6,9 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const config = require('./config/database');
 const users = require('./routes/users');
+const books = require('./routes/books');
 
+mongoose.set('strictQuery', false);
 mongoose.connect(config.database);
 mongoose.connection.on('connected', () => {
 	console.log(`Connected to the database ${config.database}!`);
@@ -37,6 +39,7 @@ require('./config/passport')(passport);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', users);
+app.use('/books', books);
 
 app.get('/', (req, res) => {
 	res.send('Invalid Endpoint');
