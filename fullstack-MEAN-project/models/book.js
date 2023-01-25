@@ -13,10 +13,8 @@ const BookSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	genre: {
-		type: String,
-		required: true
-	},
+	genres:
+		[{ type: String, required: true }],
 	year: {
 		type: String,
 		required: true
@@ -42,38 +40,39 @@ const BookSchema = mongoose.Schema({
 
 const Book = module.exports = mongoose.model('Book', BookSchema);
 
-module.exports.getBookById = function(id, callback) {
-	User.findById(id, callback);
+module.exports.getBooks = function(callback) {
+	Book.find(callback);
 }
 
-module.exports.getBookByAuthor = function(author, callback) {
-	const query = { author: author };
-	User.find(query, callback);
+module.exports.getBookById = function(id, callback) {
+	Book.findById(id, callback);
+}
+
+module.exports.getBooksByAuthor = function(author, callback) {
+	const query = { author: { $regex: author, $options: "i" }};
+	Book.find(query, callback);
+}
+
+module.exports.getBooksByTitle = function(title, callback) {
+	const query = { title: { $regex: title, $options: "i" }};
+	Book.find(query, callback);
 }
 
 module.exports.getBookByISBN = function(ISBN, callback) {
 	const query = { ISBN: ISBN };
-	User.findOne(query, callback);
-}
-
-module.exports.getUserByTitle = function(title, callback) {
-	const query = { title: title };
-	User.find(query, callback);
+	Book.findOne(query, callback);
 }
 
 module.exports.addBook = function(book, callback) {
 	book.save(callback);
 }
 
-module.exports.updateBook = async function(book, callback) {
-	const updateBook = await Book.findById(book.id);
-	updateBook = book;
-	updateBook.save(callback);
+module.exports.updateBook = function(id, book, callback) {
+	Book.findOneAndUpdate(id, book, {
+		new: true
+	}, callback);
 }
 
-module.exports.updateBookRating = async function(id, rating, callback) {
-	const updateBook = await Book.findById(id);
-	updateBook.ratings.push(rating); 
-	updateBook.markModified('ratings');
-	updateBook.save(callback);
+module.exports.deleteBook = function(id, callback) {
+	Book.deleteOne({ _id: id }, callback);
 }
