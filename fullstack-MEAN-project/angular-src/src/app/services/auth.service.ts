@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { JwtHelperService  } from '@auth0/angular-jwt';
 import { User } from '../user';
 
 @Injectable({
@@ -16,7 +17,10 @@ export class AuthService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    public jwtHelperService: JwtHelperService
+  ) { }
 
   registerUser(
     user:
@@ -30,7 +34,7 @@ export class AuthService {
     const url = `${this.authUrl}/register`;
     return this.http.post<any>(url, user, this.httpOptions).pipe(
       tap((data: any) => console.log(data.msg)),
-      catchError(this.handlerError<any>('registerUser'))
+      catchError(this.handleError<any>('registerUser'))
     );
   }
 
@@ -44,11 +48,29 @@ export class AuthService {
     const url = `${this.authUrl}/authenticate`;
     return this.http.post<any>(url, user, this.httpOptions).pipe(
       tap((data: any) => console.log(data.msg)),
-      catchError(this.handlerError<any>('authenticateUser'))
+      catchError(this.handleError<any>('authenticateUser'))
     );  
   }
 
-  private handlerError<T>(operation = 'operation', result?: T) {
+  getProfile(): Observable<User> {
+    const url = `${this.authUrl}/profile`;
+    this.loadToken();
+
+
+    // Append the auth token to the standard headers
+    const httpAuthOptions = {
+      headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': this.authToken || ''
+      })
+    };
+    return this.http.get<User>(url, httpAuthOptions).pipe(
+      tap((profile: User) => console.log(`Retrieved ${profile.username}'s profile`)),
+      catchError(this.handleError<User>('getUserProfile'))
+    );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);
@@ -62,9 +84,18 @@ export class AuthService {
     this.user = user;
   }
 
+  loadToken(): void {
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
+  }
+
   logout(): void {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+  }
+
+  loggedIn() {
+    return this.jwtHelperService.isTokenExpired(this.authToken || '');
   }
 }

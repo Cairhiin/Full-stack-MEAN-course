@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private flashMessageService: FlashMessagesService,
     private router: Router
   ) {}

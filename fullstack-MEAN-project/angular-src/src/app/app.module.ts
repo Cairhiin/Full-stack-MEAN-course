@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FlashMessagesModule } from 'flash-messages-angular';
+import { JwtModule } from "@auth0/angular-jwt";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,10 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/footer/footer.component';
+
+export function tokenGetter() {
+  return localStorage.getItem("id_token");
+}
 
 @NgModule({
   declarations: [
@@ -27,6 +32,12 @@ import { FooterComponent } from './components/footer/footer.component';
     FooterComponent
   ],
   imports: [
+    JwtModule.forRoot({
+       config: { 
+         tokenGetter: tokenGetter,
+         allowedDomains: ["localhost:3000"]
+       }
+    }),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
