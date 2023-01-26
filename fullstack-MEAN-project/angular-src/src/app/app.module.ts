@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { FlashMessagesModule } from 'flash-messages-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +23,15 @@ import { ProfileComponent } from './components/profile/profile.component';
     RegisterComponent,
     HomeComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

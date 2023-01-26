@@ -7,18 +7,18 @@
 		</div>
 		<div id="navbar">
 			<ul class="nav navbar-left">
-				<li>
-					<a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+				<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+					<a routerLink="/">Home</a>
 				</li>
 				<li><a href="#">Genre</a></li>
 				<li><a href="#">Charts</a></li>
 			</ul>
 			<ul class="nav navbar-right">
-				<li><a routerLink="/register" routerLinkActive="active">Register</a></li>
-				<li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-				<li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
-				<li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
-				<li><a routerLink="/logout" routerLinkActive="active">Logout</a></li>
+				<li routerLinkActive="active"><a routerLink="/register">Register</a></li>
+				<li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+				<li routerLinkActive="active"><a routerLink="/profile">Profile</a></li>
+				<li routerLinkActive="active"><a routerLink="/dashboard">Dashboard</a></li>
+				<li><a (click)="onLogoutClick()" routerLinkActive="active" href="#">Logout</a></li>
 			</ul>
 		</div>
 	</div>
