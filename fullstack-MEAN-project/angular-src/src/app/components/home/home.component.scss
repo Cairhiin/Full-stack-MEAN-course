@@ -3,10 +3,9 @@
 #home {
 	padding: 2rem;
 	background: $secondary-color;
-	color: $on-primary-color;
 
 	.header {
-		text-align: center;
+		@include headerText;
 	}
 
 	.book-row {

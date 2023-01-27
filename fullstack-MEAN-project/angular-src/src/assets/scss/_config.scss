@@ -1,12 +1,39 @@
 $primary-color: #073642;
 $secondary-color: #002B36;
 $tertiary-color: #FDF6E3;
+$primary-button-color: #b58900;
+$primary-button-highlight-color: #9A7400;
 $on-primary-color: white;
+$on-secondary-color: white;
 $on-tertiary-color: black;
 
 @mixin easeOut {
 	transition: all 0.5s ease-out;
+}
+
+@mixin headerText {
+	text-transform: uppercase;
+	text-align: center;
+	color: $on-secondary-color;
 }	
+
+@mixin roundedBorders {
+	border: none;
+	border-radius: 5px;
+}
+
+@mixin primaryButton {
+	@include roundedBorders;
+	height: 45px;
+	background: $primary-button-color;
+	color: $on-primary-color;
+	font-size: 1.2rem;
+	cursor: pointer;
+	
+	&:hover {
+		background: $primary-button-highlight-color;
+	}
+}
 
 @mixin mediaSm {
 	@media screen and (max-width: 500px) {
