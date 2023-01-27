@@ -1,4 +1,4 @@
-@import '../../../styles.scss';
+@import '../../../assets/scss/_config.scss';
 
 nav {
 	background: $primary-color;
@@ -32,15 +32,17 @@ nav {
 					padding: 0 1rem;
 					color: rgba($on-primary-color, 0.55);
 					
+					&.active {
+						a {
+							color: $on-primary-color;
+						}
+					}
+
 					a {
 						text-decoration: none;
 						color: rgba($on-primary-color, 0.55);
 
 						&:hover {
-							color: $on-primary-color;
-						}
-
-						&.active {
 							color: $on-primary-color;
 						}
 					}				

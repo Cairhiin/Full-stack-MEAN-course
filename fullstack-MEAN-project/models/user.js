@@ -17,7 +17,17 @@ const UserSchema = mongoose.Schema({
 	password: {
 		type: String,
 		required: true
-	}
+	},
+	ratings: [
+		{
+			id: {
+				type: mongoose.Schema.Types.ObjectId, ref: 'Book' 
+			},
+			rating: {
+				type: Number
+			}
+		}
+	]
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);

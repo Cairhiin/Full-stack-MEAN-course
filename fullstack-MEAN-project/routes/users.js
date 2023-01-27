@@ -39,17 +39,20 @@ router.post('/authenticate', (req, res, next) => {
 					expiresIn: 604800
 				});
 
+				console.log("User found: ", user.username);
 				return res.json({ 
 					success: true, 
-					token: `JWT ${token}`,
+					token: token,
 					user: {
 						id: user._id,
 						name: user.name,
 						username: user.username,
-						email: user.email 
-					}
+						email: user.email, 
+						ratings: user.ratings
+					}, 
+					msg: 'User logged in successfully!'
 				});
-			} else {
+			} else {				
 				return res.json({ sucess: false, msg: 'Wrong password!' });
 			}
 		})
@@ -57,7 +60,8 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-	res.json({ user: req.user });
+	console.log("body", req.body);
+	res.json(req.user);
 });
 
 module.exports = router;
