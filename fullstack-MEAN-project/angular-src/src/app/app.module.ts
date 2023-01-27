@@ -16,10 +16,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-export function tokenGetter() {
-  return localStorage.getItem("id_token");
-}
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,8 +30,10 @@ export function tokenGetter() {
   imports: [
     JwtModule.forRoot({
        config: { 
-         tokenGetter: tokenGetter,
-         allowedDomains: ["localhost:3000"]
+         tokenGetter: () => {
+          return localStorage.getItem("id_token");
+        },
+        allowedDomains: ["localhost:3000"]
        }
     }),
     BrowserModule,

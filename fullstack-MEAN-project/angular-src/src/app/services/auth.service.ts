@@ -64,7 +64,7 @@ export class AuthService {
         'Authorization': this.authToken || ''
       })
     };
-    return this.http.get<User>(url, httpAuthOptions).pipe(
+    return this.http.get<User>(url).pipe(
       tap((profile: User) => console.log(`Retrieved ${profile.username}'s profile`)),
       catchError(this.handleError<User>('getUserProfile'))
     );
@@ -96,6 +96,7 @@ export class AuthService {
   }
 
   loggedIn() {
+    this.loadToken();
     return this.jwtHelperService.isTokenExpired(this.authToken || '');
   }
 }
