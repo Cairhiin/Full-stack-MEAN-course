@@ -1,3 +1,5 @@
+@import './button.scss';
+
 $primary-color: #073642;
 $secondary-color: #002B36;
 $tertiary-color: #FDF6E3;
@@ -20,19 +22,6 @@ $on-tertiary-color: black;
 @mixin roundedBorders {
 	border: none;
 	border-radius: 5px;
-}
-
-@mixin primaryButton {
-	@include roundedBorders;
-	height: 45px;
-	background: $primary-button-color;
-	color: $on-primary-color;
-	font-size: 1.2rem;
-	cursor: pointer;
-	
-	&:hover {
-		background: $primary-button-highlight-color;
-	}
 }
 
 @mixin mediaSm {

@@ -1,26 +1,33 @@
 <main id="register">
-	<h2 class="page-header">Register</h2>
-	<form (submit)="onRegisterSubmit()">
-		<div class="form-group">
-			<label>Name</label>
-			<input type="text" [(ngModel)]="name" name="name" class="form-control">
-		</div>
-		<div class="form-group">
-			<label>Username</label>
-			<input type="text" [(ngModel)]="username" name="username" class="form-control">
-		</div>
-		<div class="form-group">
-			<label>Email</label>
-			<input type="text" [(ngModel)]="email" name="email" class="form-control">
-		</div>
-		<div class="form-group">
-			<label>Password</label>
-			<input type="password" [(ngModel)]="password" name="password" class="form-control">
-		</div>
-		<div class="form-group">
-			<label>Repeat Password</label>
-			<input type="password" [(ngModel)]="passwordRepeat" name="passwordRepeat" class="form-control">
-		</div>
-		<input type="submit" class="btn btn-primary" value="Submit">
-	</form>
+	<div class="auth-form">
+		<h2 class="page-header">Register</h2>
+		<form (submit)="onRegisterSubmit()">
+			<div class="form-group">
+				<i class="fa fa-regular fa-user icon"></i>
+				<input type="text" [(ngModel)]="name" 
+				name="name" placeholder="Name" class="form-control">
+			</div>
+			<div class="form-group">
+				<i class="fa fa-regular fa-user icon"></i>
+				<input type="text" [(ngModel)]="username" 
+				name="username" placeholder="Username" class="form-control">
+			</div>
+			<div class="form-group">
+				<i class="fa fa-regular fa-envelope icon"></i>
+				<input type="text" [(ngModel)]="email" 
+				name="email" placeholder="Email" class="form-control">
+			</div>
+			<div class="form-group">
+				<i class="fa fa-regular fa-lock icon"></i>
+				<input type="password" [(ngModel)]="password" 
+				name="password" placeholder="Password" class="form-control">
+			</div>
+			<div class="form-group">
+				<i class="fa fa-regular fa-lock icon"></i>
+				<input type="password" [(ngModel)]="passwordRepeat" 
+				name="passwordRepeat" placeholder="Repeat password" class="form-control">
+			</div>
+			<input type="submit" class="btn btn-primary" value="Submit">
+		</form>
+	</div>
 </main>

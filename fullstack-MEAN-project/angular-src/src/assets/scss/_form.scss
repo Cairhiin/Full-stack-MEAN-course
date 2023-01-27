@@ -30,9 +30,13 @@
 		}
 	}
 
-	.button {
-		@include primaryButton;
+	.btn {
+		@include button;
 		width: 100%;
 		margin: 1rem 0;
+	}
+
+	.btn-primary {
+		@include buttonPrimary;
 	}
 }
