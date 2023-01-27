@@ -23,7 +23,7 @@ export class ProfileComponent {
   ) {}
   
   ngOnInit(): void {
-    this.authService.getProfile().subscribe(profile => {
+    this.authService.getUserProfile().subscribe(profile => {
       this.user = profile;
     });
   }

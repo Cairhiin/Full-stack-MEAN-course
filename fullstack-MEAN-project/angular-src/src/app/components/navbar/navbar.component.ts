@@ -17,7 +17,7 @@ export class NavbarComponent {
   ) {}
   
   onLogoutClick(): boolean {
-    this.authService.logout();
+    this.authService.logoutUser();
     this.flashMessageService.show('You are logged out', 
       {cssClass: 'alert-success', timeout: 3000 }
     );

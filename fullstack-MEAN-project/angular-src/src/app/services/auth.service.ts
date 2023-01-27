@@ -52,7 +52,7 @@ export class AuthService {
     );  
   }
 
-  getProfile(): Observable<User> {
+  getUserProfile(): Observable<User> {
     const url = `${this.authUrl}/profile`;
     this.loadToken();
 
@@ -89,13 +89,13 @@ export class AuthService {
     this.authToken = token;
   }
 
-  logout(): void {
+  logoutUser(): void {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
   }
 
-  loggedIn() {
+  isUserloggedIn() {
     this.loadToken();
     return this.jwtHelperService.isTokenExpired(this.authToken || '');
   }
