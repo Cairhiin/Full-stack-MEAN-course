@@ -7,6 +7,17 @@ export class ValidateService {
 
   constructor() { }
 
+  validateLogin(user: { username: string, password: string }): boolean {
+    if (
+      user.username === '' ||
+      user.password === ''
+    ) {
+      return false;
+  }
+  
+  return true;
+}
+
   validateRegister(
     user:
     { 
