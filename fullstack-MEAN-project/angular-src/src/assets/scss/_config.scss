@@ -1,12 +1,28 @@
+@import './button.scss';
+
 $primary-color: #073642;
 $secondary-color: #002B36;
 $tertiary-color: #FDF6E3;
+$primary-button-color: #b58900;
+$primary-button-highlight-color: #9A7400;
 $on-primary-color: white;
+$on-secondary-color: white;
 $on-tertiary-color: black;
 
 @mixin easeOut {
 	transition: all 0.5s ease-out;
+}
+
+@mixin headerText {
+	text-transform: uppercase;
+	text-align: center;
+	color: $on-secondary-color;
 }	
+
+@mixin roundedBorders {
+	border: none;
+	border-radius: 5px;
+}
 
 @mixin mediaSm {
 	@media screen and (max-width: 500px) {

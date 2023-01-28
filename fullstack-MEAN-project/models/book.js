@@ -40,8 +40,8 @@ const BookSchema = mongoose.Schema({
 
 const Book = module.exports = mongoose.model('Book', BookSchema);
 
-module.exports.getBooks = function(callback) {
-	Book.find(callback);
+module.exports.getBooks = function(limit = 0, callback) {
+	Book.find().limit(limit).exec(callback);
 }
 
 module.exports.getBookById = function(id, callback) {
@@ -61,6 +61,16 @@ module.exports.getBooksByTitle = function(title, callback) {
 module.exports.getBookByISBN = function(ISBN, callback) {
 	const query = { ISBN: ISBN };
 	Book.findOne(query, callback);
+}
+
+module.exports.getBooksByDate = function(params, callback) {
+	const date = params.date || 'desc';
+	const limit = params.limit || 0;
+	if (date === 'desc') {
+		Book.find().sort({ date: 'desc' }).limit(limit).exec(callback);
+	} else {
+		Book.find().sort({ date: 'asc' }).limit(limit).exec(callback);
+	}	 
 }
 
 module.exports.addBook = function(book, callback) {

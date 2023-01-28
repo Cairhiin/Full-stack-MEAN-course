@@ -1,8 +1,19 @@
 <main id="profile">
-	<h2 class="page-header">{{ user.name }}</h2>
-	<ul class="list-group">
-		<li class="list-group-item">Username: {{ user.username }}</li>
-		<li class="list-group-item">Email: {{ user.email }}</li>
-		<li class="list-group-item">Ratings: {{ user.ratings.length }}</li>
-	</ul>
+	<div class="profile-page">
+		<h2 class="page-header">{{ user.name }}</h2>
+		<div class="details">
+			<div class="details-row">
+				<div>Username:</div> 
+				<div>{{ user.username }}</div>
+			</div>
+			<div class="details-row">
+				<div>Email:</div> 
+				<div>{{ user.email }}</div>
+			</div>
+			<div class="details-row">
+				<div>Ratings:</div> 
+				<div>{{ user.ratings.length }}</div>
+			</div>
+		</div>
+	</div>
 </main>

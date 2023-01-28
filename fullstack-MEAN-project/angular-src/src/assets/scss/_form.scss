@@ -1,0 +1,42 @@
+@mixin authForm {
+	margin: 1rem;
+
+	.form-group {
+		width: 100%;
+		position: relative;
+
+		input {
+			margin: 1rem 0;
+			padding-left: 2.5rem;
+			height: 40px;
+			width: 100%;
+			@include roundedBorders;
+
+			&::placeholder {
+				color: rgba($on-tertiary-color, 0.30);
+			}
+		}
+
+		i {
+			position: absolute;
+
+			&.icon {
+				margin: 1rem 0;
+				font-size: 1.3rem;
+				padding: 0.7rem;
+				z-index: 2;
+				color: rgba($on-tertiary-color, 0.30);
+			}
+		}
+	}
+
+	.btn {
+		@include button;
+		width: 100%;
+		margin: 1rem 0;
+	}
+
+	.btn-primary {
+		@include buttonPrimary;
+	}
+}

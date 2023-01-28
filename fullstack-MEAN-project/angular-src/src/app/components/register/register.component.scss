@@ -1,0 +1,21 @@
+@import '../../../assets/scss/_config.scss';
+@import '../../../assets/scss/_form.scss';
+
+#register {
+	background: $secondary-color;
+
+	.auth-form {
+		margin: 2rem auto;
+		padding: 1rem 2rem;
+		background: $primary-color;
+		width: 400px;
+
+		h2 {
+			@include headerText;		
+		}
+
+		form {
+			@include authForm;
+		}
+	}	
+}

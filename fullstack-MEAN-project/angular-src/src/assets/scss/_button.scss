@@ -1,0 +1,16 @@
+@mixin button {
+	height: 45px;	
+	font-size: 1.2rem;
+	cursor: pointer;
+	@include easeOut;
+	@include roundedBorders;
+}
+
+@mixin buttonPrimary {
+	background: $primary-button-color;
+	color: $on-primary-color;
+
+	&:hover {
+		background: $primary-button-highlight-color;
+	}
+}
