@@ -3,7 +3,26 @@
 		<h2>Most recently added books</h2>
 	</div>
 	<div class="book-row">
-		<div *ngFor="let book of books; index as i" class="book book{{ i+1 }}">
+		<div *ngFor="let book of booksByDate; index as i" class="book book{{ i+1 }}">
+			<div class="book-card">
+				<div class="image">
+					<img src="assets/{{ book.image }}" />
+				</div>
+				<div class="rating">
+					{{ book.ratings }}
+				</div>
+			</div>
+			<div class="book-info">
+				<h3>{{ book.title }}</h3>
+				<p>{{ book.author }}</p>
+			</div>
+		</div>
+	</div>
+	<div class="header">
+		<h2>Highest rated books</h2>
+	</div>
+	<div class="book-row">
+		<div *ngFor="let book of booksByRating; index as i" class="book book{{ i+1 }}">
 			<div class="book-card">
 				<div class="image">
 					<img src="assets/{{ book.image }}" />

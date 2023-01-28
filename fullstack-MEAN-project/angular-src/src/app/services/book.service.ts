@@ -26,7 +26,15 @@ export class BookService {
   getBooksByDate(sort: string, limit: number): Observable<Book[]> {
     return this.http.get<any>(`${this.url}?date=${sort}&limit=${limit}`).pipe(
       map(({ books }) => books),
-      tap(_ => console.log('Retrieved all books')),
+      tap(_ => console.log(`Retrieved ${limit} books sorted by date`)),
+      catchError(this.handleError<Book[]>('getHeroes', []))
+    );
+  }
+
+  getBooksByRating(sort: string, limit: number): Observable<Book[]> {
+    return this.http.get<any>(`${this.url}?rating=${sort}&limit=${limit}`).pipe(
+      map(({ books }) => books),
+      tap(_ => console.log(`Retrieved ${limit} books sorted by rating`)),
       catchError(this.handleError<Book[]>('getHeroes', []))
     );
   }

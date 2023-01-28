@@ -29,7 +29,10 @@ const BookSchema = mongoose.Schema({
         get: calculateRating,
 	    default: {1:0, 2:0, 3:0, 4:0, 5:0}	
     },
-    avgRating: Number,
+    avgRating: {
+    	type: Number,
+    	default: 0
+	},
     reviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}],
     image: {
     	type: String,
@@ -44,17 +47,17 @@ const BookSchema = mongoose.Schema({
 
 // Save the average rating so we can sort by rating later
 BookSchema.pre('save', function (next) {
-  this.avgRating = this.ratings;
-  next();
+	console.log(this.ratings)
+  	this.avgRating = this.ratings;
+  	next();
 });
 
 /* 
-Update the average rating when we update the ratings document
-Note: We can only get a reliable value if we supply the whole
-updated ratings object not just an update to it
+Update the average rating when we update the document
 */
-BookSchema.pre('update', function (next) {
-  this.avgRating = this.ratings;
+BookSchema.pre('findOneAndUpdate', function (next) {
+	let data = this.getUpdate();
+  	data.avgRating = calculateRating(data.ratings);
   next();
 });
 
@@ -105,12 +108,22 @@ module.exports.getBooksByDate = function(params, callback) {
 	}	 
 }
 
+module.exports.getBooksByRating = function(params, callback) {
+	const rating = params.rating || 'desc';
+	const limit = params.limit || 0;
+	if (rating === 'desc') {
+		Book.find().sort({ avgRating: 'desc' }).limit(limit).exec(callback);
+	} else {
+		Book.find().sort({ avgRating: 'asc' }).limit(limit).exec(callback);
+	}	 
+}
+
 module.exports.addBook = function(book, callback) {
 	book.save(callback);
 }
 
 module.exports.updateBook = function(id, book, callback) {
-	Book.findOneAndUpdate(id, book, {
+	Book.findOneAndUpdate({ _id: id }, book, {
 		new: true
 	}, callback);
 }

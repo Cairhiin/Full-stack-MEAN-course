@@ -9,22 +9,23 @@ import { Rating } from '../../rating';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  books: Book[] = [];
+  booksByDate: Book[] = [];
+  booksByRating: Book[] = [];
 
   constructor(private bookService: BookService) {}
 
   ngOnInit(): void {
-    this.getBooks();
-    //this.getBooksByDate('desc', 5);
+    this.getBooksByDate('desc', 5);
+    this.getBooksByRating('desc', 5);
   }
 
   getBooksByDate(sort: string, limit: number): void {
     this.bookService.getBooksByDate(sort, limit)
-      .subscribe(books => this.books = books);
+      .subscribe(books => this.booksByDate = books);
   }
 
-  getBooks(): void {
-    this.bookService.getBooks()
-      .subscribe(books => this.books = books);
+  getBooksByRating(sort: string, limit: number): void {
+    this.bookService.getBooksByRating(sort, limit)
+      .subscribe(books => this.booksByRating = books);
   }
 }

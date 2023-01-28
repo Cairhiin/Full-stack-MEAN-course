@@ -65,6 +65,21 @@ router.get('/', (req, res, next) => {
 	}
 
 	/* 
+	Retrieve books by rating - can set limit with limit param
+	to limit the stress on database if the collection becomes
+	extremely large
+	*/
+	else if (queryParams.rating) {
+		Book.getBooksByRating(queryParams, (err, books) => {
+			if (!books.length) {
+				res.json({ success: false, msg: `No books were found!` });
+			} else {
+				res.json({ success: true, books: books });
+			}
+		});
+	}
+
+	/* 
 	Retrieve all books - can set limit with limit param
 	to limit the stress on database if the collection becomes
 	extremely large
