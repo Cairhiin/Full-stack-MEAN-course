@@ -27,16 +27,4 @@ export class HomeComponent implements OnInit {
     this.bookService.getBooks()
       .subscribe(books => this.books = books);
   }
-
-  calculateRating(ratings: Rating) {
-    let sum: number = 0;
-    let count: number = 0;
-    for (const value in ratings) {
-      sum += Number(value) * ratings[value];
-      count += ratings[value];
-    }
-
-    return (sum / count).toFixed(2);
-  }
-
 }

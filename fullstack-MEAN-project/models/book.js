@@ -26,8 +26,10 @@ const BookSchema = mongoose.Schema({
         3: Number,
         4: Number,
         5: Number,
-    default: {1:1, 2:1, 3:1, 4:1, 5:1}
+        get: calculateRating,
+	    default: {1:0, 2:0, 3:0, 4:0, 5:0}	
     },
+    avgRating: Number,
     reviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}],
     image: {
     	type: String,
@@ -36,7 +38,37 @@ const BookSchema = mongoose.Schema({
     date: {
     	type: Date
     }
+}, {
+    toJSON: { getters: true }
 });
+
+// Save the average rating so we can sort by rating later
+BookSchema.pre('save', function (next) {
+  this.avgRating = this.ratings;
+  next();
+});
+
+/* 
+Update the average rating when we update the ratings document
+Note: We can only get a reliable value if we supply the whole
+updated ratings object not just an update to it
+*/
+BookSchema.pre('update', function (next) {
+  this.avgRating = this.ratings;
+  next();
+});
+
+// Calculate the average of the ratings
+function calculateRating(ratings) {
+	let sum = 0;
+    let count = 0;
+    for (const value in ratings) {
+      sum += Number(value) * ratings[value];
+      count += ratings[value];
+    }
+
+    return (sum / count).toFixed(2);
+}
 
 const Book = module.exports = mongoose.model('Book', BookSchema);
 
