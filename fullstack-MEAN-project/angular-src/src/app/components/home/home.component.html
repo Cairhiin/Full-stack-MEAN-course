@@ -4,18 +4,20 @@
 	</div>
 	<div class="book-row">
 		<div *ngFor="let book of booksByDate; index as i" class="book book{{ i+1 }}">
-			<div class="book-card">
-				<div class="image">
-					<img src="assets/{{ book.image }}" />
+			<a routerLink="/books/{{ book.id }}">
+				<div class="book-card">
+					<div class="image">
+						<img src="assets/{{ book.image }}" />
+					</div>
+					<div class="rating">
+						{{ book.ratings }}
+					</div>
 				</div>
-				<div class="rating">
-					{{ book.ratings }}
+				<div class="book-info">
+					<h3>{{ book.title }}</h3>
+					<p>{{ book.author }}</p>
 				</div>
-			</div>
-			<div class="book-info">
-				<h3>{{ book.title }}</h3>
-				<p>{{ book.author }}</p>
-			</div>
+			</a>
 		</div>
 	</div>
 	<div class="header">
@@ -23,18 +25,20 @@
 	</div>
 	<div class="book-row">
 		<div *ngFor="let book of booksByRating; index as i" class="book book{{ i+1 }}">
-			<div class="book-card">
-				<div class="image">
-					<img src="assets/{{ book.image }}" />
+			<a routerLink="/books/{{ book.id }}">
+				<div class="book-card">
+					<div class="image">
+						<img src="assets/{{ book.image }}" />
+					</div>
+					<div class="rating">
+						{{ book.ratings }}
+					</div>
 				</div>
-				<div class="rating">
-					{{ book.ratings }}
+				<div class="book-info">
+					<h3>{{ book.title }}</h3>
+					<p>{{ book.author }}</p>
 				</div>
-			</div>
-			<div class="book-info">
-				<h3>{{ book.title }}</h3>
-				<p>{{ book.author }}</p>
-			</div>
+			</a>
 		</div>
 	</div>
 </main>
