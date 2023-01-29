@@ -97,6 +97,6 @@ export class AuthService {
 
   isUserloggedIn() {
     this.loadToken();
-    return this.jwtHelperService.isTokenExpired(this.authToken || '');
+    return !this.jwtHelperService.isTokenExpired(this.authToken || '');
   }
 }
