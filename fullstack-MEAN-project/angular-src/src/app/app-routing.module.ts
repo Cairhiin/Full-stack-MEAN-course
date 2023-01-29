@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
-  { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard] }
+  { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard] },
+  { path: 'book/:id', component: BookDetailComponent }
 ];
 
 @NgModule({

@@ -1,0 +1,6 @@
+<main id="book-details">
+	<div *ngIf="book">
+		<h2> {{ book.title | uppercase }}</h2>
+		<div><span>ISBN: </span>{{ book.ISBN }}</div>
+	</div>
+</main>
