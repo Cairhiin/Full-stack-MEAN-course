@@ -19,6 +19,9 @@ const BookSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	publisher: {
+		type: String
+	},
 	ratings:{
         type: mongoose.Mixed,
         1: Number,
@@ -26,7 +29,6 @@ const BookSchema = mongoose.Schema({
         3: Number,
         4: Number,
         5: Number,
-        get: calculateRating,
 	    default: {1:0, 2:0, 3:0, 4:0, 5:0}	
     },
     avgRating: {

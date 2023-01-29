@@ -31,4 +31,14 @@ export class BookDetailComponent {
   goBack(): void {
     this.location.back();
   }
+
+  getNumberOfRatings(): number {
+    let count = 0;
+    if (this.book) {
+      for (const rating in this.book.ratings) {
+        count += this.book.ratings[rating];
+      }
+    }
+    return count;
+  }
 }

@@ -6,6 +6,9 @@ export interface Book {
 	author: string;
 	ISBN: string;
 	ratings: Rating;
+	avgRating: number;
 	year: string;
-	image: string
+	publisher: string;
+	genres: Array<string>;
+	image: string;
 };

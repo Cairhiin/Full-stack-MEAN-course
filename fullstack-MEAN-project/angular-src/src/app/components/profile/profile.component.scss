@@ -1,6 +1,8 @@
 @import '../../../assets/scss/_config.scss';
 
 #profile {
+	min-height: calc(100vh - 65px - 154px);
+	
 	.profile-page {
 		margin: 2rem auto;
 		padding: 1rem 2rem;

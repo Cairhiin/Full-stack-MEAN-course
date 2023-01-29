@@ -24,7 +24,6 @@ export class BookService {
   }
 
   getBook(id: string | null): Observable<Book> {
-    console.log(id);
     return this.http.get<any>(`${this.url}/${id}`).pipe(
       map(({ book }) => book),
       tap(_ => console.log(`Book with id=${id} retrieved`)),
