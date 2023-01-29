@@ -83,8 +83,9 @@ export class BookDetailComponent implements OnInit {
       this.authService.updateUserRatings(this.user._id || '', this.user)
         .subscribe(user => {
           this.user = user;
-          console.log(user.ratings)
         });
+
+        // IMPLEMENT THE RATING SCORE UPDATE IN THE BOOK DATABASE
     }
   }
 }

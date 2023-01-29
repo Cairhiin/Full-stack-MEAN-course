@@ -62,7 +62,7 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 	res.json(req.user);
 });
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 	const id = req.params.id;
 	const user = req.body;
 
