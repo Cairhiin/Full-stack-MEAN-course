@@ -35,9 +35,7 @@ export class BookDetailComponent implements OnInit {
   }
 
   getUser(): void {
-    this.authService.getUserProfile().subscribe(user => {
-      this.user = user;
-    });
+    this.authService.getUserProfile().subscribe(user => this.user = user);
   }
 
   goBack(): void {

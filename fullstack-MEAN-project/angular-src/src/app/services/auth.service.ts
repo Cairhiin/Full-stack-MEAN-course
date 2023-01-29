@@ -54,7 +54,8 @@ export class AuthService {
   }
 
   updateUserRatings(id: string, user: User): Observable<User> { 
-    return this.http.put<User>(`${this.authUrl}/${id}`, user, this.httpOptions).pipe(
+    return this.http.put<any>(`${this.authUrl}/${id}`, user, this.httpOptions).pipe(
+      map(({ user }) => user),
       tap((user: User) => console.log(`updated user id=${id}`)),
       catchError(this.handleError<User>('updateUserRatings'))
     );  
