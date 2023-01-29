@@ -1,0 +1,42 @@
+@import '../../../assets/scss/_config.scss';
+
+footer {
+	background: rgba(0, 0, 0, .4);
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-areas: 
+	'. column1 column2 column3 column4 .';
+
+	.column1 {
+		grid-area: column1;
+	}
+
+	.column2 {
+		grid-area: column2;
+	}
+
+	.column3 {
+		grid-area: column3;
+	}
+
+	.column4 {
+		grid-area: column4;
+	}
+
+	.footer-header {
+		font-size: 1.5rem;
+		text-transform: uppercase;
+		font-weight: 700;
+		font-family: 'Roboto Condensed', sans-serif;
+		padding: 0.2rem 0;
+		color: $on-primary-color;
+	}
+
+	.footer-list {
+		list-style: none;
+		padding: 0.5rem 0;
+		li {
+			color: rgba($on-primary-color, 0.6);
+		}
+	}
+}
