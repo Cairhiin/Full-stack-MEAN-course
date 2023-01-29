@@ -95,7 +95,7 @@ export class AuthService {
     localStorage.clear();
   }
 
-  isUserloggedIn() {
+  isUserloggedIn(): boolean {
     this.loadToken();
     return !this.jwtHelperService.isTokenExpired(this.authToken || '');
   }
