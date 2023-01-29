@@ -65,7 +65,7 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 router.put('/:id', (req, res, next) => {
 	const id = req.params.id;
 	const user = req.body;
-
+	console.log(user)
 	/* 
 	Update a user after it has been retrieved
 	by its unique id

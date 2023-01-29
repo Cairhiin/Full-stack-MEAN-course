@@ -35,8 +35,8 @@ export class BookDetailComponent implements OnInit {
   }
 
   getUser(): void {
-    this.authService.getUserProfile().subscribe(profile => {
-      this.user = profile;
+    this.authService.getUserProfile().subscribe(user => {
+      this.user = user;
     });
   }
 
@@ -55,16 +55,16 @@ export class BookDetailComponent implements OnInit {
     return count;
   }
 
+  /* 
+    Check if the user has already rated the book and
+    if true assign the rating and set hasBeenRated to true
+    to avoid the user from rating the book again
+  */
   checkIfBookHasBeenRated(): boolean {
     if (!this.user || !this.book) return false;
     const id: string = this.book.id;
     let hasBeenRated: boolean = false;
 
-    /* 
-    Check if the user has already rated the book and
-    if true assign the rating and set hasBeenRated to true
-    to avoid the user from rating the book again
-    */
     this.user.ratings.forEach(r => {
       if (r.id === id) {
         hasBeenRated = true;
@@ -82,7 +82,7 @@ export class BookDetailComponent implements OnInit {
   updateRating(value: number): void {
     if (this.user && this.book) {
       this.user.ratings.push({ id: this.book.id, rating: value });
-      this.authService.updateUserRatings(this.user._id || '')
+      this.authService.updateUserRatings(this.user._id || '', this.user)
         .subscribe(user => {
           this.user = user;
           console.log(user.ratings)
