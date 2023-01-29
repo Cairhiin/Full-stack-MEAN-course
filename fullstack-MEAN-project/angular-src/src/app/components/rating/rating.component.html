@@ -1,0 +1,9 @@
+<div class="rating-component">
+	<button 
+		class="rating" *ngFor="let star of stars" [disabled]="!isActive" (click)="getStar(star)">
+		<i [ngClass]="{'selected': (selectedValue && star <= selectedValue)}" class="fa fa-star"></i>
+	</button>
+	<span class="rating-score">
+		{{ selectedValue }}
+	</span>
+</div>

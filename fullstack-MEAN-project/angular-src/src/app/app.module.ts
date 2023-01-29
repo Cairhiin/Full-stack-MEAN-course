@@ -17,6 +17,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from './guards/auth.guard';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
+import { RatingComponent } from './components/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BookDetailComponent } from './components/book-detail/book-detail.compon
     DashboardComponent,
     ProfileComponent,
     FooterComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    RatingComponent,
   ],
   imports: [
     JwtModule.forRoot({
@@ -43,7 +45,7 @@ import { BookDetailComponent } from './components/book-detail/book-detail.compon
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
