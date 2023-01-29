@@ -1,16 +1,36 @@
 <main id="book-details">
-	<div *ngIf="book">
-		<h2> {{ book.title | uppercase }}</h2>
-		<div><span>by </span>{{ book.author }}</div>
-		<div class="book-details">
+	<div *ngIf="book" class="book">
+		<div class="book-header"> 
+			<h2> {{ book.title | uppercase }}</h2>
+			<div class="book-header-author"><span>by </span>{{ book.author }}</div>
+			<div class="book-header-description">{{ book.description }}</div>
+		</div>
+		<div class="image">
+			<img src="assets/{{ book.image }}" />
+		</div>
+		<div class="info">
 			<div>
-				<span>User Rating: </span>{{ book.avgRating }} 
-				<span class="number-of-ratings">({{ getNumberOfRatings() }})</span>
+				<div>
+					<span>User Rating: </span>{{ book.avgRating }} 
+					<span class="number-of-ratings">({{ getNumberOfRatings() }})</span>
+				</div>
+				<div><span>ISBN: </span>{{ book.ISBN }}</div>
+				<div><span>Publisher: </span>{{ book.publisher }}</div>
+				<div><span>Release Year: </span>{{ book.year }}</div>
+				<div><span>Genres: </span>{{ book.genres }}</div>
 			</div>
-			<div><span>ISBN: </span>{{ book.ISBN }}</div>
-			<div><span>Publisher: </span>{{ book.publisher }}</div>
-			<div><span>Release Year: </span>{{ book.year }}</div>
-			<div><span>Genres: </span>{{ book.genres }}</div>
+			<div class="my-rating">
+				<h4>My Rating</h4>
+				<p>
+					<app-rating 
+						[book_id]="book.id" 
+						[user]="user" 
+						[isActive]="!checkIfBookHasBeenRated()"
+						[selectedValue]="selectedValue"
+						(onRatingChange)="updateRating($event)"
+					></app-rating>
+				</p>
+			</div>
 		</div>
 	</div>
 </main>

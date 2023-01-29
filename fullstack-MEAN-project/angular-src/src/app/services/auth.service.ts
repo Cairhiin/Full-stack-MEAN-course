@@ -28,7 +28,8 @@ export class AuthService {
       name: string, 
       username: string, 
       email: string, 
-      password: string 
+      password: string,
+      ratings: any 
     }
   ): Observable<any> {
     const url = `${this.authUrl}/register`;
@@ -52,12 +53,20 @@ export class AuthService {
     );  
   }
 
+  updateUserRatings(id: string): Observable<User> { 
+    return this.http.put<User>(`${this.authUrl}/${id}`, this.user, this.httpOptions).pipe(
+      tap((user: User) => console.log(`updated user id=${id}`)),
+      catchError(this.handleError<User>('updateUserRatings'))
+    );  
+  }
+
   getUserProfile(): Observable<User> {
     const url = `${this.authUrl}/profile`;
     this.loadToken();
 
-    return this.http.get<User>(url).pipe(
-      tap((profile: User) => console.log(`Retrieved ${profile.username}'s profile`)),
+    return this.http.get<any>(url).pipe(
+      map((user) => user),
+      tap(_ => console.log(`Retrieved user's profile`)),
       catchError(this.handleError<User>('getUserProfile'))
     );
   }

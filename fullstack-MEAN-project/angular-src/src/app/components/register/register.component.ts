@@ -29,7 +29,8 @@ export class RegisterComponent {
       username: this.username,
       email: this.email,
       password: this.password,
-      passwordRepeat: this.passwordRepeat
+      passwordRepeat: this.passwordRepeat,
+      ratings: []
     };
 
     if (!this.validateService.validateRegister(user)) {
