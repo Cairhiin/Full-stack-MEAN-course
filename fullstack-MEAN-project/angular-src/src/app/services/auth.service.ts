@@ -56,14 +56,6 @@ export class AuthService {
     const url = `${this.authUrl}/profile`;
     this.loadToken();
 
-
-    // Append the auth token to the standard headers
-    const httpAuthOptions = {
-      headers: new HttpHeaders({ 
-        'Content-Type': 'application/json',
-        'Authorization': this.authToken || ''
-      })
-    };
     return this.http.get<User>(url).pipe(
       tap((profile: User) => console.log(`Retrieved ${profile.username}'s profile`)),
       catchError(this.handleError<User>('getUserProfile'))
