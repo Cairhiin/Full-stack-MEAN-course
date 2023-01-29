@@ -9,6 +9,10 @@ const BookSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	description: {
+		type: String,
+		required: true
+	},
 	ISBN: {
 		type: String,
 		required: true
@@ -19,6 +23,9 @@ const BookSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	publisher: {
+		type: String
+	},
 	ratings:{
         type: mongoose.Mixed,
         1: Number,
@@ -26,7 +33,6 @@ const BookSchema = mongoose.Schema({
         3: Number,
         4: Number,
         5: Number,
-        get: calculateRating,
 	    default: {1:0, 2:0, 3:0, 4:0, 5:0}	
     },
     avgRating: {
@@ -45,23 +51,31 @@ const BookSchema = mongoose.Schema({
     toJSON: { getters: true }
 });
 
-// Save the average rating so we can sort by rating later
+/* 
+Save the average rating so we can sort by rating later
+This could all be done client side but for scaling reasons
+it is done server side - imagine having to pull 20k documents
+just to get highest or lowest rated books
+*/
 BookSchema.pre('save', function (next) {
-	console.log(this.ratings)
   	this.avgRating = this.ratings;
   	next();
 });
 
 /* 
 Update the average rating when we update the document
+Solution: https://stackoverflow.com/questions/31173516/mongoose-middleware-pre-update
 */
 BookSchema.pre('findOneAndUpdate', function (next) {
-	let data = this.getUpdate();
+	const data = this.getUpdate();
   	data.avgRating = calculateRating(data.ratings);
-  next();
+  	next();
 });
 
-// Calculate the average of the ratings
+/* 
+Calculate the average of the ratings - once again for
+scaling reasons
+*/
 function calculateRating(ratings) {
 	let sum = 0;
     let count = 0;

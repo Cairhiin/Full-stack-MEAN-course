@@ -15,6 +15,9 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AuthGuard } from './guards/auth.guard';
+import { BookDetailComponent } from './components/book-detail/book-detail.component';
+import { RatingComponent } from './components/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    FooterComponent
+    FooterComponent,
+    BookDetailComponent,
+    RatingComponent,
   ],
   imports: [
     JwtModule.forRoot({
@@ -40,9 +45,9 @@ import { FooterComponent } from './components/footer/footer.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

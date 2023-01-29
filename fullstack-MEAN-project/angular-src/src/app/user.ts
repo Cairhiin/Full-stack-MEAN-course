@@ -1,9 +1,9 @@
 import { Rating } from './rating';
 
 export interface User {
-	id: string;
+	_id: string;
 	name: string;
 	email: string;
 	username: string;
-	ratings: Array<Rating>;
+	ratings: Array<{ id: string, rating: number }>;
 }

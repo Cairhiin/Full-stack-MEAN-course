@@ -28,7 +28,8 @@ export class AuthService {
       name: string, 
       username: string, 
       email: string, 
-      password: string 
+      password: string,
+      ratings: any 
     }
   ): Observable<any> {
     const url = `${this.authUrl}/register`;
@@ -52,20 +53,21 @@ export class AuthService {
     );  
   }
 
+  updateUserRatings(id: string, user: User): Observable<User> { 
+    return this.http.put<any>(`${this.authUrl}/${id}`, user, this.httpOptions).pipe(
+      map(({ user }) => user),
+      tap((user: User) => console.log(`updated user id=${id}`)),
+      catchError(this.handleError<User>('updateUserRatings'))
+    );  
+  }
+
   getUserProfile(): Observable<User> {
     const url = `${this.authUrl}/profile`;
     this.loadToken();
 
-
-    // Append the auth token to the standard headers
-    const httpAuthOptions = {
-      headers: new HttpHeaders({ 
-        'Content-Type': 'application/json',
-        'Authorization': this.authToken || ''
-      })
-    };
-    return this.http.get<User>(url).pipe(
-      tap((profile: User) => console.log(`Retrieved ${profile.username}'s profile`)),
+    return this.http.get<any>(url).pipe(
+      map((user) => user),
+      tap(_ => console.log(`Retrieved user's profile`)),
       catchError(this.handleError<User>('getUserProfile'))
     );
   }
@@ -95,8 +97,8 @@ export class AuthService {
     localStorage.clear();
   }
 
-  isUserloggedIn() {
+  isUserloggedIn(): boolean {
     this.loadToken();
-    return this.jwtHelperService.isTokenExpired(this.authToken || '');
+    return !this.jwtHelperService.isTokenExpired(this.authToken || '');
   }
 }

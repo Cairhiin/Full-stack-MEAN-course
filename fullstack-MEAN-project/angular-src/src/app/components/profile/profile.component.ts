@@ -10,7 +10,7 @@ import { User } from '../../user';
 })
 export class ProfileComponent {
   user: User = {
-    id: '',
+    _id: '',
     name: '',
     username: '',
     email: '',
@@ -23,8 +23,7 @@ export class ProfileComponent {
   ) {}
   
   ngOnInit(): void {
-    this.authService.getUserProfile().subscribe(profile => {
-      this.user = profile;
-    });
+    this.authService.getUserProfile()
+    .subscribe(user => this.user = user);
   }
 }

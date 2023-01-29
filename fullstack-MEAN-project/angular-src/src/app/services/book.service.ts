@@ -23,6 +23,14 @@ export class BookService {
     );
   }
 
+  getBook(id: string | null): Observable<Book> {
+    return this.http.get<any>(`${this.url}/${id}`).pipe(
+      map(({ book }) => book),
+      tap(_ => console.log(`Book with id=${id} retrieved`)),
+      catchError(this.handleError<Book>('getBook'))
+    );
+  }
+
   getBooksByDate(sort: string, limit: number): Observable<Book[]> {
     return this.http.get<any>(`${this.url}?date=${sort}&limit=${limit}`).pipe(
       map(({ books }) => books),
