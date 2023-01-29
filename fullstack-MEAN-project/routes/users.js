@@ -62,4 +62,21 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 	res.json(req.user);
 });
 
+router.put('/:id', (req, res, next) => {
+	const id = req.params.id;
+	const user = req.body;
+
+	/* 
+	Update a user after it has been retrieved
+	by its unique id
+	*/
+	User.updateUser(id, user, (err, user) => {
+		if (err) {
+			res.json({ success: false, msg: `Failed to update user with id: ${id}!` });
+		} else {
+			res.json({ success: true, user: user });
+		}
+	});
+});
+
 module.exports = router;
