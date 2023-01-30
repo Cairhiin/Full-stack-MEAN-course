@@ -19,7 +19,7 @@ export class BookDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
-    private authService: AuthService,
+    public authService: AuthService,
     private location: Location
   ) {}
 
@@ -51,6 +51,10 @@ export class BookDetailComponent implements OnInit {
       }
     }
     return count;
+  }
+
+  getRatingScorePercentage(rating: number): number {
+    return Math.round(rating / this.getNumberOfRatings() * 100);
   }
 
   /* 

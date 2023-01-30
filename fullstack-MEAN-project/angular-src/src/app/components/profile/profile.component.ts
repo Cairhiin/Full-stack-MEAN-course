@@ -14,6 +14,7 @@ export class ProfileComponent {
     name: '',
     username: '',
     email: '',
+    role: '',
     ratings: []
   };
 
