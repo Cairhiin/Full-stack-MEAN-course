@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { JwtHelperService  } from '@auth0/angular-jwt';
 import { User } from '../user';
+import { Book } from '../book';
 
 @Injectable({
   providedIn: 'root'
@@ -53,11 +54,10 @@ export class AuthService {
     );  
   }
 
-  updateUserRatings(id: string, user: User): Observable<User> { 
-    return this.http.put<any>(`${this.authUrl}/${id}`, user, this.httpOptions).pipe(
-      map(({ user }) => user),
-      tap((user: User) => console.log(`updated user id=${id}`)),
-      catchError(this.handleError<User>('updateUserRatings'))
+  updateUserRatings(user: User, book: Book): Observable<{user: User, book: Book}> {
+    return this.http.put<any>(`${this.authUrl}/${user._id}/book/${book.id}`, { user, book }, this.httpOptions).pipe(
+      tap(_ => console.log(`updated user id=${user._id} with and book id=${book.id}`)),
+      catchError(this.handleError<{user: User, book: Book}>('updateUserRatings'))
     );  
   }
 

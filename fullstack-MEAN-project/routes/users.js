@@ -4,6 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
+const Book = require('../models/book');
 
 router.post('/register', (req, res, next) => {
 	let newUser = new User({
@@ -62,7 +63,7 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 	res.json(req.user);
 });
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 	const id = req.params.id;
 	const user = req.body;
 
@@ -75,6 +76,31 @@ router.put('/:id', (req, res, next) => {
 			res.json({ success: false, msg: `Failed to update user with id: ${id}!` });
 		} else {
 			res.json({ success: true, user: user });
+		}
+	});
+});
+
+router.put('/:id/book/:bid', (req, res, next) => {
+	const id = req.params.id;
+	const bid = req.params.bid;
+	const { book, user } = req.body;
+
+	/* 
+	Update a user after it has been retrieved
+	by its unique id and if successful update
+	the book rating as well
+	*/
+	User.updateUser(id, user, (err, user) => {
+		if (err) {
+			res.json({ success: false, msg: `Failed to update user with id: ${id}!` });
+		} else {
+			Book.updateBook(bid, book, (err, book) => {
+				if (err) {
+					res.json({ success: false, msg: `Failed to update book with id: ${bid}!` });
+				} else {
+					res.json({ success: true, user: user, book: book });
+				}
+			});	
 		}
 	});
 });
