@@ -101,4 +101,13 @@ export class AuthService {
     this.loadToken();
     return !this.jwtHelperService.isTokenExpired(this.authToken || '');
   }
+
+  hasAdminRights(role: string) {
+    // First check if the user is authorized then check their role
+    if (this.isUserloggedIn()) {
+      return role === 'admin' || role === 'editor';
+    }
+
+    return false;
+  }
 }

@@ -20,16 +20,22 @@
 				<div><span>Genres: </span>{{ book.genres }}</div>
 			</div>
 			<div class="my-rating" *ngIf="authService.isUserloggedIn()">
-				<h4>My Rating</h4>
-				<p>
-					<app-rating 
-						[book_id]="book.id" 
-						[user]="user" 
-						[isActive]="!checkIfBookHasBeenRated()"
-						[selectedValue]="selectedValue"
-						(onRatingChange)="updateRating($event)"
-					></app-rating>
-				</p>
+				<div>
+					<h4>My Rating</h4>
+					<p>
+						<app-rating 
+							[book_id]="book.id" 
+							[user]="user" 
+							[isActive]="!checkIfBookHasBeenRated()"
+							[selectedValue]="selectedValue"
+							(onRatingChange)="updateRating($event)"
+						></app-rating>
+					</p>
+				</div>
+				<div class="admin-buttons" *ngIf="authService.hasAdminRights(user ? user.role : '')">
+					<button class="btn btn-primary">Edit Book</button>
+					<button class="btn btn-primary">Delete Book</button>
+				</div>
 			</div>
 		</div>
 	</div>
