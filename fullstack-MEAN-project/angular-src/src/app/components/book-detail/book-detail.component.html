@@ -19,7 +19,7 @@
 				<div><span>Release Year: </span>{{ book.year }}</div>
 				<div><span>Genres: </span>{{ book.genres }}</div>
 			</div>
-			<div class="my-rating">
+			<div class="my-rating" *ngIf="authService.isUserloggedIn()">
 				<h4>My Rating</h4>
 				<p>
 					<app-rating 

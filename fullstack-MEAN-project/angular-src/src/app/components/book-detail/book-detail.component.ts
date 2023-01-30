@@ -19,7 +19,7 @@ export class BookDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
-    private authService: AuthService,
+    public authService: AuthService,
     private location: Location
   ) {}
 
