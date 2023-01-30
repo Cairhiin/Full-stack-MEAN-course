@@ -6,7 +6,7 @@
 			<div class="book-header-description">{{ book.description }}</div>
 		</div>
 		<div class="image">
-			<img src="assets/{{ book.image }}" />
+			<img src="assets/{{ book.image }}" alt="{{ book.title }} cover art"/>
 		</div>
 		<div class="info">
 			<div>
@@ -35,6 +35,21 @@
 				<div class="admin-buttons" *ngIf="authService.hasAdminRights(user ? user.role : '')">
 					<button class="btn btn-primary">Edit Book</button>
 					<button class="btn btn-primary">Delete Book</button>
+				</div>
+			</div>
+		</div>
+		<div class="rating-breakdown">
+			<h3>Rating breakdown</h3>
+			<div *ngFor="let number of [5, 4, 3, 2, 1]" class="rating-{{number}}">
+				<div class="rating-stars">
+					<i *ngFor="let number of [5, 4, 3, 2, 1]" class="fa fa-star"></i>
+				</div>
+				<div class="rating-bar">
+					<div class="rating-highlighted" [ngStyle]="{'width': getRatingScorePercentage(book.ratings[number]) +'%'}"></div>
+					<div class="rating-dull" [ngStyle]="{'width': 100 - getRatingScorePercentage(book.ratings[number]) +'%'}"></div>
+				</div>
+				<div class="rating-scores">
+					{{ book.ratings[number] }} <span>({{ getRatingScorePercentage(book.ratings[number]) }}%)</span>
 				</div>
 			</div>
 		</div>

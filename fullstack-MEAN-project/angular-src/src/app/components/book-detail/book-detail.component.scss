@@ -5,14 +5,15 @@
 
 	.book {
 		position: relative;
-		margin: 2rem auto;
+		margin: 1rem auto;
 		display: grid;
-		grid-column-gap: 2rem;
+		grid-column-gap: 1rem;
 		grid-row-gap: 1rem;
 		grid-template-columns: repeat(5, 1fr);
 		grid-template-areas:
 		". header header header ."
-		". image info info .";
+		". image info info ."
+		". rating rating rating .";
 
 		.book-header {
 			grid-area: header;
@@ -20,6 +21,11 @@
 
 			.book-header-author {
 				color: rgba($on-secondary-color, 0.7);
+			}
+
+			.book-header-description {
+				margin: 1rem 0;
+				color: rgba($on-secondary-color, 0.85);
 			}
 		}
 
@@ -72,6 +78,93 @@
 			.btn-primary {
 				@include buttonPrimary;
 			}
+		}
+
+		.rating-breakdown {
+			@include easeOut;
+			grid-area: rating;
+			display: grid;
+			grid-row-gap: 0.5rem;
+			color: $on-primary-color;
+			margin-bottom: 1rem;	
+
+			h3 {
+				text-align: center;
+				text-transform: uppercase;
+				margin: 1rem 0;
+			}
+
+			.rating-bar {
+				display: flex;
+				height: 0.7rem;
+				align-self: center;
+				background: $on-primary-color;
+				border-radius: 5px;
+
+				.rating-highlighted {
+					border: 5px solid $primary-button-color;
+					border-radius: 5px;
+					background: $primary-button-color;
+				}
+
+				.rating-dull {
+					border: 5px solid $on-primary-color;
+					border-radius: 0 5px 5px 0;				
+				}
+			}
+
+			.rating-1,
+			.rating-2,
+			.rating-3,
+			.rating-4,
+			.rating-5 {
+				display: grid;
+				grid-template-columns: 10rem auto 10rem;
+				text-align: center;
+				color: rgba($on-primary-color, 0.8);
+				
+				i {	
+					padding-right: 0.2rem;
+				}
+
+				span {
+					color: rgba($on-primary-color, 0.1);
+				}
+			}
+
+			.rating-1 {
+				:where(i:nth-child(2), i:nth-child(3), i:nth-child(4), i:nth-child(5)) {
+					color: rgba($on-primary-color, 0.1);
+				}
+			}
+
+			.rating-2 {
+				:where(i:nth-child(3), i:nth-child(4), i:nth-child(5)) {
+					color: rgba($on-primary-color, 0.1);
+				}
+			}
+
+			.rating-3 {
+				:where(i:nth-child(4), i:nth-child(5)) {
+					color: rgba($on-primary-color, 0.1);
+				}
+			}
+
+			.rating-4 {
+				:where(i:nth-child(5)) {
+					color: rgba($on-primary-color, 0.1);
+				}
+			}
+
+			.rating-scores {
+				color: rgba($on-primary-color, 0.8);
+				font-weight: 700;
+
+				span {
+					color: rgba($on-primary-color, 0.5);
+					font-weight: 400;
+				}
+			}						
 		}
 	}
 }  

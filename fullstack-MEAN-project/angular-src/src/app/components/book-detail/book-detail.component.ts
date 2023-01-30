@@ -53,6 +53,10 @@ export class BookDetailComponent implements OnInit {
     return count;
   }
 
+  getRatingScorePercentage(rating: number): number {
+    return Math.round(rating / this.getNumberOfRatings() * 100);
+  }
+
   /* 
     Check if the user has already rated the book and
     if true assign the rating and set hasBeenRated to true
