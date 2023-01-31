@@ -48,7 +48,10 @@ const UserSchema = mongoose.Schema({
 				type: Date
 			}
 		}
-	]
+	],
+	reading: {
+		type: mongoose.Schema.Types.ObjectId, ref: 'Book'
+	}
 }, {
 	timestamps: true
 });

@@ -76,7 +76,7 @@ export class AuthService {
     this.loadToken();
 
     return this.http.get<any>(this.authUrl).pipe(
-      map((users) => users),
+      map(({ users }) => users),
       tap(_ => console.log(`Retrieved users`)),
       catchError(this.handleError<User[]>('getUserProfile'))
     );
