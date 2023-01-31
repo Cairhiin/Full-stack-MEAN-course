@@ -1,4 +1,5 @@
-import { Rating } from './rating';
+import { Rate } from './rate';
+import { Book } from './book';
 
 export interface User {
 	_id: string;
@@ -6,5 +7,7 @@ export interface User {
 	email: string;
 	username: string;
 	role: string;
-	ratings: Array<{ id: string, rating: number }>;
+	reviews: Array<{ id: string, review: string, date: Date }>;
+	ratings: Array<Rate>;
+	reading?: Book;
 }

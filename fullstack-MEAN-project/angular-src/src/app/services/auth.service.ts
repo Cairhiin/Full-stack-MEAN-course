@@ -40,13 +40,7 @@ export class AuthService {
     );
   }
 
-  authenticateUser(
-    user:
-    {
-      username: string,
-      password: string
-    }
-  ): Observable<any> {
+  authenticateUser(user: { username: string, password: string }): Observable<any> {
     const url = `${this.authUrl}/authenticate`;
     return this.http.post<any>(url, user, this.httpOptions).pipe(
       tap((data: any) => console.log(data.msg)),
@@ -55,10 +49,20 @@ export class AuthService {
   }
 
   updateUserRatings(user: User, book: Book): Observable<{user: User, book: Book}> {
-    return this.http.put<any>(`${this.authUrl}/${user._id}/book/${book.id}`, { user, book }, this.httpOptions).pipe(
+    return this.http.put<any>(
+        `${this.authUrl}/${user._id}/book/${book.id}`, { user, book }, this.httpOptions
+      ).pipe(
       tap(_ => console.log(`updated user id=${user._id} with and book id=${book.id}`)),
       catchError(this.handleError<{user: User, book: Book}>('updateUserRatings'))
     );  
+  }
+
+  updateUser(user: User): Observable<User> {
+    return this.http.put<any>(`${this.authUrl}/${user._id}`, user, this.httpOptions).pipe(
+      map(({ user }) => user),
+      tap(_ => console.log(`updated user id=${user._id}`)),
+      catchError(this.handleError<User>('updateUser'))
+    );
   }
 
   getUserProfile(): Observable<User> {
@@ -69,6 +73,16 @@ export class AuthService {
       map((user) => user),
       tap(_ => console.log(`Retrieved user's profile`)),
       catchError(this.handleError<User>('getUserProfile'))
+    );
+  }
+
+  getUsers(): Observable<User[]> {
+    this.loadToken();
+
+    return this.http.get<any>(this.authUrl).pipe(
+      map(({ users }) => users),
+      tap(_ => console.log(`Retrieved users`)),
+      catchError(this.handleError<User[]>('getUserProfile'))
     );
   }
 
@@ -103,7 +117,7 @@ export class AuthService {
   }
 
   hasAdminRights(role: string) {
-    // First check if the user is authorized then check their role
+    // First check if the user is logged in then check their role
     if (this.isUserloggedIn()) {
       return role === 'admin' || role === 'editor';
     }

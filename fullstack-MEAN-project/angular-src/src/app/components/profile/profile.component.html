@@ -11,8 +11,23 @@
 				<div>{{ user.email }}</div>
 			</div>
 			<div class="details-row">
+				<div>Role</div> 
+				<div>{{ user.role }}</div>
+			</div>
+			<div class="details-row">
+				<div>Reading now:</div> 
+				<div *ngIf="user.reading">
+					{{ user.reading.title }}
+					<span><a routerLink="/books/{{ user.reading.id }}"> ({{ user.reading.author }})</a></span>
+				</div>
+			</div>
+			<div class="details-row">
 				<div>Ratings:</div> 
 				<div>{{ user.ratings.length }}</div>
+			</div>
+			<div class="details-row">
+				<div>Reviews:</div> 
+				<div>{{ user.reviews.length }}</div>
 			</div>
 		</div>
 	</div>

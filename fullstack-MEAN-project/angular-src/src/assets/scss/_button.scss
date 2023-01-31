@@ -13,4 +13,23 @@
 	&:hover {
 		background: $primary-button-highlight-color;
 	}
+
+	&:disabled {
+		background: rgba($primary-button-highlight-color, 0.1);
+		cursor: default;
+	}
+}
+
+@mixin buttonSecondary {
+	background: $secondary-button-color;
+	color: $on-primary-color;
+
+	&:hover {
+		background: $secondary-button-highlight-color;
+	}
+
+	&:disabled {
+		background: rgba($secondary-button-highlight-color, 0.1);
+		cursor: default;
+	}
 }

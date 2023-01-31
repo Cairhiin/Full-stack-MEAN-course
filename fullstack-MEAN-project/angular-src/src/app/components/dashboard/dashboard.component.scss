@@ -1,0 +1,118 @@
+@import '../../../assets/scss/_config.scss';
+
+#dashboard {
+	min-height: calc(100vh - 65px - 154px - 34px);
+
+	.dashboard-page {
+		margin: 2rem 0; 
+
+		h2 {
+			@include headerText;		
+		}
+
+		.dashboard-info {	
+			color: rgba($on-primary-color, 0.9);
+			margin: 2rem 0; 	
+			display: grid;
+			grid-column-gap: 2rem;
+			grid-row-gap: 2rem;
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-areas:
+			". latest highest ."
+			" . all all ."
+			". admin admin .";
+
+			h3 {
+				font-family: 'Roboto Condensed', sans-serif;
+				text-transform: uppercase;
+				text-align: center;
+				margin: 1rem 0;
+			}
+
+			.latest-ratings {
+				grid-area: latest;
+			}
+
+			.highest-ratings {
+				grid-area: highest;
+			}
+
+			.all-ratings {
+				grid-area: all
+			}
+
+			.admin-panel {
+				grid-area: admin;
+			}
+
+			.latest-ratings,
+			.highest-ratings,
+			.all-ratings,
+			.admin-panel {
+				background: $primary-color;
+				@include dropShadow;
+
+				.dashboard-row {
+					padding: 0.5rem 1rem;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+
+					.book-rating {
+						font-size: 2rem;
+					}
+
+					span {
+						color: rgba($on-primary-color, 0.7);
+						font-size: 0.8rem;
+						text-transform: uppercase;
+					}
+
+					&:nth-child(odd) {
+						background: rgba($on-tertiary-color, 0.15);
+					}
+
+					&:nth-child(even) {
+						background: rgba($on-tertiary-color, 0.25);
+					}
+
+					.btn {
+						@include button;
+						width: 75px;
+						margin-left: 1rem;
+						height: 30px; 
+						font-size: 0.9rem;
+					}
+
+					.btn-primary {
+						@include buttonPrimary;
+					}
+				}
+			}
+
+			.all-ratings {
+				.dashboard-row {
+					display: grid;
+					grid-column-gap: 2rem;
+					grid-row-gap: 2rem;
+					grid-template-columns: 2fr 2fr 1fr;
+					grid-template-areas:
+					"title genres score";
+
+					.title-author-info {
+						grid-area: title;
+					}
+
+					.year-genres-info {
+						grid-area: genres;
+					}
+
+					.score-info {
+						grid-area: score;
+						text-align: right;
+					}
+				}
+			}
+		}
+	}
+}

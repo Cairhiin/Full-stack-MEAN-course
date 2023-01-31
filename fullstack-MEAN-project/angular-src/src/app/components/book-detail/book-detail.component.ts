@@ -64,11 +64,11 @@ export class BookDetailComponent implements OnInit {
   */
   checkIfBookHasBeenRated(): boolean {
     if (!this.user || !this.book) return false;
-    const id: string = this.book.id;
+    const ISBN: string = this.book.ISBN;
     let hasBeenRated: boolean = false;
 
     this.user.ratings.forEach(r => {
-      if (r.id === id) {
+      if (r.book.ISBN === ISBN) {
         hasBeenRated = true;
         this.selectedValue = r.rating;
       };
@@ -78,13 +78,13 @@ export class BookDetailComponent implements OnInit {
   }
 
   /* 
-  Receive the rating when the user clicks the rating component
-  and update both the book and user document in the database
-  then update the current book and user with the return value
+    Receive the rating when the user clicks the rating component
+    and update both the book and user document in the database
+    then update the current book and user with the return value
   */
   updateRating(value: number): void {
     if (this.user && this.book) {
-      this.user.ratings.push({ id: this.book.id, rating: value });
+      this.user.ratings.push({ book: this.book, rating: value, date: new Date() });
 
       // Increment the chosen rating by 1
       this.book.ratings[value]++;
@@ -94,5 +94,20 @@ export class BookDetailComponent implements OnInit {
           this.book = value.book;
         });
     }
+  }
+
+  checkIfUserIsReading(): boolean {
+    if (this.user && this.book && this.user.reading) {
+        return this.user.reading.ISBN === this.book.ISBN;
+    }
+    return false;
+  }
+
+  updateUser(): void {
+    if (this.user) {
+      this.user.reading = this.book;
+      this.authService.updateUser(this.user)
+        .subscribe(user => this.user = user);
+    }  
   }
 }

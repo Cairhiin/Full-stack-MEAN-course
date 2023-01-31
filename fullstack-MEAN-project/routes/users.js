@@ -49,7 +49,9 @@ router.post('/authenticate', (req, res, next) => {
 						username: user.username,
 						email: user.email,
 						role: user.role, 
-						ratings: user.ratings
+						ratings: user.ratings,
+						reviews: user.reviews,
+						reading: user.reading
 					}, 
 					msg: 'User logged in successfully!'
 				});
@@ -62,6 +64,16 @@ router.post('/authenticate', (req, res, next) => {
 
 router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 	res.json(req.user);
+});
+
+router.get('/', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+	User.getUsers((err, users) => {
+		if (err) {
+			res.json({ success: false, msg: 'No users found!' });
+		} else {
+			res.json({ success: true, users: users });
+		}
+	});
 });
 
 router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
@@ -99,6 +111,7 @@ router.put('/:id/book/:bid', (req, res, next) => {
 				if (err) {
 					res.json({ success: false, msg: `Failed to update book with id: ${bid}!` });
 				} else {
+					console.log(user)
 					res.json({ success: true, user: user, book: book });
 				}
 			});	

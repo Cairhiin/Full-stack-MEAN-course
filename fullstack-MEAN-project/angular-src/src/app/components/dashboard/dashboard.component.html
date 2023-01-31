@@ -1,1 +1,68 @@
-<p>dashboard works!</p>
+<main id="dashboard">
+	<div class="dashboard-page">
+		<h2>Dashboard</h2>
+		<div class="dashboard-info">
+			<div class="latest-ratings">
+				<h3>Latest rated books</h3>
+				<div *ngFor="let score of getRatingsSorted(5, 'date')" class="dashboard-row">
+					<div>
+						<p>{{ score.book.title }}</p>
+						<span>{{ score.book.author }}</span>
+					</div>
+					<div class="book-rating">
+						{{ score.rating }}
+					</div>
+				</div>
+			</div>
+			<div class="highest-ratings">
+				<h3>Highest rated books</h3>
+				<div *ngFor="let score of getRatingsSorted(5, 'rating')" class="dashboard-row">
+					<div>
+						<p>{{ score.book.title }}</p>
+						<span>{{ score.book.author }}</span>
+					</div>
+					<div class="book-rating">
+						{{ score.rating }}
+					</div>
+				</div>
+			</div>
+			<div class="all-ratings">
+				<h3>All rated books</h3>
+				<div *ngFor="let score of sortRatingsByDate()" class="dashboard-row">
+					<div class="title-author-info">
+						<p>{{ score.book.title }}</p>
+						<span>{{ score.book.author }}</span>
+					</div>
+					<div class="year-genres-info">
+						<p>{{ score.book.year }}</p>
+						<span>{{ score.book.genres }}</span>
+					</div>
+					<div class="book-rating score-info">
+						{{ score.rating }}
+					</div>
+				</div>
+			</div>
+			<div class="admin-panel" *ngIf="authService.hasAdminRights(user ? user.role : '')">
+				<div class="newest-users">
+					<h3>Newest users</h3>
+					<div class="user-list">
+						<div *ngFor="let user of users" class="dashboard-row">
+							<div>
+								<p>{{ user.username }}</p>
+								<span>{{ user.role }}</span>
+							</div>
+							<div>
+								<p>{{ user.email }}</p>
+								<span>{{ user.name }}</span>
+							</div>
+							<div>
+								<button class="btn btn-primary">Set Role</button>
+								<button class="btn btn-primary">Delete</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

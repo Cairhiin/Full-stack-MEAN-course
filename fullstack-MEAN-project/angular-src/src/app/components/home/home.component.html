@@ -4,7 +4,7 @@
 	</div>
 	<div class="book-row">
 		<div *ngFor="let book of booksByDate; index as i" class="book book{{ i+1 }}">
-			<a routerLink="/book/{{ book.id }}">
+			<a routerLink="/books/{{ book.id }}">
 				<div class="book-card">
 					<div class="image">
 						<img src="assets/{{ book.image }}" alt="{{ book.title }} cover art" />
