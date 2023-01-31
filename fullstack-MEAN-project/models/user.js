@@ -24,25 +24,30 @@ const UserSchema = mongoose.Schema({
 	},
 	ratings: [
 		{
-			id: {
+			book: {
 				type: mongoose.Schema.Types.ObjectId, ref: 'Book' 
 			},
 			rating: {
 				type: Number
+			},
+			date: {
+				type: Date
 			}
 		}
 	]
+}, {
+	timestamps: true
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.getUserById = function(id, callback) {
-	User.findById(id, callback);
+	User.findById(id, {}, { populate: 'ratings.book' }).exec(callback);
 }
 
 module.exports.getUserByUsername = function(username, callback) {
 	const query = { username: username };
-	User.findOne(query, callback);
+	User.findOne(query, {}, { populate: 'ratings.book' }).exec(callback);
 }
 
 module.exports.addUser = function(user, callback) {

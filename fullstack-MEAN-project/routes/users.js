@@ -49,7 +49,8 @@ router.post('/authenticate', (req, res, next) => {
 						username: user.username,
 						email: user.email,
 						role: user.role, 
-						ratings: user.ratings
+						ratings: user.ratings,
+						reviews: user.reviews
 					}, 
 					msg: 'User logged in successfully!'
 				});
