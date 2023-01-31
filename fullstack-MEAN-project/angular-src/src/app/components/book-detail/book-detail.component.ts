@@ -78,13 +78,13 @@ export class BookDetailComponent implements OnInit {
   }
 
   /* 
-  Receive the rating when the user clicks the rating component
-  and update both the book and user document in the database
-  then update the current book and user with the return value
+    Receive the rating when the user clicks the rating component
+    and update both the book and user document in the database
+    then update the current book and user with the return value
   */
   updateRating(value: number): void {
     if (this.user && this.book) {
-      this.user.ratings.push({ id: this.book.id, rating: value });
+      this.user.ratings.push({ id: this.book.id, rating: value, date: new Date() });
 
       // Increment the chosen rating by 1
       this.book.ratings[value]++;

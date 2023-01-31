@@ -15,7 +15,8 @@ export class ProfileComponent {
     username: '',
     email: '',
     role: '',
-    ratings: []
+    ratings: [],
+    reviews: []
   };
 
   constructor(
@@ -26,5 +27,11 @@ export class ProfileComponent {
   ngOnInit(): void {
     this.authService.getUserProfile()
     .subscribe(user => this.user = user);
+  }
+
+  getMostRatedGenre(): void {
+    for (let book of this.user.ratings) {
+      console.log(this.user.ratings);
+    }
   }
 }

@@ -103,7 +103,7 @@ export class AuthService {
   }
 
   hasAdminRights(role: string) {
-    // First check if the user is authorized then check their role
+    // First check if the user is logged in then check their role
     if (this.isUserloggedIn()) {
       return role === 'admin' || role === 'editor';
     }

@@ -81,7 +81,6 @@
 		}
 
 		.rating-breakdown {
-			@include easeOut;
 			grid-area: rating;
 			display: grid;
 			grid-row-gap: 0.5rem;
@@ -102,12 +101,14 @@
 				border-radius: 5px;
 
 				.rating-highlighted {
+					@include easeOut;
 					border: 5px solid $primary-button-color;
 					border-radius: 5px;
 					background: $primary-button-color;
 				}
 
 				.rating-dull {
+					@include easeOut;
 					border: 5px solid $on-primary-color;
 					border-radius: 0 5px 5px 0;				
 				}
