@@ -22,7 +22,7 @@ export class DashboardComponent {
   };
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) {}
   
