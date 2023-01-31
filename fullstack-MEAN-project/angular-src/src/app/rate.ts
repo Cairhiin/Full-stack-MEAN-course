@@ -1,5 +1,7 @@
+import { Book } from './book'
+
 export interface Rate {
-	id: string,
+	book: Book,
 	rating: number,
 	date: Date
 };

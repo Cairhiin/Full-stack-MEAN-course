@@ -61,9 +61,7 @@ module.exports.addUser = function(user, callback) {
 }
 
 module.exports.updateUser = function(id, user, callback) {
-	User.findOneAndUpdate({ _id: id }, user, {
-		new: true
-	}, callback);
+	User.findOneAndUpdate({ _id: id }, user, { new: true, populate: 'ratings.book' }, callback);
 }
 
 module.exports.comparePassword = function(candidatePassword, hashedPassword, callback) {

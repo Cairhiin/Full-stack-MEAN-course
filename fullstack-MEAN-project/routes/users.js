@@ -100,6 +100,7 @@ router.put('/:id/book/:bid', (req, res, next) => {
 				if (err) {
 					res.json({ success: false, msg: `Failed to update book with id: ${bid}!` });
 				} else {
+					console.log(user)
 					res.json({ success: true, user: user, book: book });
 				}
 			});	

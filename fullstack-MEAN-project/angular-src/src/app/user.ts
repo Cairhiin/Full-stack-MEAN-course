@@ -1,4 +1,4 @@
-import { Rating } from './rating';
+import { Rate } from './rate';
 
 export interface User {
 	_id: string;
@@ -7,5 +7,5 @@ export interface User {
 	username: string;
 	role: string;
 	reviews: Array<{ id: string, review: string, date: Date }>;
-	ratings: Array<{ id: string, rating: number, date: Date }>;
+	ratings: Array<Rate>;
 }

@@ -64,11 +64,12 @@ export class BookDetailComponent implements OnInit {
   */
   checkIfBookHasBeenRated(): boolean {
     if (!this.user || !this.book) return false;
+    console.log(this.user)
     const id: string = this.book.id;
     let hasBeenRated: boolean = false;
 
     this.user.ratings.forEach(r => {
-      if (r.id === id) {
+      if (r.book.id === id) {
         hasBeenRated = true;
         this.selectedValue = r.rating;
       };
@@ -84,7 +85,7 @@ export class BookDetailComponent implements OnInit {
   */
   updateRating(value: number): void {
     if (this.user && this.book) {
-      this.user.ratings.push({ id: this.book.id, rating: value, date: new Date() });
+      this.user.ratings.push({ book: this.book, rating: value, date: new Date() });
 
       // Increment the chosen rating by 1
       this.book.ratings[value]++;
