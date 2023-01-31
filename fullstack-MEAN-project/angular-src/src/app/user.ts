@@ -6,5 +6,6 @@ export interface User {
 	email: string;
 	username: string;
 	role: string;
-	ratings: Array<{ id: string, rating: number }>;
+	reviews: Array<{ id: string, review: string, date: Date }>;
+	ratings: Array<{ id: string, rating: number, date: Date }>;
 }
