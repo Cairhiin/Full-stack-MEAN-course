@@ -65,6 +65,16 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 	res.json(req.user);
 });
 
+router.get('/', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+	User.getUsers((err, users) => {
+		if (err) {
+			res.json({ success: false, msg: 'No users found!' });
+		} else {
+			res.json({ success: true, users: users });
+		}
+	});
+});
+
 router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 	const id = req.params.id;
 	const user = req.body;

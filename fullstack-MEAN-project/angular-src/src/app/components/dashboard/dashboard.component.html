@@ -1,1 +1,25 @@
-<p>dashboard works!</p>
+<main id="dashboard">
+	<h2>Dashboard</h2>
+	<div class="dashboard-info">
+		<div class="latest-ratings">
+			<h3>Latest rated books</h3>
+			<div *ngFor="let score of getRatingsSorted(5, 'date')">
+				{{ score.book.title }}: {{ score.rating }}
+			</div>
+		</div>
+		<div class="highest-ratings">
+			<h3>Highest rated books</h3>
+			<div *ngFor="let score of getRatingsSorted(5, 'rating')">
+				{{ score.book.title }}: {{ score.rating }}
+			</div>
+		</div>
+		<div class="admin-panel">
+			<div class="newest-users">
+				<h3>Newest users</h3>
+				<div class="user-list">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

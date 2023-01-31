@@ -64,7 +64,6 @@ export class BookDetailComponent implements OnInit {
   */
   checkIfBookHasBeenRated(): boolean {
     if (!this.user || !this.book) return false;
-    console.log(this.user)
     const id: string = this.book.id;
     let hasBeenRated: boolean = false;
 

@@ -16,7 +16,8 @@ const UserSchema = mongoose.Schema({
 	},
 	password: {
 		type: String,
-		required: true
+		required: true,
+		select: false
 	},
 	role: {
 		type: String,
@@ -34,6 +35,19 @@ const UserSchema = mongoose.Schema({
 				type: Date
 			}
 		}
+	],
+	reviews: [
+		{
+			book: {
+				type: mongoose.Schema.Types.ObjectId, ref: 'Book' 
+			},
+			review: {
+				type: String
+			},
+			date: {
+				type: Date
+			}
+		}
 	]
 }, {
 	timestamps: true
@@ -41,13 +55,18 @@ const UserSchema = mongoose.Schema({
 
 const User = module.exports = mongoose.model('User', UserSchema);
 
+module.exports.getUsers = function(callback) {
+	User.find({}, callback);
+}
+
+// Password exclusion: https://stackoverflow.com/questions/12096262/how-to-protect-the-password-field-in-mongoose-mongodb-so-it-wont-return-in-a-qu
 module.exports.getUserById = function(id, callback) {
-	User.findById(id, {}, { populate: 'ratings.book' }).exec(callback);
+	User.findById(id, {}, { populate: 'ratings.book' }).select('+password').exec(callback);
 }
 
 module.exports.getUserByUsername = function(username, callback) {
 	const query = { username: username };
-	User.findOne(query, {}, { populate: 'ratings.book' }).exec(callback);
+	User.findOne(query, {}, { populate: 'ratings.book' }).select('+password').exec(callback);
 }
 
 module.exports.addUser = function(user, callback) {
