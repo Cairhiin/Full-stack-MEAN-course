@@ -18,7 +18,7 @@ export class DashboardComponent {
       email: '',
       role: '',
       ratings: [],
-      reviews: []
+      reviews: [], 
   };
 
   constructor(
@@ -32,7 +32,7 @@ export class DashboardComponent {
       this.user = user;
       if (user.role === 'admin') {
         this.authService.getUsers()
-        .subscribe(users => this.users = users);
+        .subscribe(users => this.users = users)
       }
     });
   }

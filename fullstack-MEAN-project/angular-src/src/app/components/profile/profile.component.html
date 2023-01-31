@@ -16,7 +16,10 @@
 			</div>
 			<div class="details-row">
 				<div>Reading now:</div> 
-				<div>{{ user.reading }}</div>
+				<div *ngIf="user.reading">
+					{{ user.reading.title }}
+					<span><a routerLink="/books/{{ user.reading.id }}">by {{ user.reading.author }}</a></span>
+				</div>
 			</div>
 			<div class="details-row">
 				<div>Ratings:</div> 

@@ -64,11 +64,11 @@ export class BookDetailComponent implements OnInit {
   */
   checkIfBookHasBeenRated(): boolean {
     if (!this.user || !this.book) return false;
-    const id: string = this.book.id;
+    const ISBN: string = this.book.ISBN;
     let hasBeenRated: boolean = false;
 
     this.user.ratings.forEach(r => {
-      if (r.book.id === id) {
+      if (r.book.ISBN === ISBN) {
         hasBeenRated = true;
         this.selectedValue = r.rating;
       };
@@ -94,5 +94,20 @@ export class BookDetailComponent implements OnInit {
           this.book = value.book;
         });
     }
+  }
+
+  checkIfUserIsReading(): boolean {
+    if (this.user && this.book && this.user.reading) {
+        return this.user.reading.ISBN === this.book.ISBN;
+    }
+    return false;
+  }
+
+  updateUser(): void {
+    if (this.user) {
+      this.user.reading = this.book;
+      this.authService.updateUser(this.user)
+        .subscribe(user => this.user = user);
+    }  
   }
 }

@@ -64,12 +64,16 @@ module.exports.getUsers = function(callback) {
 
 // Password exclusion: https://stackoverflow.com/questions/12096262/how-to-protect-the-password-field-in-mongoose-mongodb-so-it-wont-return-in-a-qu
 module.exports.getUserById = function(id, callback) {
-	User.findById(id, {}, { populate: 'ratings.book' }).select('+password').exec(callback);
+	User.findById(id, {}, { populate: 'ratings.book reading' })
+		.select('+password')
+		.exec(callback);
 }
 
 module.exports.getUserByUsername = function(username, callback) {
 	const query = { username: username };
-	User.findOne(query, {}, { populate: 'ratings.book' }).select('+password').exec(callback);
+	User.findOne(query, {}, { populate: 'ratings.book reading' })
+		.select('+password')
+		.exec(callback);
 }
 
 module.exports.addUser = function(user, callback) {
@@ -83,7 +87,7 @@ module.exports.addUser = function(user, callback) {
 }
 
 module.exports.updateUser = function(id, user, callback) {
-	User.findOneAndUpdate({ _id: id }, user, { new: true, populate: 'ratings.book' }, callback);
+	User.findOneAndUpdate({ _id: id }, user, { new: true, populate: 'ratings.book reading' }, callback);
 }
 
 module.exports.comparePassword = function(candidatePassword, hashedPassword, callback) {

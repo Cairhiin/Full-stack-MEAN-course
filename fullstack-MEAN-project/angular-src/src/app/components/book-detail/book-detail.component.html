@@ -32,9 +32,19 @@
 						></app-rating>
 					</p>
 				</div>
-				<div class="admin-buttons" *ngIf="authService.hasAdminRights(user ? user.role : '')">
-					<button class="btn btn-primary">Edit Book</button>
-					<button class="btn btn-primary">Delete Book</button>
+				<div class="button-row">
+					<div class="buttons">
+						<button 
+							[disabled]="checkIfUserIsReading()" 
+							class="btn btn-secondary"
+							(click)="updateUser()">
+							Reading Now
+						</button>
+					</div>
+					<div class="admin-buttons" *ngIf="authService.hasAdminRights(user ? user.role : '')">
+						<button class="btn btn-primary">Edit Book</button>
+						<button class="btn btn-primary">Delete Book</button>
+					</div>
 				</div>
 			</div>
 		</div>

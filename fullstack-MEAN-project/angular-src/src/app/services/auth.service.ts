@@ -40,13 +40,7 @@ export class AuthService {
     );
   }
 
-  authenticateUser(
-    user:
-    {
-      username: string,
-      password: string
-    }
-  ): Observable<any> {
+  authenticateUser(user: { username: string, password: string }): Observable<any> {
     const url = `${this.authUrl}/authenticate`;
     return this.http.post<any>(url, user, this.httpOptions).pipe(
       tap((data: any) => console.log(data.msg)),
@@ -55,10 +49,20 @@ export class AuthService {
   }
 
   updateUserRatings(user: User, book: Book): Observable<{user: User, book: Book}> {
-    return this.http.put<any>(`${this.authUrl}/${user._id}/book/${book.id}`, { user, book }, this.httpOptions).pipe(
+    return this.http.put<any>(
+        `${this.authUrl}/${user._id}/book/${book.id}`, { user, book }, this.httpOptions
+      ).pipe(
       tap(_ => console.log(`updated user id=${user._id} with and book id=${book.id}`)),
       catchError(this.handleError<{user: User, book: Book}>('updateUserRatings'))
     );  
+  }
+
+  updateUser(user: User): Observable<User> {
+    return this.http.put<any>(`${this.authUrl}/${user._id}`, user, this.httpOptions).pipe(
+      map(({ user }) => user),
+      tap(_ => console.log(`updated user id=${user._id}`)),
+      catchError(this.handleError<User>('updateUser'))
+    );
   }
 
   getUserProfile(): Observable<User> {

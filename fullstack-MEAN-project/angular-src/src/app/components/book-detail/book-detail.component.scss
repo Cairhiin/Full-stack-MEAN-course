@@ -75,8 +75,16 @@
 				margin: 2rem 1rem 0 0;
 			}
 
-			.btn-primary {
-				@include buttonPrimary;
+			.button-row {
+				display: flex;
+				
+				.btn-primary {
+					@include buttonPrimary;
+				}
+
+				.btn-secondary {
+					@include buttonSecondary;
+				}
 			}
 		}
 
