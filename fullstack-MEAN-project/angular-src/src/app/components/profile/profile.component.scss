@@ -1,26 +1,37 @@
 @import '../../../assets/scss/_config.scss';
 
 #profile {
-	min-height: calc(100vh - 65px - 154px);
+	min-height: calc(100vh - 65px - 154px - 34px);
 	
 	.profile-page {
-		margin: 2rem auto;
-		padding: 1rem 2rem;
-		background: $primary-color;
-		min-width: 400px;
-		max-width: 600px;
-
+		margin: 2rem 0;
+		
 		h2 {
 			@include headerText;		
 		}
 
 		.details {
-			margin: 2rem 0;
+			margin: 2rem auto;
+			padding: 1rem 2rem;
+			background: $primary-color;
+			min-width: 400px;
+			max-width: 600px;
+			@include dropShadow;
 
 			.details-row {
 				display: flex;
 				column-gap: 1rem;
 				padding: 0.4rem 0;
+
+				span {
+					font-size: 0.85rem;
+
+					a, a:visited {
+						color: rgba($on-primary-color, 0.7);
+						text-decoration: none;
+						text-transform: uppercase;
+					}
+				}
 
 				&>:nth-child(1) {
 					min-width: 100px;

@@ -18,7 +18,7 @@
 				<div>Reading now:</div> 
 				<div *ngIf="user.reading">
 					{{ user.reading.title }}
-					<span><a routerLink="/books/{{ user.reading.id }}">by {{ user.reading.author }}</a></span>
+					<span><a routerLink="/books/{{ user.reading.id }}"> ({{ user.reading.author }})</a></span>
 				</div>
 			</div>
 			<div class="details-row">
