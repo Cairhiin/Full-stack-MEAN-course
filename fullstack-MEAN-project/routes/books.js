@@ -4,6 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const Book = require('../models/book');
+const checkIsInRole = require('../config/utils');
 
 router.get('/', (req, res, next) => {
 	const queryParams = req.query;
@@ -145,7 +146,14 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res, ne
 	});
 });
 
-router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+/*
+Protect route also on backend, only admin and editors
+can delete users
+*/
+router.delete('/:id', 
+	passport.authenticate('jwt', { session: false }), 
+	checkIsInRole('admin', 'editor'),
+	(req, res, next) => {
 	const id = req.params.id;
 
 	/* 

@@ -15,6 +15,7 @@ export class BookDetailComponent implements OnInit {
   user?: User;
   book?: Book;
   selectedValue: number = 0;
+  isDeleteBookActive: boolean  = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -120,5 +121,23 @@ export class BookDetailComponent implements OnInit {
       this.authService.updateUser(this.user)
         .subscribe(user => this.user = user);
     }  
+  }
+
+  deleteBook(id: string): void {
+    this.toggleIsDeleteBookActive();
+    if (this.book) {
+      this.authService.deleteUser(this.book.id)
+        .subscribe(data => { 
+          console.log(data)
+        });
+    }
+  }
+
+  openDeleteBookDialog() {
+    this.toggleIsDeleteBookActive();
+  }
+
+  toggleIsDeleteBookActive() {
+    this.isDeleteBookActive = !this.isDeleteBookActive;
   }
 }
