@@ -11,12 +11,50 @@
 	background: rgba(black, 0.6);
 
 	.delete-user-form {
+		border-radius: 10px;
 		position: relative;
 		margin: 2rem auto;
 		padding: 1rem 2rem;
 		background: $primary-color;
 		width: 400px;
-		left: 0;
-		right: 0;
+
+		h2 {
+			@include headerText;		
+		}
+
+		form {
+			@include authForm;
+
+			.form-group {
+				color: $on-primary-color;
+
+				div {
+					padding: 0.2rem;
+				}
+
+				div:not(:first-child) {
+					text-transform: uppercase;
+					color: rgba($on-primary-color, 0.8);
+					font-size: 0.9rem;
+				}
+			}
+
+			.button-row {
+				display: flex;
+				justify-content: space-between;
+				
+				.btn {
+					width: 45%;
+				}
+
+				.btn-primary {
+					@include buttonPrimary;
+				}
+
+				.btn-secondary {
+					@include buttonSecondary;
+				}
+			}	
+		}
 	}
 }
