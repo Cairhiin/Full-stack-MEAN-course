@@ -18,6 +18,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from './guards/auth.guard';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { DeleteBookComponent } from './components/delete-book/delete-book.component';
+import { EditBookComponent } from './components/edit-book/edit-book.component';
+import { DeleteUserComponent } from './components/delete-user/delete-user.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { RatingComponent } from './components/rating/rating.component';
     FooterComponent,
     BookDetailComponent,
     RatingComponent,
+    DeleteBookComponent,
+    EditBookComponent,
+    DeleteUserComponent,
   ],
   imports: [
     JwtModule.forRoot({

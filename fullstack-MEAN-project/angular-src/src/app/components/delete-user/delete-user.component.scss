@@ -1,0 +1,22 @@
+@import '../../../assets/scss/_config.scss';
+@import '../../../assets/scss/_form.scss';
+
+#delete-user {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 10;
+	width: 100%;
+	height: 100vh;
+	background: rgba(black, 0.6);
+
+	.delete-user-form {
+		position: relative;
+		margin: 2rem auto;
+		padding: 1rem 2rem;
+		background: $primary-color;
+		width: 400px;
+		left: 0;
+		right: 0;
+	}
+}

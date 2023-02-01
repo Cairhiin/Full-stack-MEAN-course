@@ -1,0 +1,12 @@
+<div id="delete-user">
+	<div class="delete-user-form">
+		<h2 class="page-header">Delete User</h2>
+		<form>
+			<div class="form-group">
+				Are you certain you want to delete user: {{ user && user.username }}
+			</div>
+			<input (click)="deleteUser()" type="submit" class="btn btn-primary" value="Delete">
+			<input (click)="goBack()" type="submit" class="btn btn-primary" value="Cancel">
+		</form>
+	</div>
+</div>
