@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
 const Book = require('../models/book');
+const checkIsInRole = require('../config/utils');
 
 router.post('/register', (req, res, next) => {
 	let newUser = new User({
@@ -93,7 +94,9 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res, 
 	});
 });
 
-router.put('/:id/book/:bid', (req, res, next) => {
+router.put('/:id/book/:bid', 
+	passport.authenticate('jwt', { session: false }),
+	(req, res, next) => {
 	const id = req.params.id;
 	const bid = req.params.bid;
 	const { book, user } = req.body;
@@ -111,7 +114,6 @@ router.put('/:id/book/:bid', (req, res, next) => {
 				if (err) {
 					res.json({ success: false, msg: `Failed to update book with id: ${bid}!` });
 				} else {
-					console.log(user)
 					res.json({ success: true, user: user, book: book });
 				}
 			});	
@@ -119,4 +121,21 @@ router.put('/:id/book/:bid', (req, res, next) => {
 	});
 });
 
+/*
+Protect route also on backend, only admin
+can delete users
+*/
+router.delete('/:id', 
+	passport.authenticate('jwt', { session: false }), 
+	checkIsInRole('admin'),
+	(req, res, next) => {
+	const id = req.params.id;
+	User.deleteUser(id, (err, user) => {
+		if (err || user.deletedCount === 0) {
+			res.json({ success: false, msg: `Failed to delete user with id ${id}!` });
+		} else {
+			res.json({ success: true });
+		}
+	});
+});
 module.exports = router;

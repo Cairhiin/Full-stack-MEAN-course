@@ -1,4 +1,10 @@
 <main id="book-details">
+	<app-delete-book
+		*ngIf="isDeleteBookActive"
+		[book]="book"
+		(onDeleteBook)="deleteBook($event)"
+		(onCancel)="toggleIsDeleteBookActive()"
+	></app-delete-book>
 	<div *ngIf="book" class="book">
 		<div class="book-header"> 
 			<h2> {{ book.title | uppercase }}</h2>
@@ -43,7 +49,11 @@
 					</div>
 					<div class="admin-buttons" *ngIf="authService.hasAdminRights(user ? user.role : '')">
 						<button class="btn btn-primary">Edit Book</button>
-						<button class="btn btn-primary">Delete Book</button>
+						<button 
+							(click)="openDeleteBookDialog()" 
+							class="btn btn-primary">
+							Delete Book
+						</button>
 					</div>
 				</div>
 			</div>

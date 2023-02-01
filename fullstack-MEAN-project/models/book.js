@@ -15,6 +15,7 @@ const BookSchema = mongoose.Schema({
 	},
 	ISBN: {
 		type: String,
+		unique : true,
 		required: true
 	},
 	genres:

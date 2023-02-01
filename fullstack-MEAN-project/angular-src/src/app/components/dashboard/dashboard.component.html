@@ -1,4 +1,10 @@
 <main id="dashboard">
+	<app-delete-user
+		*ngIf="isDeleteUserActive"
+		[user]="userToBeEdited"
+		(onDeleteUser)="deleteUser($event)"
+		(onCancel)="toggleIsDeleteUserActive()"
+	></app-delete-user>
 	<div class="dashboard-page">
 		<h2>Dashboard</h2>
 		<div class="dashboard-info">
@@ -46,7 +52,7 @@
 				<div class="newest-users">
 					<h3>Newest users</h3>
 					<div class="user-list">
-						<div *ngFor="let user of users" class="dashboard-row">
+						<div *ngFor="let user of users; let i = index" class="dashboard-row">
 							<div>
 								<p>{{ user.username }}</p>
 								<span>{{ user.role }}</span>
@@ -56,8 +62,13 @@
 								<span>{{ user.name }}</span>
 							</div>
 							<div>
-								<button class="btn btn-primary">Set Role</button>
-								<button class="btn btn-primary">Delete</button>
+								<span *ngIf="user.role !=='admin'">
+									<button class="btn btn-primary">Set Role</button>
+									
+									<button (click)="openDeleteUserDialog(user)" class="btn btn-primary">
+										Delete
+									</button>
+								</span>
 							</div>
 						</div>
 					</div>

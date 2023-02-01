@@ -15,6 +15,7 @@ export class BookDetailComponent implements OnInit {
   user?: User;
   book?: Book;
   selectedValue: number = 0;
+  isDeleteBookActive: boolean  = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,6 +43,10 @@ export class BookDetailComponent implements OnInit {
     this.location.back();
   }
 
+  /*
+  Get the number of times the book has been rated
+  by looping over the keys and summing their values
+  */
   getNumberOfRatings(): number {
     let count = 0;
 
@@ -53,14 +58,17 @@ export class BookDetailComponent implements OnInit {
     return count;
   }
 
+  /* 
+  Get the rating as a percentage score and round to two decimals
+  */
   getRatingScorePercentage(rating: number): number {
     return Math.round(rating / this.getNumberOfRatings() * 100);
   }
 
   /* 
-    Check if the user has already rated the book and
-    if true assign the rating and set hasBeenRated to true
-    to avoid the user from rating the book again
+  Check if the user has already rated the book and
+  if true assign the rating and set hasBeenRated to true
+  to avoid the user from rating the book again
   */
   checkIfBookHasBeenRated(): boolean {
     if (!this.user || !this.book) return false;
@@ -78,9 +86,9 @@ export class BookDetailComponent implements OnInit {
   }
 
   /* 
-    Receive the rating when the user clicks the rating component
-    and update both the book and user document in the database
-    then update the current book and user with the return value
+  Receive the rating when the user clicks the rating component
+  and update both the book and user document in the database
+  then update the current book and user with the return value
   */
   updateRating(value: number): void {
     if (this.user && this.book) {
@@ -96,6 +104,10 @@ export class BookDetailComponent implements OnInit {
     }
   }
 
+  /* 
+  Check if the reader has marked this book as
+  currently being read by them
+  */
   checkIfUserIsReading(): boolean {
     if (this.user && this.book && this.user.reading) {
         return this.user.reading.ISBN === this.book.ISBN;
@@ -109,5 +121,23 @@ export class BookDetailComponent implements OnInit {
       this.authService.updateUser(this.user)
         .subscribe(user => this.user = user);
     }  
+  }
+
+  deleteBook(id: string): void {
+    this.toggleIsDeleteBookActive();
+    if (this.book) {
+      this.authService.deleteUser(this.book.id)
+        .subscribe(data => { 
+          console.log(data)
+        });
+    }
+  }
+
+  openDeleteBookDialog() {
+    this.toggleIsDeleteBookActive();
+  }
+
+  toggleIsDeleteBookActive() {
+    this.isDeleteBookActive = !this.isDeleteBookActive;
   }
 }

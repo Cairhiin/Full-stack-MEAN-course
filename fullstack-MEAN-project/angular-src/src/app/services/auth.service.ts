@@ -76,6 +76,13 @@ export class AuthService {
     );
   }
 
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.authUrl}/${id}`).pipe(
+      tap(_ => console.log(`deleted user id=${id}`)),
+      catchError(this.handleError<any>('deleteUser'))
+    );
+  }
+
   getUsers(): Observable<User[]> {
     this.loadToken();
 
