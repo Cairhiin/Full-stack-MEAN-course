@@ -113,7 +113,7 @@ router.get('/:id', (req, res, next) => {
 	});
 });
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 	const id = req.params.id;
 	const book = req.body;
 
@@ -130,7 +130,7 @@ router.put('/:id', (req, res, next) => {
 	});
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 	const book = new Book(req.body);
 
 	/* 
@@ -145,7 +145,7 @@ router.post('/', (req, res, next) => {
 	});
 });
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 	const id = req.params.id;
 
 	/* 
