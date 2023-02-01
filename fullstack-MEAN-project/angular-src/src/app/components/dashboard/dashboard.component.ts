@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { User } from '../../user';
 import { Rate } from '../../rate';
 
@@ -20,6 +21,9 @@ export class DashboardComponent {
       ratings: [],
       reviews: [], 
   };
+  userToBeEdited?: User 
+
+  isDeleteUserActive: boolean  = false;
 
   constructor(
     public authService: AuthService,
@@ -64,5 +68,26 @@ export class DashboardComponent {
       return 0;
     });
     return ratings;
+  }
+
+  deleteUser(id: string): void {
+    this.toggleIsDeleteUserActive();
+    if (this.userToBeEdited) {
+      this.authService.deleteUser(this.userToBeEdited._id)
+        .subscribe(data => { 
+          if (this.users && data) {
+            this.users = this.users.filter(user => user._id !== id);
+          } 
+        });
+    }
+  }
+
+  openDeleteUserDialog(user: User) {
+    this.toggleIsDeleteUserActive();
+     this.userToBeEdited = user;
+  }
+
+  toggleIsDeleteUserActive() {
+    this.isDeleteUserActive = !this.isDeleteUserActive;
   }
 }
