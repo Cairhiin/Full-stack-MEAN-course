@@ -7,7 +7,8 @@ export interface Book {
 	author: string;
 	ISBN: string;
 	ratings: Rating;
-	avgRating: number;
+	reviews?: Array<string>;
+	avgRating?: number;
 	year: string;
 	publisher: string;
 	genres: Array<string>;
