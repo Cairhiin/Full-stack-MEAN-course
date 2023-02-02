@@ -14,9 +14,6 @@ export class AuthService {
   user?: User | null;
 
   private authUrl: string = 'http://localhost:3000/users';
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
 
   constructor(
     private http: HttpClient,
@@ -34,7 +31,7 @@ export class AuthService {
     }
   ): Observable<any> {
     const url = `${this.authUrl}/register`;
-    return this.http.post<any>(url, user, this.httpOptions).pipe(
+    return this.http.post<any>(url, user).pipe(
       tap((data: any) => console.log(data.msg)),
       catchError(this.handleError<any>('registerUser'))
     );
@@ -42,7 +39,7 @@ export class AuthService {
 
   authenticateUser(user: { username: string, password: string }): Observable<any> {
     const url = `${this.authUrl}/authenticate`;
-    return this.http.post<any>(url, user, this.httpOptions).pipe(
+    return this.http.post<any>(url, user).pipe(
       tap((data: any) => console.log(data.msg)),
       catchError(this.handleError<any>('authenticateUser'))
     );  
@@ -50,15 +47,14 @@ export class AuthService {
 
   updateUserRatings(user: User, book: Book): Observable<{user: User, book: Book}> {
     return this.http.put<any>(
-        `${this.authUrl}/${user._id}/book/${book.id}`, { user, book }, this.httpOptions
-      ).pipe(
+        `${this.authUrl}/${user._id}/book/${book.id}`, { user, book }).pipe(
       tap(_ => console.log(`updated user id=${user._id} with and book id=${book.id}`)),
       catchError(this.handleError<{user: User, book: Book}>('updateUserRatings'))
     );  
   }
 
   updateUser(user: User): Observable<User> {
-    return this.http.put<any>(`${this.authUrl}/${user._id}`, user, this.httpOptions).pipe(
+    return this.http.put<any>(`${this.authUrl}/${user._id}`, user).pipe(
       map(({ user }) => user),
       tap(_ => console.log(`updated user id=${user._id}`)),
       catchError(this.handleError<User>('updateUser'))
