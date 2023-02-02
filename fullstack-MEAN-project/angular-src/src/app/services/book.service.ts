@@ -31,6 +31,21 @@ export class BookService {
     );
   }
 
+  deleteBook(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${id}`).pipe(
+      tap(_ => console.log(`deleted book id=${id}`)),
+      catchError(this.handleError<any>('deleteBook'))
+    );
+  }
+
+  updateBook(book: Book): Observable<Book> {
+    return this.http.put<any>(`${this.url}/${book.id}`, book).pipe(
+      map(({ book }) => book),
+      tap(_ => console.log(`Book with id=${book.id} updated`)),
+      catchError(this.handleError<Book>('updateBook'))
+    );
+  }
+
   getBooksByDate(sort: string, limit: number): Observable<Book[]> {
     return this.http.get<any>(`${this.url}?date=${sort}&limit=${limit}`).pipe(
       map(({ books }) => books),
