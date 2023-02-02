@@ -1,4 +1,5 @@
 import { Rating } from './rating';
+import { Genre } from './genre';
 
 export interface Book {
 	id: string;
@@ -11,6 +12,6 @@ export interface Book {
 	avgRating: number;
 	year: string;
 	publisher: string;
-	genres: Array<string>;
+	genres: Array<Genre>;
 	image: string;
 };

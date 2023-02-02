@@ -70,7 +70,7 @@ export class EditBookComponent implements OnInit {
     reviews
     */
     const genres = book.genres.split(',');
-    this.book = {...book, ...this.book, genres: genres.map(genre => genre.trim()) };
+    this.book = {...book, ...this.book };
     this.onUpdateBook.emit(this.book);
     return true;
   }

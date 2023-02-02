@@ -37,6 +37,15 @@
 				font-size: 1rem;
 				text-transform: uppercase;
 				color: rgba($on-secondary-color, 0.8);
+
+				&.genre-info {
+					text-transform: none;
+					color: $on-primary-color;
+				}
+
+				&.genre-info:not(:last-child):after {
+					content: ', ';
+				}
 			}
 
 			div {
