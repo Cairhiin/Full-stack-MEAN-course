@@ -5,7 +5,7 @@
 		width: 100%;
 		position: relative;
 
-		input {
+		input, textarea {
 			margin: 1rem 0;
 			padding-left: 2.5rem;
 			height: 40px;
@@ -15,6 +15,11 @@
 			&::placeholder {
 				color: rgba($on-tertiary-color, 0.30);
 			}
+		}
+		
+		textarea {
+			height: 200px;
+			overflow: hidden;
 		}
 
 		i {
