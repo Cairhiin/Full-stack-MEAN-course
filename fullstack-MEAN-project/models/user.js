@@ -65,15 +65,19 @@ module.exports.getUsers = function(callback) {
 
 // Password exclusion: https://stackoverflow.com/questions/12096262/how-to-protect-the-password-field-in-mongoose-mongodb-so-it-wont-return-in-a-qu
 module.exports.getUserById = function(id, callback) {
-	User.findById(id, {}, { populate: 'ratings.book reading' })
+	User.findById(id, {})
 		.select('+password')
+		.populate({ path: 'reading', model: 'Book'})
+		.populate({ path: 'ratings.book', model: 'Book' })
 		.exec(callback);
 }
 
 module.exports.getUserByUsername = function(username, callback) {
 	const query = { username: username };
-	User.findOne(query, {}, { populate: 'ratings.book reading' })
+	User.findOne(query, {})
 		.select('+password')
+		.populate({ path: 'reading', model: 'Book'})
+		.populate({ path: 'ratings.book', model: 'Book' })
 		.exec(callback);
 }
 

@@ -100,7 +100,7 @@ module.exports.getBooks = function(limit = 0, callback) {
 }
 
 module.exports.getBookById = function(id, callback) {
-	Book.findOne({ _id: id }, callback).populate('genres');
+	Book.findById(id, callback).populate('genres');
 }
 
 module.exports.getBooksByAuthor = function(author, callback) {
