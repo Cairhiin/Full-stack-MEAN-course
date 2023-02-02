@@ -1,7 +1,9 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { ValidateService } from '../../services/validate.service';
+import { GenreService } from '../../services/genre.service';
 import { FlashMessagesService } from 'flash-messages-angular';
 import { Book } from '../../book';
+import { Genre } from '../../genre';
 
 @Component({
   selector: 'app-edit-book',
@@ -13,17 +15,19 @@ export class EditBookComponent implements OnInit {
   @Output() onUpdateBook = new EventEmitter<Book>();
   @Output() onCancel = new EventEmitter();
 
+  addGenres!: Genre[];
   title: string = '';
   author: string = '';
   description: string = '';
   ISBN: string = '';
   year: string = '';
   publisher: string = '';
-  genres: string = '';
+  genres!: Genre[];
 
   constructor(
     private flashMessageService: FlashMessagesService,
-    private validateService: ValidateService
+    private validateService: ValidateService,
+    private genreService: GenreService
   ) {}
 
   ngOnInit() {
@@ -39,7 +43,9 @@ export class EditBookComponent implements OnInit {
     this.ISBN = ISBN;
     this.year = year;
     this.publisher = publisher || '';
-    this.genres = genres.join(',');
+    this.genres = genres || [];
+    this.genreService.getGenres()
+      .subscribe(genres => this.genres = genres);
   }
 
   goBack(): void {
@@ -54,7 +60,7 @@ export class EditBookComponent implements OnInit {
       ISBN: this.ISBN,
       year: this.year,
       publisher: this.publisher,
-      genres: this.genres
+      genres: this.addGenres
     };
 
     if (!this.validateService.validateBook(book)) {
@@ -64,13 +70,10 @@ export class EditBookComponent implements OnInit {
     }
 
     /* 
-    Turning the string back into an array (trimming any spaces 
-    in case the user inputed a space after the comma) and merging the
-    new book object with the original to preserve id, ratings and
-    reviews
+    Merging the new book object with the original to 
+    preserve id, ratings and reviews
     */
-    const genres = book.genres.split(',');
-    this.book = {...book, ...this.book };
+    this.book = {...this.book, ...book };
     this.onUpdateBook.emit(this.book);
     return true;
   }

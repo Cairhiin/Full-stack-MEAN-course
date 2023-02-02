@@ -145,7 +145,7 @@ module.exports.addBook = function(book, callback) {
 module.exports.updateBook = function(id, book, callback) {
 	Book.findOneAndUpdate({ _id: id }, book, {
 		new: true
-	}, callback);
+	}, callback).populate('genres');
 }
 
 module.exports.deleteBook = function(id, callback) {

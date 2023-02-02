@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 		if (err) {
 			res.json({ success: false, msg: 'No genres found!' });
 		} else {
-			res.json({ success: true, users: genres });
+			res.json({ success: true, genres: genres });
 		}
 	});
 });

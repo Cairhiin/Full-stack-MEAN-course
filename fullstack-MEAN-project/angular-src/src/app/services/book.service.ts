@@ -9,9 +9,6 @@ import { Book } from '../book';
 })
 export class BookService {
   private url: string = 'http://localhost:3000/books';
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +16,7 @@ export class BookService {
     return this.http.get<any>(this.url).pipe(
       map(({ books }) => books),
       tap(_ => console.log('Retrieved all books')),
-      catchError(this.handleError<Book[]>('getHeroes', []))
+      catchError(this.handleError<Book[]>('getBooks', []))
     );
   }
 

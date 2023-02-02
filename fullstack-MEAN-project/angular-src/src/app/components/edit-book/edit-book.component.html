@@ -34,11 +34,13 @@
 					name="publisher" placeholder="publisher" class="form-control">
 			</div>
 			<div class="form-group">
-				<i class="fa fa-regular fa-lock icon"></i>
-				<input type="text" [(ngModel)]="genres" 
+				<select 
+					[(ngModel)]="addGenres" 
 					name="genres" 
-					placeholder="genres" 
-					class="form-control">
+					class="genres-select"
+					multiple>
+					<option *ngFor="let genre of genres" [ngValue]="genre">{{ genre.name }}</option>
+				</select>
 			</div>
 			<div class="button-row">
 				<input type="submit" class="btn btn-primary" value="Update">
