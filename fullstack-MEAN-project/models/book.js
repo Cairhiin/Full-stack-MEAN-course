@@ -3,7 +3,8 @@ const config = require ('../config/database');
 
 const BookSchema = mongoose.Schema({
 	author: {
-		type: String
+		type: String,
+		required: true
 	},
 	title: {
 		type: String,
