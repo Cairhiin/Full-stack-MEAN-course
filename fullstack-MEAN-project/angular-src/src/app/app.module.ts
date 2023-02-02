@@ -21,6 +21,7 @@ import { RatingComponent } from './components/rating/rating.component';
 import { DeleteBookComponent } from './components/delete-book/delete-book.component';
 import { EditBookComponent } from './components/edit-book/edit-book.component';
 import { DeleteUserComponent } from './components/delete-user/delete-user.component';
+import { BookSearchComponent } from './components/book-search/book-search.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { DeleteUserComponent } from './components/delete-user/delete-user.compon
     DeleteBookComponent,
     EditBookComponent,
     DeleteUserComponent,
+    BookSearchComponent,
   ],
   imports: [
     JwtModule.forRoot({

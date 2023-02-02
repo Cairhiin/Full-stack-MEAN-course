@@ -62,6 +62,20 @@ export class BookService {
     );
   }
 
+  searchBooks(term: string): Observable<Book[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<any>(`${this.url}?author=${term}`).pipe(
+      map(({ books }) => books),
+      tap(x => x.length ?
+        console.log(`Found books matching term ${term}`) :
+        console.log(`No books found matching term ${term}`)
+      ),
+      catchError(this.handleError<Book[]>('searchBooks', []))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
