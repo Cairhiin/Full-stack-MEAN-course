@@ -57,10 +57,13 @@
 								<div>
 									<p>{{ user.username }}</p>
 									<span>
-										<select *ngIf="user.role !== 'admin'" [(ngModel)]="user.role" name="role" id="#role">
+										<select 
+											*ngIf="user.role !== 'admin'" 
+											[(ngModel)]="user.role" 
+											name="role" 
+											class="role-select">
 											<option selected="selected" value="user.role">{{ user.role }}</option>
 											<option value="user">user</option>
-											<option value="admin">admin</option>
 											<option value="editor">editor</option>
 										</select>
 										<div *ngIf="user.role === 'admin'">{{ user.role }}</div>
