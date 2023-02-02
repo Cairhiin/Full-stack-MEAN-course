@@ -13,9 +13,10 @@ import { User } from '../../user';
 })
 export class BookDetailComponent implements OnInit {
   user?: User;
-  book?: Book;
+  book!: Book;
   selectedValue: number = 0;
   isDeleteBookActive: boolean  = false;
+  isEditBookActive: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,11 +50,8 @@ export class BookDetailComponent implements OnInit {
   */
   getNumberOfRatings(): number {
     let count = 0;
-
-    if (this.book) {
-      for (const rating in this.book.ratings) {
-        count += this.book.ratings[rating];
-      }
+    for (const rating in this.book.ratings) {
+      count += this.book.ratings[rating];
     }
     return count;
   }
@@ -91,7 +89,7 @@ export class BookDetailComponent implements OnInit {
   then update the current book and user with the return value
   */
   updateRating(value: number): void {
-    if (this.user && this.book) {
+    if (this.user) {
       this.user.ratings.push({ book: this.book, rating: value, date: new Date() });
 
       // Increment the chosen rating by 1
@@ -109,7 +107,7 @@ export class BookDetailComponent implements OnInit {
   currently being read by them
   */
   checkIfUserIsReading(): boolean {
-    if (this.user && this.book && this.user.reading) {
+    if (this.user && this.user.reading) {
         return this.user.reading.ISBN === this.book.ISBN;
     }
     return false;
@@ -126,18 +124,34 @@ export class BookDetailComponent implements OnInit {
   deleteBook(id: string): void {
     this.toggleIsDeleteBookActive();
     if (this.book) {
-      this.authService.deleteUser(this.book.id)
-        .subscribe(data => { 
-          console.log(data)
+      this.bookService.deleteBook(this.book.id)
+        .subscribe(data => {
+          if (data.success === true) {
+            this.location.back();
+          }
         });
     }
   }
 
-  openDeleteBookDialog() {
+  updateBook(book: Book): void {
+    this.toggleIsEditBookActive();
+    this.bookService.updateBook(book)
+      .subscribe(book => this.book = book);
+  }
+
+  openDeleteBookDialog(): void {
     this.toggleIsDeleteBookActive();
   }
 
-  toggleIsDeleteBookActive() {
+  toggleIsDeleteBookActive(): void {
     this.isDeleteBookActive = !this.isDeleteBookActive;
+  }
+
+  openEditBookDialog(): void {
+    this.toggleIsEditBookActive();
+  }
+
+  toggleIsEditBookActive(): void {
+    this.isEditBookActive = !this.isEditBookActive;
   }
 }

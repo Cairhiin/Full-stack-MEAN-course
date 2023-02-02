@@ -5,6 +5,12 @@
 		(onDeleteBook)="deleteBook($event)"
 		(onCancel)="toggleIsDeleteBookActive()"
 	></app-delete-book>
+	<app-edit-book
+		*ngIf="isEditBookActive"
+		[book]="book"
+		(onUpdateBook)="updateBook($event)"
+		(onCancel)="toggleIsEditBookActive()"
+	></app-edit-book>
 	<div *ngIf="book" class="book">
 		<div class="book-header"> 
 			<h2> {{ book.title | uppercase }}</h2>
@@ -48,7 +54,11 @@
 						</button>
 					</div>
 					<div class="admin-buttons" *ngIf="authService.hasAdminRights(user ? user.role : '')">
-						<button class="btn btn-primary">Edit Book</button>
+						<button
+							(click)="openEditBookDialog()"  
+							class="btn btn-primary">
+							Edit Book
+						</button>
 						<button 
 							(click)="openDeleteBookDialog()" 
 							class="btn btn-primary">
