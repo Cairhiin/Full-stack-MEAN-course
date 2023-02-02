@@ -7,6 +7,7 @@ const session = require('express-session');
 const config = require('./config/database');
 const users = require('./routes/users');
 const books = require('./routes/books');
+const genres = require('./routes/genres');
 
 mongoose.set('strictQuery', false);
 mongoose.connect(config.database);
@@ -40,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', users);
 app.use('/books', books);
+app.use('/genres', genres);
 
 app.get('/', (req, res) => {
 	res.send('Invalid Endpoint');

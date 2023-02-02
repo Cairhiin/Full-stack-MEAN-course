@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Genre } from '../genre';
 
 @Injectable({
   providedIn: 'root'
@@ -47,5 +48,29 @@ export class ValidateService {
 
   validatePassword(password: string, passwordRepeat: string): boolean {
     return (password === passwordRepeat);
+  }
+
+  validateBook(book: 
+    {
+      title: string,
+      author: string,
+      description: string,
+      ISBN: string,
+      year: string,
+      publisher: string,
+      genres: Array<Genre>
+    }
+  ): boolean {
+    if (
+      book.title === '' ||
+      book.author === '' ||
+      book.description === '' ||
+      book.year === '' ||
+      book.publisher === '' ||
+      book.genres === undefined
+    ) {
+      return false;
+    }
+    return true;
   }
 }

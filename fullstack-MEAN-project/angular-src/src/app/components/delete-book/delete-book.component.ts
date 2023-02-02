@@ -7,7 +7,7 @@ import { Book } from '../../book';
   styleUrls: ['./delete-book.component.scss']
 })
 export class DeleteBookComponent {
-  @Input() book?: Book;
+  @Input() book!: Book;
   @Output() onDeleteBook = new EventEmitter<string>();
   @Output() onCancel = new EventEmitter();
 
@@ -16,6 +16,6 @@ export class DeleteBookComponent {
   }
 
   deleteBook(): void {
-    this.book && this.onDeleteBook.emit(this.book.id);
+    this.onDeleteBook.emit(this.book.id);
   }
 }

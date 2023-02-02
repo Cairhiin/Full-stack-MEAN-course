@@ -9,9 +9,6 @@ import { Book } from '../book';
 })
 export class BookService {
   private url: string = 'http://localhost:3000/books';
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +16,7 @@ export class BookService {
     return this.http.get<any>(this.url).pipe(
       map(({ books }) => books),
       tap(_ => console.log('Retrieved all books')),
-      catchError(this.handleError<Book[]>('getHeroes', []))
+      catchError(this.handleError<Book[]>('getBooks', []))
     );
   }
 
@@ -28,6 +25,21 @@ export class BookService {
       map(({ book }) => book),
       tap(_ => console.log(`Book with id=${id} retrieved`)),
       catchError(this.handleError<Book>('getBook'))
+    );
+  }
+
+  deleteBook(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${id}`).pipe(
+      tap(_ => console.log(`deleted book id=${id}`)),
+      catchError(this.handleError<any>('deleteBook'))
+    );
+  }
+
+  updateBook(book: Book): Observable<Book> {
+    return this.http.put<any>(`${this.url}/${book.id}`, book).pipe(
+      map(({ book }) => book),
+      tap(_ => console.log(`Book with id=${book.id} updated`)),
+      catchError(this.handleError<Book>('updateBook'))
     );
   }
 
@@ -44,6 +56,20 @@ export class BookService {
       map(({ books }) => books),
       tap(_ => console.log(`Retrieved ${limit} books sorted by rating`)),
       catchError(this.handleError<Book[]>('getHeroes', []))
+    );
+  }
+
+  searchBooks(term: string): Observable<Book[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<any>(`${this.url}?author=${term}`).pipe(
+      map(({ books }) => books),
+      tap(x => x.length ?
+        console.log(`Found books matching term ${term}`) :
+        console.log(`No books found matching term ${term}`)
+      ),
+      catchError(this.handleError<Book[]>('searchBooks', []))
     );
   }
 

@@ -11,19 +11,11 @@ import { Rate } from '../../rate';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  users?: User[];
-  user: User = {
-      _id: '',
-      name: '',
-      username: '',
-      email: '',
-      role: '',
-      ratings: [],
-      reviews: [], 
-  };
+  users!: User[];
+  user!: User;
   userToBeEdited?: User 
-
-  isDeleteUserActive: boolean  = false;
+  isSetUserRolActive: boolean = false;
+  isDeleteUserActive: boolean = false;
 
   constructor(
     public authService: AuthService,
@@ -80,6 +72,17 @@ export class DashboardComponent {
           } 
         });
     }
+  }
+
+  setNewRole(user: User): void {
+    this.authService.updateUser(user)
+      .subscribe(updatedUser => {
+        this.users.forEach(user => {
+          if (user._id == updatedUser._id) {
+            user = updatedUser;
+          }
+        });
+      });
   }
 
   openDeleteUserDialog(user: User) {

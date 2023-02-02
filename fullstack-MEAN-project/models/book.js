@@ -3,7 +3,8 @@ const config = require ('../config/database');
 
 const BookSchema = mongoose.Schema({
 	author: {
-		type: String
+		type: String,
+		required: true
 	},
 	title: {
 		type: String,
@@ -19,7 +20,11 @@ const BookSchema = mongoose.Schema({
 		required: true
 	},
 	genres:
-		[{ type: String, required: true }],
+		[{ 
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Genre', 
+			required: true 
+		}],
 	year: {
 		type: String,
 		required: true
@@ -91,35 +96,35 @@ function calculateRating(ratings) {
 const Book = module.exports = mongoose.model('Book', BookSchema);
 
 module.exports.getBooks = function(limit = 0, callback) {
-	Book.find().limit(limit).exec(callback);
+	Book.find().limit(limit).populate('genres').exec(callback);
 }
 
 module.exports.getBookById = function(id, callback) {
-	Book.findById(id, callback);
+	Book.findById(id, callback).populate('genres');
 }
 
 module.exports.getBooksByAuthor = function(author, callback) {
 	const query = { author: { $regex: author, $options: "i" }};
-	Book.find(query, callback);
+	Book.find(query, { populate: 'genres' }, callback);
 }
 
 module.exports.getBooksByTitle = function(title, callback) {
 	const query = { title: { $regex: title, $options: "i" }};
-	Book.find(query, callback);
+	Book.find(query, { populate: 'genres' }, callback);
 }
 
 module.exports.getBookByISBN = function(ISBN, callback) {
 	const query = { ISBN: ISBN };
-	Book.findOne(query, callback);
+	Book.findOne(query, { populate: 'genres' }, callback);
 }
 
 module.exports.getBooksByDate = function(params, callback) {
 	const date = params.date || 'desc';
 	const limit = params.limit || 0;
 	if (date === 'desc') {
-		Book.find().sort({ date: 'desc' }).limit(limit).exec(callback);
+		Book.find().sort({ date: 'desc' }).limit(limit).populate('genres').exec(callback);
 	} else {
-		Book.find().sort({ date: 'asc' }).limit(limit).exec(callback);
+		Book.find().sort({ date: 'asc' }).limit(limit).populate('genres').exec(callback);
 	}	 
 }
 
@@ -127,9 +132,9 @@ module.exports.getBooksByRating = function(params, callback) {
 	const rating = params.rating || 'desc';
 	const limit = params.limit || 0;
 	if (rating === 'desc') {
-		Book.find().sort({ avgRating: 'desc' }).limit(limit).exec(callback);
+		Book.find().sort({ avgRating: 'desc' }).limit(limit).populate('genres').exec(callback);
 	} else {
-		Book.find().sort({ avgRating: 'asc' }).limit(limit).exec(callback);
+		Book.find().sort({ avgRating: 'asc' }).limit(limit).populate('genres').exec(callback);
 	}	 
 }
 
@@ -140,7 +145,7 @@ module.exports.addBook = function(book, callback) {
 module.exports.updateBook = function(id, book, callback) {
 	Book.findOneAndUpdate({ _id: id }, book, {
 		new: true
-	}, callback);
+	}, callback).populate('genres');
 }
 
 module.exports.deleteBook = function(id, callback) {

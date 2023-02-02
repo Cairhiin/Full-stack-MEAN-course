@@ -1,0 +1,13 @@
+<main id="search-book">
+	<label for="search-box">Search by title</label>
+	<input #searchBox id="search-box" (input)="search(searchBox.value)" />
+
+	<ul class="search-result">
+		<li *ngFor="let book of books$ | async" >
+		  <a routerLink="/books/{{book.id}}">
+		    {{book.title}}
+		  </a>
+		</li>
+	</ul>
+	<label for="search-box"></label>
+</main>
