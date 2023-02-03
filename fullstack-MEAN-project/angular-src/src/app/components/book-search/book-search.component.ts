@@ -13,12 +13,17 @@ import { Book } from '../../book';
 })
 export class BookSearchComponent {
   books$!: Observable<Book[]>;
+  isInFocus: boolean = false;
   private searchTerms = new Subject<string>();
 
   constructor(private bookService: BookService) {}
 
   search(term: string): void {
     this.searchTerms.next(term);
+  }
+
+  toggleFocus() {
+    this.isInFocus = !this.isInFocus;
   }
 
   ngOnInit(): void {

@@ -64,7 +64,7 @@ export class BookService {
       return of([]);
     }
     return this.http.get<any>(`${this.url}?title=${term}`).pipe(
-      map(({ books }) => books),
+      map(({ books }) => books.slice(0, 5)),
       tap(x => x.length ?
         console.log(`Found books matching term ${term}`) :
         console.log(`No books found matching term ${term}`)
