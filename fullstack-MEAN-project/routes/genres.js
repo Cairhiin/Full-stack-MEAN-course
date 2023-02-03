@@ -16,4 +16,22 @@ router.get('/', (req, res, next) => {
 	});
 });
 
+router.get('/:id', (req, res, next) => {
+	const id = req.params.id;
+	
+	/* 
+	Retrieve a genre by its id - this can only be one genre
+	as identifiers are unique
+	*/
+	Genre.getGenreById(id, (err, genre) => {
+		if (err) throw err;
+		if (!genre) {
+			res.json({ success: false, msg: `No books found with id: ${id}!` });
+		} else {
+			console.log(genre)
+			res.json({ success: true, genre: genre });
+		}
+	});
+});
+
 module.exports = router;
