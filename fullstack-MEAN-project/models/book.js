@@ -89,7 +89,7 @@ function calculateRating(ratings) {
       sum += Number(value) * ratings[value];
       count += ratings[value];
     }
-
+		if (count === 0) return 0;
     return (sum / count).toFixed(2);
 }
 
