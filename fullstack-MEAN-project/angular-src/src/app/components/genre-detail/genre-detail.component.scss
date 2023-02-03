@@ -2,7 +2,7 @@
 
 #genre-details {
 	min-height: calc(100vh - 65px - 154px);
-	padding: 2rem 0;
+	padding: 2rem 1rem;
 	background: $secondary-color;
 
 	.header {
@@ -10,9 +10,12 @@
 	}
 
 	.books-by-genre {
-		margin: 2rem;
+		margin: 2rem auto;
+		max-width: 1400px;
 		display: grid;
 		grid-template-columns: repeat(6, 1fr);
+		grid-column-gap: 1rem;
+		grid-row-gap: 1rem;
 		justify-items: start;
 
 		.book-card {
