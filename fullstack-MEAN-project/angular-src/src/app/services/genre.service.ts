@@ -20,7 +20,15 @@ export class GenreService {
     );
   }
 
-    private handleError<T>(operation = 'operation', result?: T) {
+  getGenre(id: string): Observable<Genre> {
+    return this.http.get<any>(`${this.url}/${id}`).pipe(
+      map(({ genre }) => genre),
+      tap(_ => console.log(`Retrieved genre id=${id}`)),
+      catchError(this.handleError<Genre>('getGenre'))
+    );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);

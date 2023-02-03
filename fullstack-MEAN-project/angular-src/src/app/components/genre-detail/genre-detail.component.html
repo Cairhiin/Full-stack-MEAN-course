@@ -1,1 +1,23 @@
-<p>genre-detail works!</p>
+<main id="genre-details">
+	<div class="header">
+		<h2>{{ genre.name }}</h2>
+	</div>
+	<section class="books-by-genre">
+		<div *ngFor="let book of genre.booksInGenre" class="book-card">
+			<a href="/books/{{ book.id }}">
+				<div class="book-image">
+					<img src="assets/{{ book.image }}" alt="{{ book.title }} cover art" />				
+					<div class="book-info">
+						<div class="book-info-header">
+							<div>{{ book.title }}</div>
+							<div>{{ book.author }}</div>
+						</div>
+						<div class="book-rating">
+							{{ book.avgRating }}
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</section>
+</main>

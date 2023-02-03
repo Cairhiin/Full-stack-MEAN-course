@@ -1,0 +1,70 @@
+@import '../../../assets/scss/_config.scss';
+
+#genre-details {
+	min-height: calc(100vh - 65px - 154px);
+	padding: 2rem 0;
+	background: $secondary-color;
+
+	.header {
+		@include headerText;
+	}
+
+	.books-by-genre {
+		margin: 2rem;
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		justify-items: start;
+
+		.book-card {
+			a {
+				color: rgba($on-primary-color, 0.9);
+			}
+
+			.book-image {			
+				position: relative;
+
+				&:hover > .book-info {
+					@include easeOut;
+					padding: 0.5rem;
+					height: 100%;		
+				}
+
+				img {
+					margin: auto;
+					display: block;
+					aspect-ratio: 235 / 350;
+					object-fit: cover;
+					
+				}
+
+				.book-info {
+					@include easeOut;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					position: absolute;
+					width: 100%;
+					max-width: 235px;
+					bottom: 0;
+					height: 0;
+					background: rgba(black, 0.9);
+					overflow: hidden;
+
+					.book-info-header {
+						font-size: 0.9rem;
+
+						div:not(:first-child) {
+							font-size: 0.8rem;
+							text-transform: uppercase;
+						}
+					}
+
+					.book-rating {
+						font-size: 2.5rem;
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
+}
