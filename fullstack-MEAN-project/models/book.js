@@ -105,17 +105,17 @@ module.exports.getBookById = function(id, callback) {
 
 module.exports.getBooksByAuthor = function(author, callback) {
 	const query = { author: { $regex: author, $options: "i" }};
-	Book.find(query, { populate: 'genres' }, callback);
+	Book.find(query, callback).populate('genres');
 }
 
 module.exports.getBooksByTitle = function(title, callback) {
 	const query = { title: { $regex: title, $options: "i" }};
-	Book.find(query, { populate: 'genres' }, callback);
+	Book.find(query, callback).populate('genres');
 }
 
 module.exports.getBookByISBN = function(ISBN, callback) {
 	const query = { ISBN: ISBN };
-	Book.findOne(query, { populate: 'genres' }, callback);
+	Book.findOne(query, callback).populate('genres');
 }
 
 module.exports.getBooksByDate = function(params, callback) {
