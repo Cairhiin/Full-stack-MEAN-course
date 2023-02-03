@@ -63,7 +63,7 @@ export class BookService {
     if (!term.trim()) {
       return of([]);
     }
-    return this.http.get<any>(`${this.url}?author=${term}`).pipe(
+    return this.http.get<any>(`${this.url}?title=${term}`).pipe(
       map(({ books }) => books),
       tap(x => x.length ?
         console.log(`Found books matching term ${term}`) :

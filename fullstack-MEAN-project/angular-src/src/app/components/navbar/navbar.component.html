@@ -11,7 +11,9 @@
 					<a routerLink="/">Home</a>
 				</li>
 				<li><a href="#">Genre</a></li>
-				<li>Search</li>
+				<li>
+					<app-book-search></app-book-search>
+				</li>
 			</ul>
 			<ul class="nav navbar-right">
 				<li *ngIf="!authService.isUserloggedIn()" routerLinkActive="active"><a routerLink="/register">Register</a></li>
