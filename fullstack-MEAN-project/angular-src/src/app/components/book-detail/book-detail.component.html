@@ -29,7 +29,11 @@
 				<div><span>ISBN: </span>{{ book.ISBN }}</div>
 				<div><span>Publisher: </span>{{ book.publisher }}</div>
 				<div><span>Release Year: </span>{{ book.year }}</div>
-				<div><span>Genres: </span><span class="genre-info" *ngFor="let genre of book.genres">{{ genre.name }}</span></div>
+				<div><span>Genres: </span>
+					<span class="genre-info" *ngFor="let genre of book.genres">
+						<a href="/genres/{{ genre.id }}">{{ genre.name }}</a>
+					</span>
+				</div>
 			</div>
 			<div class="my-rating" *ngIf="authService.isUserloggedIn()">
 				<div>

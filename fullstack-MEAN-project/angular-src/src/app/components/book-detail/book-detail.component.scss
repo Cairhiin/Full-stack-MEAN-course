@@ -33,6 +33,11 @@
 			grid-area: info;
 			color: $on-secondary-color;
 
+			a {
+				color: $on-secondary-color;
+				text-decoration: none;
+			}
+
 			span {				
 				font-size: 1rem;
 				text-transform: uppercase;
