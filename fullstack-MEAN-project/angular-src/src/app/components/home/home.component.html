@@ -48,7 +48,7 @@
 			</div>
 			<div class="genres-row">
 				<div *ngFor="let genre of genres; index as i" class="genre genre-{{i}}">
-					<a routerLink="/genres{{ genre.id }}">
+					<a routerLink="/genres/{{ genre.id }}">
 						{{ genre.name }}
 					</a>
 				</div>
