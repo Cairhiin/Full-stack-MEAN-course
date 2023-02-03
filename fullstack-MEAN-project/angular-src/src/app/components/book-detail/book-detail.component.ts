@@ -60,6 +60,7 @@ export class BookDetailComponent implements OnInit {
   Get the rating as a percentage score and round to two decimals
   */
   getRatingScorePercentage(rating: number): number {
+    if (this.getNumberOfRatings() === 0) return 0;
     return Math.round(rating / this.getNumberOfRatings() * 100);
   }
 
