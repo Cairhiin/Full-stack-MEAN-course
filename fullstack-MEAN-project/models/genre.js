@@ -34,6 +34,6 @@ module.exports.getGenres = function(callback) {
 module.exports.getGenreById = function(id, callback) {
 	Genre.findById(id, callback).populate({
 		path: 'booksInGenre',
-		select: 'title author description year ISBN publisher ratings reviews avgRating'
+		select: 'title author description year ISBN publisher ratings reviews avgRating image'
 	});
 }
