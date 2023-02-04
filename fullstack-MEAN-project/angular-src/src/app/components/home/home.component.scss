@@ -4,6 +4,10 @@
 	padding: 2rem 0 0 0;
 	background: $secondary-color;
 
+	.floating-action-button {
+		@include floatingActionButton;
+	}
+
 	.header {
 		@include headerText;
 	}

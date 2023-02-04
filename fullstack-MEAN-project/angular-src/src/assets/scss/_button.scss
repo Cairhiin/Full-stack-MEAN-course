@@ -33,3 +33,26 @@
 		cursor: default;
 	}
 }
+
+@mixin floatingActionButton {
+	@include easeOut;
+	background: $tertiary-color;
+	color: $on-tertiary-color;
+	width: 75px;
+	height: 75px;
+	border: none;
+	border-radius: 75px;
+	position: fixed;
+	bottom: -80px;
+	right: 32px;
+	font-size: 2rem;
+
+	&:hover {
+		background: $primary-button-highlight-color;
+		color: $on-primary-color;
+	}
+
+	&.active {
+		bottom: 32px;
+	}
+}
