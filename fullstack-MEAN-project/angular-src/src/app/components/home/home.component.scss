@@ -155,17 +155,45 @@
 			". book1 book2 book3 ."
 			". book4 book5 . .";
 		}
+
+		.genres-wrapper {
+			.genres-wrapper-fader {
+				grid-template-columns: 1fr;
+				grid-template-areas:
+				"header"
+				"genres";
+			}
+		}
 	}
 }
 
 @include mediaMd {
 	#home {
 		.book-row {
+			padding: 0 2rem;
 			grid-template-columns: repeat(2, 1fr);
 			grid-template-areas:
 			'book1 book2' 
 			'book3 book4'
 			'book5 .';
+		}
+
+		.genres-wrapper {
+
+			.genres-wrapper-fader {
+				padding: 0 1rem;
+				grid-template-columns: 1fr;
+				grid-template-areas:
+				"header"
+				"genres";
+
+				.genres-row {
+					justify-content: space-between;
+					width: 100%;
+					column-gap: 0.5rem;
+					font-size: 0.9rem;
+				}
+			}
 		}
 	}
 }
