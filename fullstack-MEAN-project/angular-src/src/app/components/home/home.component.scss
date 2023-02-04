@@ -1,7 +1,7 @@
 @import '../../../assets/scss/_config.scss';
 
 #home {
-	padding: 2rem;
+	padding: 2rem 0 0 0;
 	background: $secondary-color;
 
 	.header {
@@ -88,6 +88,55 @@
 			}
 		}
 	}
+
+	.genres-wrapper {
+		background: no-repeat  url(../../../assets/img/genres-background.jpg);
+		background-size: cover;
+		background-position: center center;
+		margin-top: 3rem;
+
+		.genres-wrapper-fader {
+			background: rgba($primary-color, 0.95);
+			display: grid;
+			grid-column-gap: 2rem;
+			grid-template-columns: 2fr 8fr 1fr;
+			grid-template-areas:
+			". header ."
+			". genres .";
+
+			.header {
+				grid-area: header;
+				padding: 2rem 0;
+			}
+
+			.genres-row {
+				grid-area: genres;
+				min-height: 200px;
+				width: 85%;
+				margin: 2rem auto 0 auto;
+				display: flex;
+				justify-content: start;
+				align-content: flex-start;
+				flex-flow: row wrap;
+				row-gap: 0.5rem;
+				column-gap: 2rem;
+
+				.genre {
+					flex-basis: 20%;
+				}
+
+				a {
+					color: $on-primary-color;
+					text-decoration: none;
+
+					&:hover {
+						@include easeOut;
+						color: rgba($on-primary-color, 0.7)
+					}
+				}
+			}
+		}
+	}
 }
 
 @include mediaXL {
@@ -106,17 +155,45 @@
 			". book1 book2 book3 ."
 			". book4 book5 . .";
 		}
+
+		.genres-wrapper {
+			.genres-wrapper-fader {
+				grid-template-columns: 1fr;
+				grid-template-areas:
+				"header"
+				"genres";
+			}
+		}
 	}
 }
 
 @include mediaMd {
 	#home {
 		.book-row {
+			padding: 0 2rem;
 			grid-template-columns: repeat(2, 1fr);
 			grid-template-areas:
 			'book1 book2' 
 			'book3 book4'
 			'book5 .';
+		}
+
+		.genres-wrapper {
+
+			.genres-wrapper-fader {
+				padding: 0 1rem;
+				grid-template-columns: 1fr;
+				grid-template-areas:
+				"header"
+				"genres";
+
+				.genres-row {
+					justify-content: space-between;
+					width: 100%;
+					column-gap: 0.5rem;
+					font-size: 0.9rem;
+				}
+			}
 		}
 	}
 }

@@ -1,19 +1,31 @@
 <nav>
 	<div class="container">
+		<ul class="nav navbar-collapsed" (mouseenter)="toggleLeftMenu()">
+			<li>
+				<i class="fa fa-bars"></i>
+			</li>
+		</ul>
 		<div class="navbar-header">
 			<div class="navbar-title">
 				Bookrater
 			</div>
 		</div>
 		<div id="navbar">
-			<ul class="nav navbar-left">
+			<ul class="nav navbar-left" [ngClass]="{'active': isLeftMenuOpen}" (mouseleave)="toggleLeftMenu()">
 				<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
 					<a routerLink="/">Home</a>
 				</li>
 				<li><a href="#">Genre</a></li>
-				<li><a href="#">Charts</a></li>
+				<li>
+					<app-book-search></app-book-search>
+				</li>
 			</ul>
-			<ul class="nav navbar-right">
+			<ul class="nav navbar-right-collapsed" (mouseenter)="toggleRightMenu()">
+				<li>
+					<i class="far fa-user"></i>
+				</li>
+			</ul>
+			<ul class="nav navbar-right" [ngClass]="{'active': isRightMenuOpen}" (mouseleave)="toggleRightMenu()">
 				<li *ngIf="!authService.isUserloggedIn()" routerLinkActive="active"><a routerLink="/register">Register</a></li>
 				<li *ngIf="!authService.isUserloggedIn()" routerLinkActive="active"><a routerLink="/login">Login</a></li>
 				<li *ngIf="authService.isUserloggedIn()" routerLinkActive="active"><a routerLink="/profile">Profile</a></li>

@@ -70,10 +70,10 @@ export class EditBookComponent implements OnInit {
     }
 
     /* 
-    Merging the new book object with the original to 
-    preserve id, ratings and reviews
+    Merging the new book object with the original
     */
     this.book = {...this.book, ...book };
+    console.log(this.book)
     this.onUpdateBook.emit(this.book);
     return true;
   }

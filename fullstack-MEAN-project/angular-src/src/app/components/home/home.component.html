@@ -2,7 +2,7 @@
 	<div class="header">
 		<h2>Recently added books</h2>
 	</div>
-	<div class="book-row">
+	<section class="book-row">
 		<div *ngFor="let book of booksByDate; index as i" class="book book{{ i+1 }}">
 			<a routerLink="/books/{{ book.id }}">
 				<div class="book-card">
@@ -19,11 +19,11 @@
 				</div>
 			</a>
 		</div>
-	</div>
+	</section>
 	<div class="header">
 		<h2>Highest rated books</h2>
 	</div>
-	<div class="book-row">
+	<section class="book-row">
 		<div *ngFor="let book of booksByRating; index as i" class="book book{{ i+1 }}">
 			<a routerLink="/books/{{ book.id }}">
 				<div class="book-card">
@@ -40,5 +40,20 @@
 				</div>
 			</a>
 		</div>
-	</div>
+	</section>
+	<section class="genres-wrapper">
+		<div class="genres-wrapper-fader">
+			<div class="header">
+				<h2>Browse by genre</h2>
+			</div>
+			<div class="genres-row">
+				<div *ngFor="let genre of genres; index as i" class="genre genre-{{i}}">
+					<a routerLink="/genres/{{ genre.id }}">
+						{{ genre.name }}
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<app-scroll-button></app-scroll-button>
 </main>

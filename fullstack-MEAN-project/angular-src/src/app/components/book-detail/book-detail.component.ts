@@ -31,11 +31,11 @@ export class BookDetailComponent implements OnInit {
   }
 
   getBook(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.bookService.getBook(id)
-      .subscribe(book => {
-        console.log(book.genres)
-        this.book = book;
+    this.route.params.subscribe(
+        params => {
+            const id = params['id'];
+            this.bookService.getBook(id)
+        .subscribe(book => this.book = book);
       });
   }
 
@@ -63,6 +63,7 @@ export class BookDetailComponent implements OnInit {
   Get the rating as a percentage score and round to two decimals
   */
   getRatingScorePercentage(rating: number): number {
+    if (this.getNumberOfRatings() === 0) return 0;
     return Math.round(rating / this.getNumberOfRatings() * 100);
   }
 

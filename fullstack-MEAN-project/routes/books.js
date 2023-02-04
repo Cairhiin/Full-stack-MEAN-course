@@ -122,7 +122,7 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res, 
 	Update a book after it has been retrieved
 	by its unique id
 	*/
-	Book.updateBook(id, book, (err, book) => {
+	Book.updateBook(id, book, (err, book) => {	
 		if (err) {
 			res.json({ success: false, msg: `Failed to update book with id: ${id}!` });
 		} else {

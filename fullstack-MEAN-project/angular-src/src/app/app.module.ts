@@ -22,6 +22,7 @@ import { DeleteBookComponent } from './components/delete-book/delete-book.compon
 import { EditBookComponent } from './components/edit-book/edit-book.component';
 import { DeleteUserComponent } from './components/delete-user/delete-user.component';
 import { BookSearchComponent } from './components/book-search/book-search.component';
+import { GenreDetailComponent } from './components/genre-detail/genre-detail.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { BookSearchComponent } from './components/book-search/book-search.compon
     EditBookComponent,
     DeleteUserComponent,
     BookSearchComponent,
+    GenreDetailComponent,
   ],
   imports: [
     JwtModule.forRoot({

@@ -1,0 +1,5 @@
+@import '../../../assets/scss/_config.scss';
+
+.floating-action-button {
+	@include floatingActionButton;
+}

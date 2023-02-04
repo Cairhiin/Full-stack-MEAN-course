@@ -1,0 +1,90 @@
+@import '../../../assets/scss/_config.scss';
+
+#search-box-form { 
+	display: inline-block;
+	position: relative;
+	
+	#search-box {
+		height: 25px;
+		margin-left: 1rem;
+		padding-left: 1.75rem;
+		width: 100%;
+		@include roundedBorders;
+		&::placeholder {
+			color: rgba($on-tertiary-color, 0.30);
+		}
+	}
+
+	i {
+		position: absolute;
+
+		&.icon {
+			margin: 1rem 0.8rem;
+			font-size: 1rem;
+			padding: 0.5rem;
+			z-index: 2;
+			color: rgba($on-tertiary-color, 0.30);
+		}
+	}
+
+	.search-result {
+		position: absolute;
+		background: rgba(black, 0.9);
+		display: flex;
+		flex-direction: column;
+		list-style: none;
+		font-size: 1rem;
+		padding: 0;
+		text-transform: none;
+		width: 300px;
+		margin: 0;
+		padding: 0;
+
+		a {
+			color: rgba($on-primary-color, 0.8);
+			text-decoration: none;
+		}
+
+		li {
+			list-style: none;
+			padding: 0;
+			height: 50px;
+			line-height: 16px;
+
+			.search-result-book {
+				padding: 0;	
+				display: flex;
+
+				&:hover {
+					@include easeOut;
+					background: rgba($tertiary-color, 0.9);
+					color: rgba($on-tertiary-color, 0.9);
+				}
+
+				.book-image {
+					img {
+						height: 50px;
+						width: 50px;
+						object-fit: cover;
+					}
+				}
+
+				.book-info {
+					padding: 0.5rem;
+				}
+			}
+		}
+	}
+}
+
+@include mediaMd {
+	#search-box-form { 
+		width: 75%;
+
+		i {
+			&.icon {
+				top: -10px;
+			}
+		}
+	}
+}

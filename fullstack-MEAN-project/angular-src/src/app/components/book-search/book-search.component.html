@@ -1,13 +1,24 @@
-<main id="search-book">
-	<label for="search-box">Search by title</label>
-	<input #searchBox id="search-box" (input)="search(searchBox.value)" />
-
-	<ul class="search-result">
+<form id="search-box-form">
+	<i class="fa fa-regular fa-search icon"></i>
+	<input #searchBox id="search-box" 
+		(input)="search(searchBox.value)"
+		(focus)="toggleFocus()"
+		(click)="searchBox.value =''"  
+	/>
+	<ul *ngIf="isInFocus" class="search-result" #searchResult>
 		<li *ngFor="let book of books$ | async" >
-		  <a routerLink="/books/{{book.id}}">
-		    {{book.title}}
+		  <a routerLink="/books/{{book.id}}" (click)="toggleFocus()">
+		  	<div class="search-result-book">
+			  	<div class="book-image">
+			  		<img src="/assets/{{ book.image }}" alt="{{ book.title }} cover art" />
+			  	</div>
+			  	<div class="book-info">
+			  		<div>{{ book.title }}</div>
+			  		<div>{{ book.author }}</div>
+			  	</div>	    
+			  </div>
 		  </a>
 		</li>
 	</ul>
 	<label for="search-box"></label>
-</main>
+</form>

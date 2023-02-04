@@ -40,3 +40,38 @@ footer {
 		}
 	}
 }
+
+@include mediaXL {
+
+}
+
+@include mediaLg {
+	footer {
+		grid-template-columns: 2rem repeat(4, 1fr) 2rem;
+	}
+}
+
+@include mediaMd {
+	footer {
+		.footer-header {
+			font-size: 2rem;
+			margin: 2rem 0 0 0;
+		}
+		
+		grid-template-columns: 1rem repeat(2, 1fr) 1rem;
+		grid-template-areas: 
+			'. column1 column2 .'
+			'. column3 column4 .';
+	}
+}
+
+@include mediaSm {
+	footer {
+		grid-template-columns: 4rem 1fr 4rem;
+		grid-template-areas: 
+			'. column1 .'
+			'. column2 .'
+			'. column3 .'
+			'. column4 .';
+	}
+}

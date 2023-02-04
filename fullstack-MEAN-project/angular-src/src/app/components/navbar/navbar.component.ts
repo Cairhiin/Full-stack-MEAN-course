@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  isRightMenuOpen: boolean = false;
+  isLeftMenuOpen: boolean = false;
 
   constructor(
     public authService: AuthService,
@@ -23,5 +25,13 @@ export class NavbarComponent {
     );
     this.router.navigate(['/login']);
     return false;
+  }
+
+  toggleLeftMenu(): void {
+    this.isLeftMenuOpen = !this.isLeftMenuOpen;
+  }
+
+  toggleRightMenu(): void {
+    this.isRightMenuOpen = !this.isRightMenuOpen;
   }
 }

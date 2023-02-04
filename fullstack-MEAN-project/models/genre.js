@@ -30,3 +30,10 @@ module.exports.getGenres = function(callback) {
 		select: 'title author description year ISBN publisher ratings reviews avgRating'
 	});
 }
+
+module.exports.getGenreById = function(id, callback) {
+	Genre.findById(id, callback).populate({
+		path: 'booksInGenre',
+		select: 'title author description year ISBN publisher ratings reviews avgRating image'
+	});
+}

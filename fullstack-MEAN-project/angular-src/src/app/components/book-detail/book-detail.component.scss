@@ -33,6 +33,11 @@
 			grid-area: info;
 			color: $on-secondary-color;
 
+			a {
+				color: $on-secondary-color;
+				text-decoration: none;
+			}
+
 			span {				
 				font-size: 1rem;
 				text-transform: uppercase;
@@ -186,3 +191,41 @@
 		}
 	}
 }  
+
+@include mediaXL {
+
+}
+
+@include mediaLg {
+	#book-details { 
+		.book {
+			grid-template-columns: 2rem repeat(3, 1fr) 2rem;
+		}
+	}
+}
+
+@include mediaMd {
+	#book-details { 
+		.book {
+			grid-template-columns: 1rem repeat(2, 1fr) 1rem;
+			grid-template-areas:
+			". header header ."
+			". image . ."
+			". info info ."
+			". rating rating .";
+
+			.my-rating {
+				.button-row .btn { 
+					margin: 0.2rem;
+					width: 122px;
+				}
+			}
+		}
+	}
+}
+
+@include mediaSm {
+	#book-details {
+		grid-template-columns: 0 repeat(2, 1fr) 0;
+	}
+}
