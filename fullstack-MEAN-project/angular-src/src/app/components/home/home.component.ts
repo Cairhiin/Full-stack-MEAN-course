@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   booksByDate!: Book[];
   booksByRating!: Book[];
   genres!: Genre[];
-  isScrolled: boolean = false;
 
   constructor(
     private bookService: BookService,
@@ -41,17 +40,4 @@ export class HomeComponent implements OnInit {
     this.genreService.getGenres()
       .subscribe(genres => this.genres = genres);
   }
-
-  scrollToTop(): void {
-    window.scroll({ 
-           top: 0, 
-           left: 0, 
-           behavior: 'smooth' 
-    });
-  }
-
-  @HostListener("window:scroll", [])
-    onWindowScroll() {
-        this.isScrolled = window.scrollY > 65;
-    }
 }
