@@ -76,3 +76,15 @@
 		}
 	}
 }
+
+@include mediaMd {
+	#search-box-form { 
+		width: 75%;
+
+		i {
+			&.icon {
+				top: -10px;
+			}
+		}
+	}
+}

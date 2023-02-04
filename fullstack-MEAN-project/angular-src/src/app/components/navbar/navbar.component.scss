@@ -52,3 +52,140 @@ nav {
 		}		
 	}	
 }
+
+@include mediaXL {
+	nav {
+		.container{
+			.nav.navbar-collapsed {
+				display: none;
+			}
+
+			#navbar {
+				.nav.navbar-collapsed {
+					display: none;
+				}
+
+				.nav.navbar-right-collapsed {
+					display: none;
+				}
+			}
+		}	
+	}
+}
+
+@include mediaLg {
+	nav {
+		.container{
+			.nav.navbar-collapsed {
+				display: none;
+			}
+
+			#navbar {
+				.nav.navbar-collapsed {
+					display: none;
+				}
+
+				.nav.navbar-right {
+					display: none;
+				}
+
+				.nav.navbar-right-collapsed {
+					font-size: 1.5rem;
+				}
+
+				.nav.navbar-right.active {
+					display: block;
+					margin-top: 65px;
+					top: 0px;
+					right: 0;
+					position: absolute;
+					background: $primary-color;
+					padding: 0;
+
+					li {
+						display: block;
+						padding: 0 5rem;
+						line-height: 40px;
+						border-top: 1px solid rgba(black, 0.1);
+					}
+				}
+			}
+		}		
+	}
+}
+
+@include mediaMd {
+	nav {
+		.container{
+			.nav.navbar-collapsed {
+				font-size: 1.5rem;
+				margin-right: 1rem;
+				padding-left: 0;
+				display: block;
+				
+				li {
+					list-style: none;				
+				}
+			}
+
+			#navbar {
+				justify-content: flex-end;
+
+				.nav.navbar-right {
+					display: none;
+				}
+
+				.nav.navbar-left {
+					display: none;
+				}
+
+				.nav.navbar-right-collapsed {
+					font-size: 1.5rem;
+				}
+
+				.nav.navbar-right.active {
+					display: block;
+					width: 100%;
+					margin-top: 65px;
+					top: 0px;
+					right: 0;
+					position: absolute;
+					background: $primary-color;
+					padding: 0;
+
+					li {
+						display: block;
+						text-align: right;
+						padding: 0 2rem;
+						line-height: 40px;
+						border-top: 1px solid rgba(black, 0.1);
+					}
+				}
+
+				.nav.navbar-left.active {
+					display: block;
+					width: 100%;
+					margin-top: 65px;
+					top: 0px;
+					right: 0;
+					position: absolute;
+					background: $primary-color;
+					padding: 0;
+
+					li {
+						display: block;
+						padding: 0 2rem;
+						line-height: 40px;
+						border-top: 1px solid rgba(black, 0.1);
+					}
+				}
+			}
+		}	
+	}
+}
+
+@include mediaSm {
+	nav {
+		
+	}
+}
