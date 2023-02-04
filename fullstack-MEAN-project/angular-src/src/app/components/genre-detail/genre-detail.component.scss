@@ -71,3 +71,33 @@
 		}
 	}
 }
+
+@include mediaXL {
+	#genre-details {
+		
+	}
+}
+
+@include mediaLg {
+	#genre-details {
+		.books-by-genre {
+			grid-template-columns: repeat(5, 1fr);
+		}
+	}
+}
+
+@include mediaMd {
+	#genre-details {
+		.books-by-genre {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+}
+
+@include mediaSm {
+	#genre-details {
+		.books-by-genre {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}
