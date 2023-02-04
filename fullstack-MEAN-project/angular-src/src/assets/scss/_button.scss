@@ -36,20 +36,20 @@
 
 @mixin floatingActionButton {
 	@include easeOut;
-	background: $tertiary-color;
-	color: $on-tertiary-color;
-	width: 75px;
-	height: 75px;
+	background: $primary-button-highlight-color;
+	color: $on-primary-color;
+	width: 50px;
+	height: 50px;
 	border: none;
-	border-radius: 75px;
+	border-radius: 50px;
 	position: fixed;
 	bottom: -80px;
 	right: 32px;
 	font-size: 2rem;
 
 	&:hover {
-		background: $primary-button-highlight-color;
-		color: $on-primary-color;
+		background: $tertiary-color;
+		color: $on-tertiary-color;
 	}
 
 	&.active {
