@@ -8,6 +8,10 @@ import { Component, HostListener } from '@angular/core';
 export class ScrollButtonComponent {
 isScrolled: boolean = false;
 
+/* 
+Problem: Scroll to top 
+Solution: https://stackoverflow.com/questions/54453096/how-to-add-class-on-scroll-in-angular
+*/
 scrollToTop(): void {
     window.scroll({ 
            top: 0, 
