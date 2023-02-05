@@ -1,0 +1,57 @@
+<div id="add-book">
+	<div class="add-book-form">
+		<h2 class="page-header">Add Book</h2>
+		<form (submit)="onAddBookSubmit()">
+			<div class="form-group">
+				<i class="fa fa-regular fa-user icon"></i>
+				<input type="text" [(ngModel)]="title" 
+					name="title" placeholder="title" class="form-control">
+			</div>
+			<div class="form-group">
+				<i class="fa fa-regular fa-lock icon"></i>
+				<input (change)="onFilePicked($event)" class="custom-file-input" placeholder="Upload File" type="file" />
+  				<button (click)="onFileUpload()" class="btn btn-primary">Upload File</button>
+  				<p *ngIf="errorMsg"> Please Select file</p>
+			</div>
+			<div class="form-group">
+				<i class="fa fa-regular fa-lock icon"></i>
+				<input type="text" [(ngModel)]="author" 
+					name="author" placeholder="author" class="form-control">
+			</div>
+			<div class="form-group">
+				<i class="fa fa-regular fa-lock icon"></i>
+				<textarea [(ngModel)]="description" 
+					name="description" placeholder="description" class="form-control">
+				</textarea>
+			</div>
+			<div class="form-group">
+				<i class="fa fa-regular fa-lock icon"></i>
+				<input type="text" [(ngModel)]="ISBN" 
+					name="ISBN" placeholder="ISBN" class="form-control">
+			</div>
+			<div class="form-group">
+				<i class="fa fa-regular fa-lock icon"></i>
+				<input type="text" [(ngModel)]="year" 
+					name="year" placeholder="year" class="form-control">
+			</div>
+			<div class="form-group">
+				<i class="fa fa-regular fa-lock icon"></i>
+				<input type="text" [(ngModel)]="publisher" 
+					name="publisher" placeholder="publisher" class="form-control">
+			</div>
+			<div class="form-group">
+				<select 
+					[(ngModel)]="addGenres" 
+					name="genres" 
+					class="genres-select"
+					multiple>
+					<option *ngFor="let genre of genres" [ngValue]="genre">{{ genre.name }}</option>
+				</select>
+			</div>
+			<div class="button-row">
+				<input type="submit" class="btn btn-primary" value="Add Book">
+				<input (click)="goBack()" type="submit" class="btn btn-secondary" value="Cancel">
+			</div>
+		</form>
+	</div>
+</div>
