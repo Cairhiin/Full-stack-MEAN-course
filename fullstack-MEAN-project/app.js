@@ -8,6 +8,10 @@ const config = require('./config/database');
 const users = require('./routes/users');
 const books = require('./routes/books');
 const genres = require('./routes/genres');
+const awsconfig = require('./config/aws');
+const aws = require('aws-sdk');
+const multer = require('multer');
+const multerS3 = require('multer-s3');
 
 mongoose.set('strictQuery', false);
 mongoose.connect(config.database);
@@ -37,14 +41,45 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 
+aws.config.update({
+    secretAccessKey: awsconfig.secretAccessKey,
+    accessKeyId: awsconfig.accessKeyId,
+    region: awsconfig.region
+});
+
+const s3 = new aws.S3();
+const upload = multer({
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype === 'application/octet-stream' || file.mimetype === 'video/mp4'
+            || file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+            cb(null, true);
+        } else {
+            cb(new Error('Invalid file type'), false);
+        }
+    },
+    storage: multerS3({
+        acl: 'public-read',
+        s3,
+        bucket: 'book-app-bucket',
+        key: function (req, file, cb) {
+            req.file = Date.now() + file.originalname;
+            cb(null, Date.now() + file.originalname);
+        }
+    })
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', users);
 app.use('/books', books);
 app.use('/genres', genres);
 
+app.post('/upload', upload.array('file', 1), (req, res) => {
+    res.send({ file: req.file });
+});
+
 app.get('/', (req, res) => {
-	res.send('Invalid Endpoint');
+    res.send('Invalid Endpoint');
 })
 
 app.listen(port, () => {
