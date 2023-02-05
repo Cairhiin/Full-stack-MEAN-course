@@ -86,7 +86,11 @@
 			.btn {
 				@include button;
 				width: 125px;
-				margin: 2rem 1rem 0 0;
+				margin: 1rem 1rem 0 0;
+			}
+
+			.admin-area {
+				margin: 1rem 0 0 0;
 			}
 
 			.button-row {

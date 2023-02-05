@@ -57,6 +57,9 @@
 							Reading Now
 						</button>
 					</div>
+				</div>
+				<div class="admin-area"><h4>Admin Options</h4></div>
+				<div class="button-row">
 					<div class="admin-buttons" *ngIf="authService.hasAdminRights(user ? user.role : '')">
 						<button
 							(click)="openEditBookDialog()"  
@@ -67,6 +70,11 @@
 							(click)="openDeleteBookDialog()" 
 							class="btn btn-primary">
 							Delete Book
+						</button>
+						<button 
+							(click)="openEditBookDialog()" 
+							class="btn btn-primary">
+							Add Book
 						</button>
 					</div>
 				</div>
