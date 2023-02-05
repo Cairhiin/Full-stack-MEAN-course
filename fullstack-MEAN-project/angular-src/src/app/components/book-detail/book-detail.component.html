@@ -11,6 +11,11 @@
 		(onUpdateBook)="updateBook($event)"
 		(onCancel)="toggleIsEditBookActive()"
 	></app-edit-book>
+	<app-add-book
+		*ngIf="isAddBookActive"
+		(onAddBook)="addBook($event)"
+		(onCancel)="toggleIsAddBookActive()"
+	></app-add-book>
 	<div *ngIf="book" class="book">
 		<div class="book-header"> 
 			<h2> {{ book.title | uppercase }}</h2>
@@ -72,7 +77,7 @@
 							Delete Book
 						</button>
 						<button 
-							(click)="openEditBookDialog()" 
+							(click)="openAddBookDialog()" 
 							class="btn btn-primary">
 							Add Book
 						</button>
