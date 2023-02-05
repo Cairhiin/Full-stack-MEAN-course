@@ -27,11 +27,11 @@ export class NavbarComponent {
     return false;
   }
 
-  toggleLeftMenu(): void {
-    this.isLeftMenuOpen = !this.isLeftMenuOpen;
+  toggleLeftMenu(isOpen: boolean): void {
+    this.isLeftMenuOpen = isOpen;
   }
 
-  toggleRightMenu(): void {
-    this.isRightMenuOpen = !this.isRightMenuOpen;
+  toggleRightMenu(isOpen: boolean): void {
+    this.isRightMenuOpen = isOpen;
   }
 }
