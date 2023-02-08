@@ -1,4 +1,4 @@
 module.exports = {
-	database: 'mongodb://127.0.0.1:27017/bookrater',
+	database: 'mongodb+srv://Cairhiin:<password>@cairhiin.9t5z0.mongodb.net/?retryWrites=true&w=majority',
 	secret: 'supersecret'
 };
