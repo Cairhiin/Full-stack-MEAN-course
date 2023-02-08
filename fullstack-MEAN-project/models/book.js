@@ -139,7 +139,7 @@ module.exports.getBooksByRating = function(params, callback) {
 }
 
 module.exports.addBook = function(book, callback) {
-	book.save(callback);
+	book.save(callback).populate('genres');
 }
 
 module.exports.updateBook = function(id, book, callback) {
