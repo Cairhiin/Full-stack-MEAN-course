@@ -1,6 +1,6 @@
 <nav>
 	<div class="container">
-		<ul class="nav navbar-collapsed" (mouseenter)="toggleLeftMenu()">
+		<ul class="nav navbar-collapsed" (mouseenter)="toggleLeftMenu(true)">
 			<li>
 				<i class="fa fa-bars"></i>
 			</li>
@@ -11,7 +11,7 @@
 			</div>
 		</div>
 		<div id="navbar">
-			<ul class="nav navbar-left" [ngClass]="{'active': isLeftMenuOpen}" (mouseleave)="toggleLeftMenu()">
+			<ul class="nav navbar-left" [ngClass]="{'active': isLeftMenuOpen}" (mouseleave)="toggleLeftMenu(false)">
 				<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
 					<a routerLink="/">Home</a>
 				</li>
@@ -20,12 +20,12 @@
 					<app-book-search></app-book-search>
 				</li>
 			</ul>
-			<ul class="nav navbar-right-collapsed" (mouseenter)="toggleRightMenu()">
+			<ul class="nav navbar-right-collapsed" (mouseenter)="toggleRightMenu(true)">
 				<li>
 					<i class="far fa-user"></i>
 				</li>
 			</ul>
-			<ul class="nav navbar-right" [ngClass]="{'active': isRightMenuOpen}" (mouseleave)="toggleRightMenu()">
+			<ul class="nav navbar-right" [ngClass]="{'active': isRightMenuOpen}" (mouseleave)="toggleRightMenu(false)">
 				<li *ngIf="!authService.isUserloggedIn()" routerLinkActive="active"><a routerLink="/register">Register</a></li>
 				<li *ngIf="!authService.isUserloggedIn()" routerLinkActive="active"><a routerLink="/login">Login</a></li>
 				<li *ngIf="authService.isUserloggedIn()" routerLinkActive="active"><a routerLink="/profile">Profile</a></li>

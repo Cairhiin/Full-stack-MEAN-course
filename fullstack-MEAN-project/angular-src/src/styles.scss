@@ -36,3 +36,15 @@ p {
   overflow-wrap: break-word;
   font-family: 'Roboto Condensed', sans-serif;
 }
+
+@import './assets/scss/_config.scss';
+
+#flashMessages {
+  .alert-danger {   
+     @include warningBox;
+  }
+
+  .alert-success {
+    @include warningBox(green);
+  }
+}

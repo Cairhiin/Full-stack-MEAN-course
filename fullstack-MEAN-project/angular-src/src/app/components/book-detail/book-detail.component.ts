@@ -17,6 +17,7 @@ export class BookDetailComponent implements OnInit {
   selectedValue: number = 0;
   isDeleteBookActive: boolean  = false;
   isEditBookActive: boolean = false;
+  isAddBookActive: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -143,6 +144,12 @@ export class BookDetailComponent implements OnInit {
       .subscribe(book => this.book = book);
   }
 
+  addBook(book: Book): void {
+    this.toggleIsAddBookActive();
+    this.bookService.addBook(book)
+      .subscribe(book => this.book = book);
+  }
+
   openDeleteBookDialog(): void {
     this.toggleIsDeleteBookActive();
   }
@@ -157,5 +164,13 @@ export class BookDetailComponent implements OnInit {
 
   toggleIsEditBookActive(): void {
     this.isEditBookActive = !this.isEditBookActive;
+  }
+
+  openAddBookDialog(): void {
+    this.toggleIsAddBookActive();
+  }
+
+  toggleIsAddBookActive(): void {
+    this.isAddBookActive = !this.isAddBookActive;
   }
 }

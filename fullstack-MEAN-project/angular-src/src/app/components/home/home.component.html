@@ -7,7 +7,7 @@
 			<a routerLink="/books/{{ book.id }}">
 				<div class="book-card">
 					<div class="image">
-						<img src="assets/{{ book.image }}" alt="{{ book.title }} cover art" />
+						<img src="{{ book.image }}" alt="{{ book.title }} cover art" />
 					</div>
 					<div class="rating">
 						{{ book.avgRating }}
@@ -28,7 +28,7 @@
 			<a routerLink="/books/{{ book.id }}">
 				<div class="book-card">
 					<div class="image">
-						<img src="assets/{{ book.image }}" />
+						<img src="{{ book.image }}" />
 					</div>
 					<div class="rating">
 						{{ book.avgRating }}
@@ -55,5 +55,4 @@
 			</div>
 		</div>
 	</section>
-	<app-scroll-button></app-scroll-button>
 </main>

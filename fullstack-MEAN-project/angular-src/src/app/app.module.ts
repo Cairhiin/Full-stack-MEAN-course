@@ -23,6 +23,8 @@ import { EditBookComponent } from './components/edit-book/edit-book.component';
 import { DeleteUserComponent } from './components/delete-user/delete-user.component';
 import { BookSearchComponent } from './components/book-search/book-search.component';
 import { GenreDetailComponent } from './components/genre-detail/genre-detail.component';
+import { ScrollButtonComponent } from './components/scroll-button/scroll-button.component';
+import { AddBookComponent } from './components/add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { GenreDetailComponent } from './components/genre-detail/genre-detail.com
     DeleteUserComponent,
     BookSearchComponent,
     GenreDetailComponent,
+    ScrollButtonComponent,
+    AddBookComponent,
   ],
   imports: [
     JwtModule.forRoot({

@@ -6,7 +6,7 @@
 		<div *ngFor="let book of genre.booksInGenre" class="book-card">
 			<a href="/books/{{ book.id }}">
 				<div class="book-image">
-					<img src="assets/{{ book.image }}" alt="{{ book.title }} cover art" />				
+					<img src="{{ book.image }}" alt="{{ book.title }} cover art" />				
 					<div class="book-info">
 						<div class="book-info-header">
 							<div>{{ book.title }}</div>
@@ -20,5 +20,4 @@
 			</a>
 		</div>
 	</section>
-	<app-scroll-button></app-scroll-button>
 </main>

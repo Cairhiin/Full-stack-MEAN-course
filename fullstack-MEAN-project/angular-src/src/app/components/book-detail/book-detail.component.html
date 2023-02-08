@@ -11,6 +11,11 @@
 		(onUpdateBook)="updateBook($event)"
 		(onCancel)="toggleIsEditBookActive()"
 	></app-edit-book>
+	<app-add-book
+		*ngIf="isAddBookActive"
+		(onAddBook)="addBook($event)"
+		(onCancel)="toggleIsAddBookActive()"
+	></app-add-book>
 	<div *ngIf="book" class="book">
 		<div class="book-header"> 
 			<h2> {{ book.title | uppercase }}</h2>
@@ -18,7 +23,7 @@
 			<div class="book-header-description">{{ book.description }}</div>
 		</div>
 		<div class="image">
-			<img src="assets/{{ book.image }}" alt="{{ book.title }} cover art"/>
+			<img src="{{ book.image }}" alt="{{ book.title }} cover art"/>
 		</div>
 		<div class="info">
 			<div>
@@ -57,6 +62,9 @@
 							Reading Now
 						</button>
 					</div>
+				</div>
+				<div class="admin-area"><h4>Admin Options</h4></div>
+				<div class="button-row">
 					<div class="admin-buttons" *ngIf="authService.hasAdminRights(user ? user.role : '')">
 						<button
 							(click)="openEditBookDialog()"  
@@ -67,6 +75,11 @@
 							(click)="openDeleteBookDialog()" 
 							class="btn btn-primary">
 							Delete Book
+						</button>
+						<button 
+							(click)="openAddBookDialog()" 
+							class="btn btn-primary">
+							Add Book
 						</button>
 					</div>
 				</div>
@@ -88,5 +101,4 @@
 			</div>
 		</div>
 	</div>
-	<app-scroll-button></app-scroll-button>
 </main>

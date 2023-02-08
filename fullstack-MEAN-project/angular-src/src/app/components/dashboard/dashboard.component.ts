@@ -85,12 +85,12 @@ export class DashboardComponent {
       });
   }
 
-  openDeleteUserDialog(user: User) {
+  openDeleteUserDialog(user: User): void {
     this.toggleIsDeleteUserActive();
      this.userToBeEdited = user;
   }
 
-  toggleIsDeleteUserActive() {
+  toggleIsDeleteUserActive(): void {
     this.isDeleteUserActive = !this.isDeleteUserActive;
   }
 }

@@ -122,9 +122,9 @@ module.exports.getBooksByDate = function(params, callback) {
 	const date = params.date || 'desc';
 	const limit = params.limit || 0;
 	if (date === 'desc') {
-		Book.find().sort({ date: 'desc' }).limit(limit).populate('genres').exec(callback);
+		Book.find().sort({ '_id' : -1 }).limit(limit).populate('genres').exec(callback);
 	} else {
-		Book.find().sort({ date: 'asc' }).limit(limit).populate('genres').exec(callback);
+		Book.find().sort({ '_id' : 1 }).limit(limit).populate('genres').exec(callback);
 	}	 
 }
 
@@ -139,7 +139,7 @@ module.exports.getBooksByRating = function(params, callback) {
 }
 
 module.exports.addBook = function(book, callback) {
-	book.save(callback);
+	book.save(callback).populate('genres');
 }
 
 module.exports.updateBook = function(id, book, callback) {
