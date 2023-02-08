@@ -58,15 +58,16 @@ export class AddBookComponent {
     const fileForm = new FormData();
     fileForm.append('file', this.fileObj);
     this.uploadService.fileUpload(fileForm).subscribe(res => {
-      this.fileUrl = res['image'];
+      this.fileUrl = res.file;
     });
   }
 
   onAddBookSubmit(): boolean {
+    console.log(this.fileUrl);
     const book = {
       title: this.title,
       author: this.author,
-      image: `s3://book-app-bucket/${this.fileUrl}`,
+      image: `https://book-app-bucket.s3.eu-central-1.amazonaws.com/${this.fileUrl}`,
       description: this.description,
       ISBN: this.ISBN,
       year: this.year,

@@ -8,10 +8,10 @@ const config = require('./config/database');
 const users = require('./routes/users');
 const books = require('./routes/books');
 const genres = require('./routes/genres');
-const awsconfig = require('./config/aws');
 const aws = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+require('dotenv').config({path: __dirname + '/.env'})
 
 mongoose.set('strictQuery', false);
 mongoose.connect(config.database);
@@ -42,9 +42,9 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 aws.config.update({
-    secretAccessKey: awsconfig.secretAccessKey,
-    accessKeyId: awsconfig.accessKeyId,
-    region: awsconfig.region
+    secretAccessKey: process.env['SECRET_ACCESS_KEY'],
+    accessKeyId: process.env['ACCESS_KEY_ID'],
+    region: process.env['REGION']
 });
 
 const s3 = new aws.S3();
