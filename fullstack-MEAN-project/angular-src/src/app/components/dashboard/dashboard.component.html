@@ -34,15 +34,16 @@
 					</div>
 				</div>
 				<div class="all-ratings">
-					<h3>All rated books</h3>	
+					<h3>All rated books</h3>
 					<div *ngFor="let score of sortRatingsByDate()" class="dashboard-row">
 						<div class="title-author-info">
 							<p>{{ score.book.title }}</p>
+						</div>
+						<div class="author-info">
 							<span>{{ score.book.author }}</span>
 						</div>
 						<div class="year-genres-info">
 							<p>{{ score.book.year }}</p>
-							<span>{{ score.book.avgRating }}</span>
 						</div>
 						<div class="book-rating score-info">
 							{{ score.rating }}

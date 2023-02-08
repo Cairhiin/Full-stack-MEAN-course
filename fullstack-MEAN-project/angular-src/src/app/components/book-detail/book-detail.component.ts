@@ -145,7 +145,9 @@ export class BookDetailComponent implements OnInit {
   }
 
   addBook(book: Book): void {
-
+    this.toggleIsAddBookActive();
+    this.bookService.addBook(book)
+      .subscribe(book => this.book = book);
   }
 
   openDeleteBookDialog(): void {
