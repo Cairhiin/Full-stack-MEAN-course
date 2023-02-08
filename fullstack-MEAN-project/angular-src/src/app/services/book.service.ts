@@ -8,7 +8,7 @@ import { Book } from '../book';
   providedIn: 'root'
 })
 export class BookService {
-  private url: string = 'http://localhost:3000/books';
+  private url: string = '/books';
 
   constructor(private http: HttpClient) { }
 
