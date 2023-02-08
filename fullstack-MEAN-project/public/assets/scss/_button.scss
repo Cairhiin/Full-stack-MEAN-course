@@ -1,0 +1,58 @@
+@mixin button {
+	height: 45px;	
+	font-size: 1.2rem;
+	cursor: pointer;
+	@include easeOut;
+	@include roundedBorders;
+}
+
+@mixin buttonPrimary {
+	background: $primary-button-color;
+	color: $on-primary-color;
+
+	&:hover {
+		background: $primary-button-highlight-color;
+	}
+
+	&:disabled {
+		background: rgba($primary-button-highlight-color, 0.1);
+		cursor: default;
+	}
+}
+
+@mixin buttonSecondary {
+	background: $secondary-button-color;
+	color: $on-primary-color;
+
+	&:hover {
+		background: $secondary-button-highlight-color;
+	}
+
+	&:disabled {
+		background: rgba($secondary-button-highlight-color, 0.1);
+		cursor: default;
+	}
+}
+
+@mixin floatingActionButton {
+	@include easeOut;
+	background: $primary-button-highlight-color;
+	color: $on-primary-color;
+	width: 50px;
+	height: 50px;
+	border: none;
+	border-radius: 50px;
+	position: fixed;
+	bottom: -80px;
+	right: 32px;
+	font-size: 2rem;
+
+	&:hover {
+		background: $tertiary-color;
+		color: $on-tertiary-color;
+	}
+
+	&.active {
+		bottom: 32px;
+	}
+}
