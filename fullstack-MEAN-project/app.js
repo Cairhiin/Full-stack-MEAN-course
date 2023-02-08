@@ -19,7 +19,7 @@ mongoose.connection.on('connected', () => {
 	console.log(`Connected to the database!`);
 });
 mongoose.connection.on('error', (err) => {
-	console.log(`Databse error: ${err}!`);
+	console.log(`Database error: ${err}!`);
 });
 
 const app = express();
