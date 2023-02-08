@@ -8,7 +8,7 @@ const checkIsInRole = require('../config/utils');
 
 router.get('/', (req, res, next) => {
 	const queryParams = req.query;
-
+	console.log("ROUTE BOOKS");
 	/* 
 	Retrieve books by ISBN - this can only be one book
 	because ISBN numbers are unique even across editions
