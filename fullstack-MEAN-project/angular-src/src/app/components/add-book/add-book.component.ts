@@ -1,7 +1,8 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { UploadService } from '../../services/upload.service';
 import { ValidateService } from '../../services/validate.service';
 import { GenreService } from '../../services/genre.service';
+import { FlashMessagesService } from 'flash-messages-angular';
 import { Genre } from '../../genre';
 import { Book } from '../../book';
 
@@ -12,7 +13,7 @@ import { Book } from '../../book';
 })
 export class AddBookComponent {
   @Output() onCancel = new EventEmitter();
-  @Output() onAddBook = new EventEmitter<Book>();
+  @Output() onAddBook = new EventEmitter();
 
   addGenres!: Genre[];
   title: string = '';
@@ -29,11 +30,15 @@ export class AddBookComponent {
   constructor(
     private uploadService: UploadService,
     private genreService: GenreService,
-    private validateService: ValidateService
-  ) {
-
-  }
+    private validateService: ValidateService,
+    private flashMessageService: FlashMessagesService
+  ) {}
   
+  ngOnInit() {
+    this.genreService.getGenres()
+      .subscribe(genres => this.genres = genres);
+  }
+
   goBack(): void {
     this.onCancel.emit();
   }
@@ -44,7 +49,7 @@ export class AddBookComponent {
     const file: File = (target.files as FileList)[0];
     this.fileObj = file;
   }
-  
+
   onFileUpload() {
     if (!this.fileObj) {
       this.errorMsg = true
@@ -57,7 +62,25 @@ export class AddBookComponent {
     });
   }
 
-  onAddBookSubmit() {
+  onAddBookSubmit(): boolean {
+    const book = {
+      title: this.title,
+      author: this.author,
+      image: `s3://book-app-bucket/${this.fileUrl}`,
+      description: this.description,
+      ISBN: this.ISBN,
+      year: this.year,
+      publisher: this.publisher,
+      genres: this.addGenres
+    };
 
+    if (!this.validateService.validateBook(book)) {
+      this.flashMessageService.show('Please fill in all required fields', 
+        { cssClass: 'alert-danger', timeout: 3000 });
+      return false;
+    }
+
+    this.onAddBook.emit(book);
+    return true;
   }
 }
