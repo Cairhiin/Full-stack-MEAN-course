@@ -3,6 +3,7 @@
 #home {
 	padding: 2rem 0 0 0;
 	background: $secondary-color;
+	min-height: calc(100vh - 65px - 154px);
 
 	.header {
 		@include headerText;
@@ -99,7 +100,7 @@
 			background: rgba($primary-color, 0.95);
 			display: grid;
 			grid-column-gap: 2rem;
-			grid-template-columns: 2fr 8fr 1fr;
+			grid-template-columns: 2fr 8fr 2fr;
 			grid-template-areas:
 			". header ."
 			". genres .";
