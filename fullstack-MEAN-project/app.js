@@ -14,9 +14,9 @@ const multerS3 = require('multer-s3');
 require('dotenv').config({path: __dirname + '/.env'})
 
 mongoose.set('strictQuery', false);
-mongoose.connect(config.database);
+mongoose.connect(`mongodb+srv://${process.env['DATABASE_USERNAME']}:${process.env['DATABASE_PASSWORD']}@bookapp.chr5jzc.mongodb.net/?retryWrites=true&w=majority`);
 mongoose.connection.on('connected', () => {
-	console.log(`Connected to the database ${config.database}!`);
+	console.log(`Connected to the database!`);
 });
 mongoose.connection.on('error', (err) => {
 	console.log(`Databse error: ${err}!`);
