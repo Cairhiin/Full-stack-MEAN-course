@@ -1,0 +1,28 @@
+<main id="book-charts">
+	<div class="header">
+		<h2>Charts</h2>
+	</div>
+	<div class="tab-header filters">
+		<div *ngFor="let genre of genres" class="genre-filter" (click)="filterGenre(genre.name)">
+			{{ genre.name }}
+		</div>
+	</div>
+	<section class="books-by-genre">
+		<div *ngFor="let book of filteredBooks" class="book-card">
+			<a href="/books/{{ book.id }}">
+				<div class="book-image">
+					<img src="{{ book.image }}" alt="{{ book.title }} cover art" />				
+					<div class="book-info">
+						<div class="book-info-header">
+							<div>{{ book.title }}</div>
+							<div>{{ book.author }}</div>
+						</div>
+						<div class="book-rating">
+							{{ book.avgRating }}
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</section>
+</main>
