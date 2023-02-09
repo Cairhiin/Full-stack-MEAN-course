@@ -141,6 +141,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res, ne
 		if (err) {
 			res.json({ success: false, msg: `Failed to add book to database: ${ err._message }!` });
 		} else {
+			book.populate('genres');
 			res.json({ success: true, book: book });
 		}
 	});
