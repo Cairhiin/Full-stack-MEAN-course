@@ -9,6 +9,6 @@ export class UploadService {
   constructor(private http: HttpClient) { }
 
   fileUpload(file: FormData) {
-    return this.http.post<any>('/upload', file);
+    return this.http.post<any>('upload', file);
   }
 }

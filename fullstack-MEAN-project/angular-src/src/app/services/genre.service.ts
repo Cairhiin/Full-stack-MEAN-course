@@ -8,7 +8,7 @@ import { Genre } from '../genre';
   providedIn: 'root'
 })
 export class GenreService {
-  private url: string = '/genres';
+  private url: string = 'genres';
   
   constructor(private http: HttpClient) { }
 
