@@ -13,7 +13,7 @@ export class AuthService {
   authToken?: string | null;
   user?: User | null;
 
-  private authUrl: string = 'users';
+  private authUrl: string = 'http://localhost:3000/users';
 
   constructor(
     private http: HttpClient,
