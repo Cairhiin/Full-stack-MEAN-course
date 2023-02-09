@@ -25,6 +25,7 @@ import { BookSearchComponent } from './components/book-search/book-search.compon
 import { GenreDetailComponent } from './components/genre-detail/genre-detail.component';
 import { ScrollButtonComponent } from './components/scroll-button/scroll-button.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
+import { BookChartsComponent } from './components/book-charts/book-charts.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AddBookComponent } from './components/add-book/add-book.component';
     GenreDetailComponent,
     ScrollButtonComponent,
     AddBookComponent,
+    BookChartsComponent,
   ],
   imports: [
     JwtModule.forRoot({

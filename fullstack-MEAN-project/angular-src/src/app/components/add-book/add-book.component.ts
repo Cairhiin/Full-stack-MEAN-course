@@ -63,11 +63,12 @@ export class AddBookComponent {
   }
 
   onAddBookSubmit(): boolean {
-    console.log(this.fileUrl);
     const book = {
       title: this.title,
       author: this.author,
-      image: `https://book-app-bucket.s3.eu-central-1.amazonaws.com/${this.fileUrl}`,
+      image: this.fileUrl ? 
+        `https://book-app-bucket.s3.eu-central-1.amazonaws.com/${this.fileUrl}` : 
+        'assets/img/default.jpg',
       description: this.description,
       ISBN: this.ISBN,
       year: this.year,

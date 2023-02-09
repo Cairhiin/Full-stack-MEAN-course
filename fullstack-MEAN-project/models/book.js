@@ -48,7 +48,7 @@ const BookSchema = mongoose.Schema({
     reviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}],
     image: {
     	type: String,
-    default: "/img/default.jpg"
+    default: "assets/img/default.jpg"
     },
     date: {
     	type: Date
@@ -139,7 +139,7 @@ module.exports.getBooksByRating = function(params, callback) {
 }
 
 module.exports.addBook = function(book, callback) {
-	book.save(callback).populate('genres');
+	book.save(callback);
 }
 
 module.exports.updateBook = function(id, book, callback) {
