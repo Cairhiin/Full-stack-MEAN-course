@@ -98,6 +98,11 @@ module.exports.updateUser = function(id, user, callback) {
 module.exports.deleteUser = function(id, callback) {
 	User.deleteOne({ _id: id }, callback);
 }
+
+module.exports.getUsersByBookId = function(id, callback) {
+	User.find({'ratings.book': id }).populate('ratings.book').exec(callback);
+}
+
 module.exports.comparePassword = function(candidatePassword, hashedPassword, callback) {
 	bcrypt.compare(candidatePassword, hashedPassword, (err, isMatch) => {
 		if (err) throw err;

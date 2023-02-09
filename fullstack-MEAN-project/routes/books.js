@@ -4,11 +4,11 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const Book = require('../models/book');
+const User = require('../models/user');
 const checkIsInRole = require('../config/utils');
 
 router.get('/', (req, res, next) => {
 	const queryParams = req.query;
-	console.log("ROUTE BOOKS");
 	/* 
 	Retrieve books by ISBN - this can only be one book
 	because ISBN numbers are unique even across editions
@@ -157,13 +157,38 @@ router.delete('/:id',
 	const id = req.params.id;
 
 	/* 
-	Delete a book from the database by its unique id
-	*/
-	Book.deleteBook(id, (err, book) => {
-		if (err || book.deletedCount === 0) {
+	Delete a book from the database by its unique id and update
+	the users that already rated book to avoid corruption of their
+	data
+	*/	
+	User.getUsersByBookId(id, (err, users) => {
+		if (err) {
 			res.json({ success: false, msg: `Failed to delete book with id ${id}!` });
 		} else {
-			res.json({ success: true });
+			for (user of users) {
+				user.ratings = user.ratings.filter(rating => {
+					if (rating.book.id === id) {
+						return false;					
+					}
+					return true;
+				});
+
+				// Update user after the affected rating has been removed
+				User.updateUser(user._id, user, (err) => {
+					if (err) {
+						res.json({ success: false, msg: `Failed to delete book with id ${id}!` });
+					}
+				});
+			}
+
+			// Remove the book itself from the database
+			Book.deleteBook(id, (err, book) => {
+				if (err || book.deletedCount === 0) {
+					res.json({ success: false, msg: `Failed to delete book with id ${id}!` });
+				} else {
+					res.json({ success: true, msg: `Deleted book with id=${id} and updated affected users`});
+				}
+			});
 		}
 	});
 });

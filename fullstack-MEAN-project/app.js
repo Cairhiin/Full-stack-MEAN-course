@@ -14,7 +14,13 @@ const multerS3 = require('multer-s3');
 require('dotenv').config({path: __dirname + '/.env'})
 
 mongoose.set('strictQuery', false);
-mongoose.connect(`mongodb+srv://${process.env['DATABASE_USERNAME']}:${process.env['DATABASE_PASSWORD']}@bookapp.chr5jzc.mongodb.net/?retryWrites=true&w=majority`);
+
+if (!process.env['DATABASE_PASSWORD'] || !process.env['DATABASE_USERNAME']) {
+    mongoose.connect('mongodb://localhost:27017/bookrater');
+} else {
+    mongoose.connect(`mongodb+srv://${process.env['DATABASE_USERNAME']}:${process.env['DATABASE_PASSWORD']}@bookapp.chr5jzc.mongodb.net/?retryWrites=true&w=majority`);
+}
+
 mongoose.connection.on('connected', () => {
 	console.log(`Connected to the database!`);
 });
@@ -49,24 +55,24 @@ aws.config.update({
 
 const s3 = new aws.S3();
 const upload = multer({
-    fileFilter: (req, file, cb) => {
-        if (file.mimetype === 'application/octet-stream' || file.mimetype === 'video/mp4'
-            || file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-            cb(null, true);
+    fileFilter: (req, file, callback) => {
+        if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+            callback(null, true);
         } else {
-            cb(new Error('Invalid file type'), false);
+            callback(new Error('Invalid file type'), false);
         }
     },
     storage: multerS3({
         acl: 'public-read',
         s3,
         bucket: 'book-app-bucket',
-        key: function (req, file, cb) {
+        key: function (req, file, callback) {
             req.file = Date.now() + file.originalname;
-            cb(null, Date.now() + file.originalname);
+            callback(null, Date.now() + file.originalname);
         }
     })
 });
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
