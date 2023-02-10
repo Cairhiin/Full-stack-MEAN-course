@@ -14,3 +14,6 @@ node app.js
 
 ## Figma design
 https://www.figma.com/file/Gkwm5lgahuRNLaLP99gC9d/Bookrater?node-id=51822%3A4901&t=2J29AtNex5QiAN3a-1
+
+## Deployed website on Render
+https://bookrater.onrender.com/
