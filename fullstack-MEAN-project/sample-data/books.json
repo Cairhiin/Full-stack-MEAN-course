@@ -1,0 +1,498 @@
+[{
+  "_id": {
+    "$oid": "63d12e4ccd60cca0dff59b21"
+  },
+  "author": "Tad Williams",
+  "title": "The Dragonbone Chair",
+  "ISBN": "0809900033",
+  "genres": [
+    {
+      "$oid": "63dbe2ac6280c814e02c66ef"
+    }
+  ],
+  "year": "1988",
+  "ratings": {
+    "1": 0,
+    "2": 1,
+    "3": 4,
+    "4": 7,
+    "5": 10
+  },
+  "reviews": [],
+  "image": "assets/img/dragonbone-chair.jpg",
+  "__v": 0,
+  "avgRating": 4.18,
+  "description": "A war fueled by the powers of dark sorcery is about to engulf the peaceful land of Osten Ard—for Prester John, the High King, lies dying. And with his death, the Storm King, the undead ruler of the elf-like Sithi, seizes the chance to regain his lost realm through a pact with the newly ascended king. Knowing the consequences of this bargain, the king’s younger brother joins with a small, scattered group of scholars, the League of the Scroll, to confront the true danger threatening Osten Ard.",
+  "publisher": "DAW Books"
+},{
+  "_id": {
+    "$oid": "63d12fe4703f60a4808b9dc6"
+  },
+  "author": "Carol Beth Anderson",
+  "title": "The Frost Eater",
+  "ISBN": "9781949384055",
+  "genres": [
+    {
+      "$oid": "63dbe2ac6280c814e02c66ef"
+    },
+    {
+      "$oid": "63dbe88c6280c814e02c66fa"
+    }
+  ],
+  "year": "2020",
+  "ratings": {
+    "1": 1,
+    "2": 2,
+    "3": 10,
+    "4": 6,
+    "5": 4
+  },
+  "reviews": [],
+  "image": "assets/img/frost-eater.jpg",
+  "__v": 0,
+  "avgRating": 3.43,
+  "description": "Seventeen-year-old Princess Nora is a frost eater who creates magical ice. Her royal life is luxurious but stifling.\n\nKrey West has a rare magical talent: when he eats feathers, he can fly. His one goal is to find his missing girlfriend, Zeisha. He thinks someone in power abducted her.\n\nKrey’s daring feats of magic earn him an invitation to the palace. Craving adventure and friendship, Nora offers to help him find Zeisha. He’s desperate enough to accept—though he hates the monarchy.\n\nThe truth is more terrible than they could imagine.",
+  "publisher": "Eliana Press"
+},{
+  "_id": {
+    "$oid": "63d51499b0781e47dffba53d"
+  },
+  "author": "Robert Jordan",
+  "title": "The Eye of the World",
+  "ISBN": "0312850093",
+  "genres": [
+    {
+      "$oid": "63dbe2ac6280c814e02c66ef"
+    }
+  ],
+  "year": "1990",
+  "ratings": {
+    "1": 1,
+    "2": 3,
+    "3": 4,
+    "4": 5,
+    "5": 3
+  },
+  "reviews": [],
+  "image": "assets/img/the-eye-of-the-world.jpg",
+  "__v": 0,
+  "avgRating": 3.38,
+  "description": "The Wheel of Time turns and Ages come and pass, leaving memories that become legend. Legend fades to myth, and even myth is long forgotten when the Age that gave it birth returns again. What was, what will be, and what is, may yet fall under the Shadow."
+},{
+  "_id": {
+    "$oid": "63d5152cb0781e47dffba53e"
+  },
+  "author": "Jo Nesbø",
+  "title": "The Bat",
+  "ISBN": "9780099520320",
+  "genres": [
+    {
+      "$oid": "63dbe8376280c814e02c66f6"
+    },
+    {
+      "$oid": "63dbe8f86280c814e02c6700"
+    }
+  ],
+  "year": "1997",
+  "ratings": {
+    "1": 0,
+    "2": 6,
+    "3": 11,
+    "4": 5,
+    "5": 2
+  },
+  "reviews": [],
+  "image": "assets/img/the-bat.jpg",
+  "__v": 0,
+  "avgRating": 3.13,
+  "description": "Inspector Harry Hole of the Oslo Crime Squad is dispatched to Sydney to observe a murder case. Harry is free to offer assistance, but he has firm instructions to stay out of trouble. The victim is a twenty-three year old Norwegian woman who is a minor celebrity back home. Never one to sit on the sidelines, Harry befriends one of the lead detectives, and one of the witnesses, as he is drawn deeper into the case. Together, they discover that this is only the latest in a string of unsolved murders, and the pattern points toward a psychopath working his way across the country. As they circle closer and closer to the killer, Harry begins to fear that no one is safe, least of all those investigating the case.",
+  "publisher": "Eliana Press"
+},{
+  "_id": {
+    "$oid": "63d515cbb0781e47dffba53f"
+  },
+  "author": "Lee Child",
+  "title": "The Enemy",
+  "ISBN": "0385336675",
+  "genres": [
+    {
+      "$oid": "63dbe8376280c814e02c66f6"
+    },
+    {
+      "$oid": "63dbe8f86280c814e02c6700"
+    }
+  ],
+  "year": "2004",
+  "ratings": {
+    "1": 1,
+    "2": 7,
+    "3": 15,
+    "4": 8,
+    "5": 7
+  },
+  "reviews": [],
+  "image": "assets/img/the-enemy.jpg",
+  "__v": 0,
+  "avgRating": 3.34,
+  "description": "Jack Reacher. Hero. Loner. Soldier. Soldier’s son. An elite military cop, he was one of the army’s brightest stars. But in every cop’s life there is a turning point. One case. One messy, tangled case that can shatter a career. Turn a lawman into a renegade. And make him question words like honor, valor, and duty. For Jack Reacher, this is that case."
+},{
+  "_id": {
+    "$oid": "63dcf33064d9ffc73f1d2929"
+  },
+  "author": "Jordan H. Bartlett",
+  "title": "Queen's Catacombes",
+  "ISBN": "9780744307764",
+  "genres": [
+    {
+      "$oid": "63dbe2ac6280c814e02c66ef"
+    }
+  ],
+  "year": "2023",
+  "image": "assets/img/queens-catacombs.jpg",
+  "__v": 0,
+  "description": "Jacs, now the rightful Queen of Frea, seems to be Queen in title alone. She scrambles to learn the customs and traditions of a Realm she had only read about in books. The Council of Four have her firmly under their thumb, and their ideas for the Queendom are oppressive and outdated. Their knowledge of her mother and Master Leschi’s whereabouts is the only leverage they need to make the new Queen dance to their tune.",
+  "publisher": "CamCat Books",
+  "avgRating": 3,
+  "ratings": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0
+  },
+  "reviews": []
+},{
+  "_id": {
+    "$oid": "63dcf39364d9ffc73f1d292a"
+  },
+  "author": "Sarah J. Maas",
+  "title": "Kingdom of Ash",
+  "ISBN": "9781619636101",
+  "genres": [
+    {
+      "$oid": "63dbe2ac6280c814e02c66ef"
+    },
+    {
+      "$oid": "63dbe8746280c814e02c66f9"
+    },
+    {
+      "$oid": "63dbe88c6280c814e02c66fa"
+    }
+  ],
+  "year": "2023",
+  "image": "assets/img/kingdom-of-ash.jpg",
+  "__v": 0,
+  "description": "Aelin Galathynius has vowed to save her people ― but at a tremendous cost. Locked within an iron coffin by the Queen of the Fae, Aelin must draw upon her fiery will as she endures months of torture. The knowledge that yielding to Maeve will doom those she loves keeps her from breaking, but her resolve is unraveling with each passing day…",
+  "publisher": "Bloomsbury YA",
+  "avgRating": 3,
+  "ratings": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0
+  },
+  "reviews": []
+},{
+  "_id": {
+    "$oid": "63dcf40364d9ffc73f1d292b"
+  },
+  "author": "Patrick Rothfuss",
+  "title": "The Name of the Wind",
+  "ISBN": "9780756404079",
+  "genres": [
+    {
+      "$oid": "63dbe2ac6280c814e02c66ef"
+    }
+  ],
+  "year": "2007",
+  "image": "assets/img/the-name-of-the-wind.jpg",
+  "__v": 0,
+  "description": "Told in Kvothe's own voice, this is the tale of the magically gifted young man who grows to be the most notorious wizard his world has ever seen. The intimate narrative of his childhood in a troupe of traveling players, his years spent as a near-feral orphan in a crime-ridden city, his daringly brazen yet successful bid to enter a legendary school of magic, and his life as a fugitive after the murder of a king form a gripping coming-of-age story unrivaled in recent literature.",
+  "publisher": "Bloomsbury YA",
+  "avgRating": 4,
+  "ratings": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 0
+  },
+  "reviews": []
+},{
+  "_id": {
+    "$oid": "63dcf4b064d9ffc73f1d292c"
+  },
+  "author": "J.R.R. Tolkien",
+  "title": "The Fellowship of the Ring",
+  "ISBN": "9780007136599",
+  "genres": [
+    {
+      "$oid": "63dbe2ac6280c814e02c66ef"
+    }
+  ],
+  "year": "1954",
+  "image": "assets/img/fellowship-of-the-ring.jpg",
+  "__v": 0,
+  "description": "In a sleepy village in the Shire, a young hobbit is entrusted with an immense task. He must make a perilous journey across Middle-earth to the Cracks of Doom, there to destroy the Ruling Ring of Power — the only thing that prevents the Dark Lord's evil dominion.",
+  "publisher": "HarperCollins Publishers",
+  "avgRating": 5,
+  "ratings": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 1
+  },
+  "reviews": []
+},{
+  "_id": {
+    "$oid": "63dcf80864d9ffc73f1d292d"
+  },
+  "author": "Craig DiLouie",
+  "title": "Episode Thirteen",
+  "ISBN": "9780316443104",
+  "genres": [
+    {
+      "$oid": "63dbe8a06280c814e02c66fb"
+    },
+    {
+      "$oid": "63dbe8d06280c814e02c66ff"
+    },
+    {
+      "$oid": "63dcfcc364d9ffc73f1d2933"
+    }
+  ],
+  "year": "2023",
+  "image": "assets/img/episode-thirteen.jpg",
+  "__v": 0,
+  "description": "A ghost-hunting reality TV crew gain unprecedented access to an abandoned and supposedly haunted mansion, which promises a groundbreaking thirteenth episode, but as they uncover the secret history of the house, they learn that “reality” TV might be all too real — in Bram Stoker Award nominated author Craig DiLouie's latest heart pounding novel of horror and psychological suspense.",
+  "publisher": "Redhook",
+  "avgRating": 2.53,
+  "ratings": {
+    "1": 4,
+    "2": 5,
+    "3": 7,
+    "4": 2,
+    "5": 1
+  },
+  "reviews": []
+},{
+  "_id": {
+    "$oid": "63dcf85564d9ffc73f1d292e"
+  },
+  "author": "Johnny Compton",
+  "title": "The Spite House",
+  "ISBN": "9781250841414",
+  "genres": [
+    {
+      "$oid": "63dbe8a06280c814e02c66fb"
+    },
+    {
+      "$oid": "63dcfcc364d9ffc73f1d2933"
+    }
+  ],
+  "year": "2023",
+  "image": "assets/img/the-spite-house.jpg",
+  "__v": 0,
+  "description": "Eric Ross is on the run from a mysterious past with his two daughters in tow. Having left his wife, his house, his whole life behind in Maryland, he’s desperate for money–it’s not easy to find safe work when you can’t provide references, you can’t stay in one place for long, and you’re paranoid that your past is creeping back up on you.",
+  "publisher": "Tor Nightfire",
+  "avgRating": 2.81,
+  "ratings": {
+    "1": 2,
+    "2": 4,
+    "3": 6,
+    "4": 3,
+    "5": 1
+  },
+  "reviews": []
+},{
+  "_id": {
+    "$oid": "63dcf8cb64d9ffc73f1d292f"
+  },
+  "author": "Stephen King",
+  "title": "The Shining",
+  "ISBN": "9780450040184",
+  "genres": [
+    {
+      "$oid": "63dbe8a06280c814e02c66fb"
+    },
+    {
+      "$oid": "63dbe8c86280c814e02c66fe"
+    },
+    {
+      "$oid": "63dbe8d06280c814e02c66ff"
+    },
+    {
+      "$oid": "63dcfcc364d9ffc73f1d2933"
+    }
+  ],
+  "year": "1977",
+  "image": "assets/img/the-shining.jpg",
+  "__v": 0,
+  "description": "Jack Torrance's new job at the Overlook Hotel is the perfect chance for a fresh start. As the off-season caretaker at the atmospheric old hotel, he'll have plenty of time to spend reconnecting with his family and working on his writing. But as the harsh winter weather sets in, the idyllic location feels ever more remote...and more sinister. And the only one to notice the strange and terrible forces gathering around the Overlook is Danny Torrance, a uniquely gifted five-year-old.",
+  "publisher": "New English Library (Hodder & Stoughton)",
+  "avgRating": 3.4,
+  "ratings": {
+    "1": 11,
+    "2": 34,
+    "3": 99,
+    "4": 68,
+    "5": 45
+  },
+  "reviews": []
+},{
+  "_id": {
+    "$oid": "63dcf99264d9ffc73f1d2930"
+  },
+  "author": "F. Scott Fitzgerald",
+  "title": "The Great Gatsby",
+  "ISBN": "0743273567",
+  "genres": [
+    {
+      "$oid": "63dbe8746280c814e02c66f9"
+    },
+    {
+      "$oid": "63dbe8c86280c814e02c66fe"
+    },
+    {
+      "$oid": "63dcfcc364d9ffc73f1d2933"
+    }
+  ],
+  "year": "1925",
+  "image": "assets/img/the-great-gatsby.jpg",
+  "__v": 0,
+  "description": "The Great Gatsby, F. Scott Fitzgerald's third book, stands as the supreme achievement of his career. This exemplary novel of the Jazz Age has been acclaimed by generations of readers. The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island at a time when The New York Times noted 'gin was the national drink and sex the national obsession,' it is an exquisitely crafted tale of America in the 1920s.",
+  "publisher": "Scribner",
+  "avgRating": 3.4,
+  "ratings": {
+    "1": 12,
+    "2": 46,
+    "3": 78,
+    "4": 89,
+    "5": 45
+  },
+  "reviews": []
+},{
+  "_id": {
+    "$oid": "63dcfa4864d9ffc73f1d2931"
+  },
+  "author": "Arthur Golden",
+  "title": "Memoirs of a Geisha",
+  "ISBN": "9781400096893",
+  "genres": [
+    {
+      "$oid": "63dbe8746280c814e02c66f9"
+    },
+    {
+      "$oid": "63dbe8bd6280c814e02c66fd"
+    },
+    {
+      "$oid": "63dbe8c86280c814e02c66fe"
+    }
+  ],
+  "year": "1997",
+  "image": "assets/img/memoirs-of-a-geisha.jpg",
+  "__v": 0,
+  "description": "A literary sensation and runaway bestseller, this brilliant novel presents with seamless authenticity and exquisite lyricism the true confessions of one of Japan's most celebrated geisha. 'Memoirs of a Geisha,' we enter a world where appearances are paramount; where a girl's virginity is auctioned to the highest bidder; where women are trained to beguile the most powerful men; and where love is scorned as illusion. It is a unique and triumphant work of fiction - at once romantic, erotic, suspenseful - and completely unforgettable.",
+  "publisher": "Vintage Books USA",
+  "avgRating": 3,
+  "ratings": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0
+  },
+  "reviews": []
+},{
+  "_id": {
+    "$oid": "63e3631270c0089480a1de26"
+  },
+  "author": "Tamsyn Muir",
+  "title": "Nona the Ninth",
+  "description": "Her city is under siege.\n\nThe zombies are coming back.\n\nAnd all Nona wants is a birthday party.",
+  "ISBN": "9781250854117 ",
+  "genres": [
+    {
+      "$oid": "63dbe2ac6280c814e02c66ef"
+    },
+    {
+      "$oid": "63dbe8616280c814e02c66f7"
+    }
+  ],
+  "year": "2022",
+  "publisher": "Tordotcom",
+  "ratings": {
+    "1": 1,
+    "2": 2,
+    "3": 6,
+    "4": 5,
+    "5": 4
+  },
+  "avgRating": 3.5,
+  "reviews": [],
+  "image": "https://book-app-bucket.s3.eu-central-1.amazonaws.com/1675846418607nona-the-ninth.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63e3707142853e2783b3aa02"
+  },
+  "author": "Charmaine Wilkerson",
+  "title": "Black Cake",
+  "description": "We can’t choose what we inherit. But can we choose who we become?\nIn present-day California, Eleanor Bennett’s death leaves behind a puzzling inheritance for her two children, Byron and Benny: a black cake, made from a family recipe with a long history, and a voice recording. In her message, Eleanor shares a tumultuous story about a headstrong young swimmer who escapes her island home under suspicion of murder. The heartbreaking tale Eleanor unfolds, the secrets she still holds back, and the mystery of a long-lost child challenge everything the siblings thought they knew about their lineage and themselves.",
+  "ISBN": "9780593358351",
+  "genres": [
+    {
+      "$oid": "63dbe8bd6280c814e02c66fd"
+    },
+    {
+      "$oid": "63dbe8d06280c814e02c66ff"
+    }
+  ],
+  "year": "2022",
+  "publisher": "Ballantine Books",
+  "ratings": {
+    "1": 2,
+    "2": 9,
+    "3": 7,
+    "4": 3,
+    "5": 1
+  },
+  "avgRating": 2.64,
+  "reviews": [],
+  "image": "https://book-app-bucket.s3.eu-central-1.amazonaws.com/1675849758577black-cake.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63e37eec33e6dec32d0ba825"
+  },
+  "author": "Iris Yamashita",
+  "title": "City Under One Roof",
+  "description": "A stranded detective tries to solve a murder in a tiny Alaskan town where everyone lives in a single high-rise building, in this gripping debut by an Academy Award–nominated screenwriter.",
+  "ISBN": "9780593336670",
+  "genres": [
+    {
+      "$oid": "63dbe8376280c814e02c66f6"
+    },
+    {
+      "$oid": "63dbe8d06280c814e02c66ff"
+    },
+    {
+      "$oid": "63dbe8f86280c814e02c6700"
+    }
+  ],
+  "year": "2023",
+  "publisher": "Berkley Books",
+  "ratings": {
+    "1": 1,
+    "2": 5,
+    "3": 3,
+    "4": 2,
+    "5": 4
+  },
+  "avgRating": 3.2,
+  "reviews": [],
+  "image": "https://book-app-bucket.s3.eu-central-1.amazonaws.com/1675853517463city-under-one-roof.jpg",
+  "__v": 0
+}]
