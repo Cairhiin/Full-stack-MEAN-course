@@ -34,7 +34,17 @@ router.post('/authenticate', (req, res, next) => {
 			return res.json({ success: false, msg: 'User not found!' });
 		} 
 
-		const newUser = { _id: user._id, username: user.username, role: user.role, email: user.email };
+		/* 
+		Remove excessive data from user object to avoid creating a too large token
+		- I found this out the hard way -
+		*/
+		const newUser = { 
+			_id: user._id, 
+			username: user.username, 
+			role: user.role, 
+			email: user.email, 
+			password: user.password 
+		};
 		User.comparePassword(password, user.password, (err, isMatch) => {
 			if (err) throw err;
 			if (isMatch) {
