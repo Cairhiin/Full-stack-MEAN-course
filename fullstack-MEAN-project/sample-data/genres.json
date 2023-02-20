@@ -1,0 +1,66 @@
+[{
+  "_id": {
+    "$oid": "63dbe2ac6280c814e02c66ef"
+  },
+  "name": "Fantasy"
+},{
+  "_id": {
+    "$oid": "63dbe8376280c814e02c66f6"
+  },
+  "name": "Crime Fiction"
+},{
+  "_id": {
+    "$oid": "63dbe8616280c814e02c66f7"
+  },
+  "name": "Science Fiction"
+},{
+  "_id": {
+    "$oid": "63dbe86c6280c814e02c66f8"
+  },
+  "name": "Drama"
+},{
+  "_id": {
+    "$oid": "63dbe8746280c814e02c66f9"
+  },
+  "name": "Romance"
+},{
+  "_id": {
+    "$oid": "63dbe88c6280c814e02c66fa"
+  },
+  "name": "Young Adult"
+},{
+  "_id": {
+    "$oid": "63dbe8a06280c814e02c66fb"
+  },
+  "name": "Horror"
+},{
+  "_id": {
+    "$oid": "63dbe8b26280c814e02c66fc"
+  },
+  "name": "Nonfiction"
+},{
+  "_id": {
+    "$oid": "63dbe8bd6280c814e02c66fd"
+  },
+  "name": "Historical Fiction"
+},{
+  "_id": {
+    "$oid": "63dbe8c86280c814e02c66fe"
+  },
+  "name": "Classics"
+},{
+  "_id": {
+    "$oid": "63dbe8d06280c814e02c66ff"
+  },
+  "name": "Mystery"
+},{
+  "_id": {
+    "$oid": "63dbe8f86280c814e02c6700"
+  },
+  "name": "Thriller"
+},{
+  "_id": {
+    "$oid": "63dcfcc364d9ffc73f1d2933"
+  },
+  "name": "Fiction"
+}]

@@ -16,7 +16,7 @@ require('dotenv').config({path: __dirname + '/.env'})
 mongoose.set('strictQuery', false);
 
 if (!process.env['DATABASE_PASSWORD'] || !process.env['DATABASE_USERNAME']) {
-    mongoose.connect('mongodb://localhost:27017/bookrater');
+    mongoose.connect('mongodb://127.0.0.1:27017/bookrater');
 } else {
     mongoose.connect(`mongodb+srv://${process.env['DATABASE_USERNAME']}:${process.env['DATABASE_PASSWORD']}@bookapp.chr5jzc.mongodb.net/?retryWrites=true&w=majority`);
 }
