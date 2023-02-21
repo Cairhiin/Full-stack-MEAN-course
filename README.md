@@ -11,8 +11,17 @@ npm install
 
 npm build
 
+cd angular-src
+
+npm build
+
+cd ..
+
 node app.js
+
+Open browser and go to localhost:3000
 ```
+
 
 #### SAMPLE DATABASE DATA
 The sample-data directory has two json files with data for both genres and books. 
