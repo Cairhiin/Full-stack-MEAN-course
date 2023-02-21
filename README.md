@@ -33,5 +33,5 @@ https://www.figma.com/file/Gkwm5lgahuRNLaLP99gC9d/Bookrater?node-id=51822%3A4901
 #### DEPLOYED WEBSITE ON RENDER
 https://bookrater.onrender.com/
 
-### VIDEO OF RUNNING THE SITE LOCALLY
+#### VIDEO OF RUNNING THE SITE LOCALLY
 https://youtu.be/T8rwii7Kkzs
