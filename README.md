@@ -11,6 +11,8 @@ npm install
 
 cd angular-src
 
+npm install
+
 npm run build
 
 cd ..
