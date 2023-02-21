@@ -19,7 +19,7 @@ cd ..
 
 node app.js
 
-Open browser and go to localhost:3000
+Open browser at http://localhost:3000
 ```
 
 
