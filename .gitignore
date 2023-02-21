@@ -1,4 +1,9 @@
+# Node modules
 node_modules
+
+# Random stuff
 typescript-crash-course/dist/index.html
 typescript-crash-course/dist/index.js
+
+# Environment vars
 .env
