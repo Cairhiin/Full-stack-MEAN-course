@@ -9,8 +9,6 @@ cd fullstack-MEAN-project
 
 npm install
 
-npm run build
-
 cd angular-src
 
 npm run build
