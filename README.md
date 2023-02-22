@@ -25,7 +25,7 @@ Open browser at http://localhost:3000
 
 #### SAMPLE DATABASE DATA
 The sample-data directory has two json files with data for both genres and books. 
-Load both into a local mongoose database to test the site.
+Load both into a local mongoose database called bookrater to test the site.
 
 #### FIGMA DESIGN
 https://www.figma.com/file/Gkwm5lgahuRNLaLP99gC9d/Bookrater?node-id=51822%3A4901&t=2J29AtNex5QiAN3a-1
