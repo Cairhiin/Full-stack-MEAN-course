@@ -1,4 +1,4 @@
-# Full-stack-MEAN-course
+# Full-stack-MEAN-course - Franciscus van de Voorde
 Full stack course: Coursework and Project
 
 #### RUNNING THE PROJECT
